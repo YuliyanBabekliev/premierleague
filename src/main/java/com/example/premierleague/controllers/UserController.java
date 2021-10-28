@@ -1,7 +1,9 @@
 package com.example.premierleague.controllers;
 
+import com.example.premierleague.models.binding.UserLoginBindingModel;
 import com.example.premierleague.models.binding.UserRegisterBindingModel;
 import com.example.premierleague.models.service.UserServiceModel;
+import com.example.premierleague.security.CurrentUser;
 import com.example.premierleague.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -19,15 +21,22 @@ import javax.validation.Valid;
 public class UserController {
     private final UserService userService;
     private final ModelMapper modelMapper;
+    private final CurrentUser currentUser;
 
-    public UserController(UserService userService, ModelMapper modelMapper) {
+    public UserController(UserService userService, ModelMapper modelMapper, CurrentUser currentUser) {
         this.userService = userService;
         this.modelMapper = modelMapper;
+        this.currentUser = currentUser;
     }
 
     @ModelAttribute
     public UserRegisterBindingModel userRegisterBindingModel(){
         return new UserRegisterBindingModel();
+    }
+
+    @ModelAttribute
+    public UserLoginBindingModel userLoginBindingModel(){
+        return new UserLoginBindingModel();
     }
 
     @GetMapping("/login")
@@ -57,5 +66,30 @@ public class UserController {
 
         this.userService.registerUser(this.modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
         return "redirect:login";
+    }
+
+    @PostMapping("/login")
+    public String loginConfirm(@Valid UserLoginBindingModel userLoginBindingModel, BindingResult bindingResult,
+                               RedirectAttributes redirectAttributes){
+        if(bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
+            return "redirect:login";
+        }
+
+        if(this.userService.invalidUsernameOrPassword(userLoginBindingModel.getUsername(), userLoginBindingModel.getPassword())){
+            redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
+            redirectAttributes.addFlashAttribute("notFound", true);
+            return "redirect:login";
+        }
+
+        this.userService.loginUser(this.modelMapper.map(userLoginBindingModel, UserServiceModel.class));
+        return "redirect:/";
+    }
+
+    @GetMapping("/logout")
+    public String logout(){
+        this.userService.logout();
+        return "redirect:/";
     }
 }

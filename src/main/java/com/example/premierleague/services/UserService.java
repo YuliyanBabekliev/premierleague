@@ -4,4 +4,10 @@ import com.example.premierleague.models.service.UserServiceModel;
 
 public interface UserService {
     void registerUser(UserServiceModel userServiceModel);
+
+    boolean invalidUsernameOrPassword(String username, String password);
+
+    void loginUser(UserServiceModel userServiceModel);
+
+    void logout();
 }
