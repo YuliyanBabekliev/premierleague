@@ -63,7 +63,7 @@ public class Team extends BaseEntity{
         this.players = players;
     }
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "team")
     public Set<News> getNews() {
         return news;
     }

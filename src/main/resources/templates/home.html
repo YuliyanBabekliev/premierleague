@@ -12,8 +12,9 @@
     <title>Football World</title>
 </head>
 <body style="background-image: url(/images/5fMwyh.jpg); background-size: cover; ">
-<header th:replace="fragments/commons::nav">
-</header>
+
+<header th:replace="fragments/navigation::navigation"></header>
+
 
 <main>
     <div class="container">
@@ -24,15 +25,15 @@
                     <img class="home-first-news" src="/images/chelsea/skysports-mason-mount-chelsea_5371279.jpg" alt="">
                     <h4 id="news">Chelsea reached the champions league final!</h4>
                 </a>
-                <div class="row">
+                <div th:each="n : ${homeNewsViewModels}" class="row">
                     <div class="col-sm-3">
                         <a class="home-news-title"  href="/news-details.html">
-                            <img class="home-news-img" src="/images/chelsea/GettyImages-1232714435.jpg" alt="">
+                            <img class="home-news-img" th:src="${n.imgUrl}" alt="">
                         </a>
                     </div>
                     <div class="col-sm-8 home-news-container">
                         <a class="home-news-title" href="/news-details.html">
-                            <h3 class="news">Mason Mount tells Toni Kroos he ‘should lose sleep’ over Chelsea after Champions League defeat</h3>
+                            <h3 th:text="${n.title}" th:value="${n.title}" class="news"></h3>
                         </a>
                     </div>
                 </div>

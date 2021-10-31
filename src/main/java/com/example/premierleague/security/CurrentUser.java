@@ -1,5 +1,6 @@
 package com.example.premierleague.security;
 
+import com.example.premierleague.models.entities.Team;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
 
@@ -8,6 +9,7 @@ import org.springframework.web.context.annotation.SessionScope;
 public class CurrentUser {
     private Long id;
     private String username;
+    private Team favouriteTeam;
 
     public CurrentUser() {
     }
@@ -26,5 +28,13 @@ public class CurrentUser {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public Team getFavouriteTeam() {
+        return favouriteTeam;
+    }
+
+    public void setFavouriteTeam(Team favouriteTeam) {
+        this.favouriteTeam = favouriteTeam;
     }
 }

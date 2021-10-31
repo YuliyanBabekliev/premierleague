@@ -52,6 +52,8 @@ public class UserServiceImpl implements UserService {
     public void loginUser(UserServiceModel userServiceModel) {
         this.currentUser.setId(userServiceModel.getId());
         this.currentUser.setUsername(userServiceModel.getUsername());
+        User user = this.userRepository.findByUsername(userServiceModel.getUsername());
+        this.currentUser.setFavouriteTeam(user.getFavouriteTeam());
     }
 
     @Override

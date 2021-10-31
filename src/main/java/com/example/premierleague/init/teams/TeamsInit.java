@@ -50,7 +50,7 @@ public class TeamsInit {
             team1.setGoalDifference(-5);
             team1.setPoints(11);
 
-            team2.setName("Aston Villa");
+            team2.setName("Aston_Villa");
             team2.setDescription("Aston Villa Football Club is an English professional football club based in Aston, Birmingham. The club competes in the Premier League, the top tier of the English football league system. Founded in 1874, they have played at their home ground, Villa Park, since 1897. Aston Villa were one of the founder members of the Football League in 1888 and of the Premier League in 1992.[5] Villa are one of only five English clubs to have won the European Cup, in 1981–82. They have also won the Football League First Division seven times, the FA Cup seven times, the League Cup five times, and the European (UEFA) Super Cup once.");
             team2.setLogoUrl("https://toppng.com/uploads/preview/aston-villa-logo-png-11536012608uoiti56oh4.png");
             Stadium stadium2 = this.stadiumRepository.getById(Long.parseLong("2"));
@@ -97,7 +97,7 @@ public class TeamsInit {
             team6.setGoalDifference(13);
             team6.setPoints(19);
 
-            team7.setName("Crystal Palace");
+            team7.setName("Crystal_Palace");
             team7.setDescription("Crystal Palace Football Club is a professional football club based in Selhurst in the Borough of Croydon, South London, England, who currently compete in the Premier League, the highest level of English football. Although formally created as a professional outfit in 1905, the club's origins can be traced as far back as 1861, when an amateur Crystal Palace football team was established at the Crystal Palace Exhibition building, which has led to claims by the club that Crystal Palace should be recognised as the oldest professional football club in the world.");
             team7.setLogoUrl("https://w7.pngwing.com/pngs/777/158/png-transparent-crystal-palace-f-c-selhurst-park-premier-league-english-football-league-crystal-palace-l-f-c-premier-league-text-logo-computer-wallpaper.png");
             Stadium stadium7 = this.stadiumRepository.getById(Long.parseLong("7"));
@@ -115,7 +115,7 @@ public class TeamsInit {
             team8.setGoalDifference(4);
             team8.setPoints(14);
 
-            team9.setName("Leeds United");
+            team9.setName("Leeds");
             team9.setDescription("Leeds United Football Club is an English professional football club based in the city of Leeds, West Yorkshire. The club was formed in 1919 following the disbanding of Leeds City by the Football League and took over their Elland Road stadium. The club currently competes in the Premier League, the top flight of English football, following promotion from the EFL Championship during the 2019—20 season. Most of their history has been spent competing in the first tier of English football. Their longest continuous spell inside the first tier was a period of 18 years between 1964 and 1982, while their longest period outside of it spanned 16 years between 2004 and 2020.");
             team9.setLogoUrl("https://toppng.com/uploads/preview/leeds-united-football-logo-png-11536018007ce9oimdy6g.png");
             Stadium stadium9 = this.stadiumRepository.getById(Long.parseLong("9"));
@@ -124,7 +124,7 @@ public class TeamsInit {
             team9.setGoalDifference(-8);
             team9.setPoints(6);
 
-            team10.setName("Leicester City");
+            team10.setName("Leicester");
             team10.setDescription("Leicester City Football Club is a professional football club based in Leicester in the East Midlands, England. The club competes in the Premier League, the top division of England's football league system, and plays its home matches at the King Power Stadium.[2]\n" +
                     "\n" +
                     "The club was founded in 1884 as Leicester Fosse F.C.,[3] playing on a field near Fosse Road. They moved to Filbert Street in 1891, were elected to the Football League in 1894 and adopted the name Leicester City in 1919. They moved to the nearby Walkers Stadium in 2002,[4] which was renamed the King Power Stadium in 2011.[5]");
@@ -144,7 +144,7 @@ public class TeamsInit {
             team11.setGoalDifference(16);
             team11.setPoints(18);
 
-            team12.setName("Manchester City");
+            team12.setName("Manchester_City");
             team12.setDescription("Manchester City Football Club is an English football club based in Manchester that competes in the Premier League, the top flight of English football. Founded in 1880 as St. Mark's (West Gorton), it became Ardwick Association Football Club in 1887 and Manchester City in 1894. The club's home ground is the Etihad Stadium in east Manchester, to which it moved in 2003, having played at Maine Road since 1923. The club adopted their sky blue home shirts in 1894 in the first season of the club's current iteration, and have been used ever since.[4]");
             team12.setLogoUrl("https://w1.pngwing.com/pngs/203/356/png-transparent-premier-league-logo-manchester-manchester-city-fc-organization-line-area-circle-symbol.png");
             Stadium stadium12 = this.stadiumRepository.getById(Long.parseLong("12"));
@@ -153,7 +153,7 @@ public class TeamsInit {
             team12.setGoalDifference(13);
             team12.setPoints(17);
 
-            team13.setName("Manchester United");
+            team13.setName("Manchester_United");
             team13.setDescription("Manchester United Football Club is a professional football club based in Old Trafford, Greater Manchester, England, that competes in the Premier League, the top flight of English football. Nicknamed \"the Red Devils\", the club was founded as Newton Heath LYR Football Club in 1878, changed its name to Manchester United in 1902 and moved to its current stadium, Old Trafford, in 1910.");
             team13.setLogoUrl("https://w7.pngwing.com/pngs/480/26/png-transparent-manchester-united-f-c-old-trafford-glory-glory-association-football-manager-football-text-sport-logo.png");
             Stadium stadium13 = this.stadiumRepository.getById(Long.parseLong("13"));
@@ -162,7 +162,7 @@ public class TeamsInit {
             team13.setGoalDifference(6);
             team13.setPoints(14);
 
-            team14.setName("Newcastle United");
+            team14.setName("Newcastle");
             team14.setDescription("Newcastle United Football Club is an English professional football club based in Newcastle upon Tyne, that plays in the Premier League - the top flight of English football. The club was founded in 1892 by the merger of Newcastle East End and Newcastle West End. The team plays its home matches at St. James' Park. Following the Taylor Report's requirement that all Premier League clubs have all-seater stadiums, the ground was modified in the mid-1990s and currently has a capacity of 52,305.");
             team14.setLogoUrl("https://cdn.freebiesupply.com/logos/large/2x/newcastle-united-logo-png-transparent.png");
             Stadium stadium14 = this.stadiumRepository.getById(Long.parseLong("14"));
@@ -171,7 +171,7 @@ public class TeamsInit {
             team14.setGoalDifference(-9);
             team14.setPoints(3);
 
-            team15.setName("Norwich City");
+            team15.setName("Norwich");
             team15.setDescription("Norwich City Football Club (also known as The Canaries or The Yellows) is an English professional football club based in Norwich, Norfolk. As of the 2021–22 season, the team competes in the Premier League, the top tier of English football, after winning the 2020–21 EFL Championship title. The club was founded in 1902. Since 1935, Norwich have played their home games at Carrow Road and have a long-standing and fierce rivalry with East Anglian rivals Ipswich Town, with whom they have contested the East Anglian derby 134 times since 1902. The fans' song \"On the Ball, City\" is the oldest football chant in the world, written in 1890 and still sung today.");
             team15.setLogoUrl("https://toppng.com/uploads/preview/norwich-city-logo-vector-free-11574163620mwvdjlbscr.png");
             Stadium stadium15 = this.stadiumRepository.getById(Long.parseLong("15"));
@@ -189,7 +189,7 @@ public class TeamsInit {
             team16.setGoalDifference(-4);
             team16.setPoints(7);
 
-            team17.setName("Tottenham Hotspur");
+            team17.setName("Tottenham");
             team17.setDescription("Tottenham Hotspur Football Club, commonly referred to as Tottenham (/ˈtɒtənəm/)[2][3] or Spurs, is an English professional football club based in Tottenham, London, that competes in the Premier League, the top flight of English football. The team has played its home matches in the 62,850-capacity Tottenham Hotspur Stadium since April 2019, replacing their former home of White Hart Lane, which had been demolished to make way for the new stadium on the same site.");
             team17.setLogoUrl("https://e7.pngegg.com/pngimages/290/45/png-clipart-tottenham-hotspur-f-c-premier-league-football-player-northumberland-development-project-premier-league-logo-football-team.png");
             Stadium stadium17 = this.stadiumRepository.getById(Long.parseLong("17"));
@@ -209,7 +209,7 @@ public class TeamsInit {
             team18.setGoalDifference(-8);
             team18.setPoints(7);
 
-            team19.setName("West Ham United");
+            team19.setName("West_Ham");
             team19.setDescription("West Ham United Football Club is an English professional football club based in Stratford, East London that compete in the Premier League, the top tier of English football. The club plays at the London Stadium, having moved from their former home, the Boleyn Ground, in 2016.");
             team19.setLogoUrl("https://e1.pngegg.com/pngimages/34/1018/png-clipart-team-logos-west-ham-united-logo-illustration.png");
             Stadium stadium19 = this.stadiumRepository.getById(Long.parseLong("19"));
