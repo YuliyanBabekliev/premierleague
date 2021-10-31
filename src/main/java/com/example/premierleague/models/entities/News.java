@@ -58,8 +58,7 @@ public class News extends BaseEntity{
         this.user = user;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "news_id", referencedColumnName = "id")
+    @ManyToOne()
     public Team getTeam() {
         return team;
     }

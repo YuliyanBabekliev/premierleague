@@ -31,7 +31,6 @@ public class HomeController {
             return "index";
         }
 
-        Set<News> newsSet = currentUser.getFavouriteTeam().getNews();
         Set<HomeNewsViewModel> homeNewsViewModels =
                 this.currentUser.
                         getFavouriteTeam().

@@ -20,11 +20,13 @@
     <div class="container">
         <div class="row home-news-and-table-container">
             <div class="col-sm-9 news-container">
+                <div>
                 <h1 class="home-title">Team news</h1>
                 <a class="home-news-title" href="/news-details.html">
                     <img class="home-first-news" src="/images/chelsea/skysports-mason-mount-chelsea_5371279.jpg" alt="">
                     <h4 id="news">Chelsea reached the champions league final!</h4>
                 </a>
+                </div>
                 <div th:each="n : ${homeNewsViewModels}" class="row">
                     <div class="col-sm-3">
                         <a class="home-news-title"  href="/news-details.html">
@@ -34,31 +36,6 @@
                     <div class="col-sm-8 home-news-container">
                         <a class="home-news-title" href="/news-details.html">
                             <h3 th:text="${n.title}" th:value="${n.title}" class="news"></h3>
-                        </a>
-                    </div>
-                </div>
-                <div class="row home-other-news-container">
-                    <div class="col-sm-3">
-                        <a class="home-news-title" href="/news-details.html">
-                            <img class="home-news-img" src="/images/chelsea/newFile-3.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="col-sm-8 home-news-container">
-                        <a class="home-news-title" href="/news-details.html">
-                            <h3 class="news">Thomas Tuchel: Chelsea boss says Real Madrid win 'really huge'</h3>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="row home-other-news-container">
-                    <div class="col-sm-3">
-                        <a class="home-news-title" href="/news-details.html">
-                            <img class="home-news-img" src="/images/chelsea/369-229-markos-alonso.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="col-sm-8 home-news-container">
-                        <a class="home-news-title" href="/news-details.html">
-                            <h3 class="news">Chelsea defenders will be sold this summer</h3>
                         </a>
                     </div>
                 </div>
