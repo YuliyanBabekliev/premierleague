@@ -13,7 +13,7 @@ public class User extends BaseEntity{
     private String password;
     private String gender;
     private Team favouriteTeam;
-    private Set<Role> role;
+    private Set<Role> roles;
     private Set<News> news;
 
     @Column(name = "username", unique = true, nullable = false)
@@ -53,12 +53,12 @@ public class User extends BaseEntity{
     }
 
     @ManyToMany(fetch = FetchType.EAGER)
-    public Set<Role> getRole() {
-        return role;
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setRole(Set<Role> role) {
-        this.role = role;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @OneToOne

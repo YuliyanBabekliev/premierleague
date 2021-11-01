@@ -3,7 +3,6 @@ package com.example.premierleague.controllers;
 import com.example.premierleague.models.binding.UserLoginBindingModel;
 import com.example.premierleague.models.binding.UserRegisterBindingModel;
 import com.example.premierleague.models.service.UserServiceModel;
-import com.example.premierleague.security.CurrentUser;
 import com.example.premierleague.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -21,12 +20,10 @@ import javax.validation.Valid;
 public class UserController {
     private final UserService userService;
     private final ModelMapper modelMapper;
-    private final CurrentUser currentUser;
 
-    public UserController(UserService userService, ModelMapper modelMapper, CurrentUser currentUser) {
+    public UserController(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
         this.modelMapper = modelMapper;
-        this.currentUser = currentUser;
     }
 
     @ModelAttribute
@@ -82,14 +79,6 @@ public class UserController {
             redirectAttributes.addFlashAttribute("notFound", true);
             return "redirect:login";
         }
-
-        this.userService.loginUser(this.modelMapper.map(userLoginBindingModel, UserServiceModel.class));
-        return "redirect:/";
-    }
-
-    @GetMapping("/logout")
-    public String logout(){
-        this.userService.logout();
         return "redirect:/";
     }
 }

@@ -15,28 +15,28 @@
     <nav class="navbar navbar-expand-xl navbar-dark rounded home-navbar">
         <div class="container-fluid">
             <a class="navbar-brand home-logo-container" href="/">
-              <th:block th:switch="${@currentUser.favouriteTeam.name}">
-                  <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">
-                  <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">
-                  <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">
-                  <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">
-                  <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">
-                  <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">
-                  <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">
-                  <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">
-                  <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">
-                  <img th:case="'Leicester'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">
-                  <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">
-                  <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">
-                  <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">
-                  <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">
-                  <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">
-                  <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">
-                  <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">
-                  <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">
-                  <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">
-                  <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">
-              </th:block>
+<!--              <th:block th:switch="${@currentUser.favouriteTeam.name}">-->
+<!--                  <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">-->
+<!--                  <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">-->
+<!--                  <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">-->
+<!--                  <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">-->
+<!--                  <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">-->
+<!--                  <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">-->
+<!--                  <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">-->
+<!--                  <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">-->
+<!--                  <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">-->
+<!--                  <img th:case="'Leicester'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">-->
+<!--                  <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">-->
+<!--                  <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">-->
+<!--                  <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">-->
+<!--                  <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">-->
+<!--                  <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">-->
+<!--                  <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">-->
+<!--                  <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">-->
+<!--                  <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">-->
+<!--                  <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">-->
+<!--                  <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">-->
+<!--              </th:block>-->
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -80,28 +80,28 @@
     <nav class="navbar navbar-expand-xl navbar-dark rounded red-navbar">
         <div class="container-fluid">
             <a class="navbar-brand home-logo-container" href="/">
-                <th:block th:switch="${@currentUser.favouriteTeam.name}">
-                    <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">
-                    <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">
-                    <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">
-                    <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">
-                    <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">
-                    <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">
-                    <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">
-                    <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">
-                    <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">
-                    <img th:case="'Leicester City'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">
-                    <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">
-                    <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">
-                    <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">
-                    <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">
-                    <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">
-                    <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">
-                    <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">
-                    <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">
-                    <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">
-                    <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">
-                </th:block>
+<!--                <th:block th:switch="${@currentUser.favouriteTeam.name}">-->
+<!--                    <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">-->
+<!--                    <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">-->
+<!--                    <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">-->
+<!--                    <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">-->
+<!--                    <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">-->
+<!--                    <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">-->
+<!--                    <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">-->
+<!--                    <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">-->
+<!--                    <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">-->
+<!--                    <img th:case="'Leicester City'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">-->
+<!--                    <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">-->
+<!--                    <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">-->
+<!--                    <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">-->
+<!--                    <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">-->
+<!--                    <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">-->
+<!--                    <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">-->
+<!--                    <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">-->
+<!--                    <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">-->
+<!--                    <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">-->
+<!--                    <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">-->
+<!--                </th:block>-->
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -145,28 +145,28 @@
     <nav class="navbar navbar-expand-xl navbar-dark rounded purple-navbar">
         <div class="container-fluid">
             <a class="navbar-brand home-logo-container" href="/">
-                <th:block th:switch="${@currentUser.favouriteTeam.name}">
-                    <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">
-                    <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">
-                    <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">
-                    <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">
-                    <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">
-                    <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">
-                    <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">
-                    <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">
-                    <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">
-                    <img th:case="'Leicester City'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">
-                    <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">
-                    <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">
-                    <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">
-                    <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">
-                    <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">
-                    <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">
-                    <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">
-                    <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">
-                    <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">
-                    <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">
-                </th:block>
+<!--                <th:block th:switch="${@currentUser.favouriteTeam.name}">-->
+<!--                    <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">-->
+<!--                    <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">-->
+<!--                    <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">-->
+<!--                    <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">-->
+<!--                    <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">-->
+<!--                    <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">-->
+<!--                    <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">-->
+<!--                    <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">-->
+<!--                    <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">-->
+<!--                    <img th:case="'Leicester City'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">-->
+<!--                    <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">-->
+<!--                    <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">-->
+<!--                    <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">-->
+<!--                    <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">-->
+<!--                    <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">-->
+<!--                    <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">-->
+<!--                    <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">-->
+<!--                    <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">-->
+<!--                    <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">-->
+<!--                    <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">-->
+<!--                </th:block>-->
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -210,28 +210,28 @@
     <nav class="navbar navbar-expand-xl navbar-dark rounded white-navbar">
         <div class="container-fluid">
             <a class="navbar-brand home-logo-container" href="/">
-                <th:block th:switch="${@currentUser.favouriteTeam.name}">
-                    <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">
-                    <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">
-                    <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">
-                    <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">
-                    <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">
-                    <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">
-                    <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">
-                    <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">
-                    <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">
-                    <img th:case="'Leicester City'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">
-                    <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">
-                    <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">
-                    <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">
-                    <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">
-                    <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">
-                    <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">
-                    <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">
-                    <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">
-                    <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">
-                    <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">
-                </th:block>
+<!--                <th:block th:switch="${@currentUser.favouriteTeam.name}">-->
+<!--                    <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">-->
+<!--                    <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">-->
+<!--                    <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">-->
+<!--                    <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">-->
+<!--                    <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">-->
+<!--                    <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">-->
+<!--                    <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">-->
+<!--                    <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">-->
+<!--                    <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">-->
+<!--                    <img th:case="'Leicester City'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">-->
+<!--                    <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">-->
+<!--                    <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">-->
+<!--                    <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">-->
+<!--                    <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">-->
+<!--                    <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">-->
+<!--                    <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">-->
+<!--                    <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">-->
+<!--                    <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">-->
+<!--                    <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">-->
+<!--                    <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">-->
+<!--                </th:block>-->
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -275,28 +275,28 @@
     <nav class="navbar navbar-expand-xl navbar-dark rounded sky-blue-navbar">
         <div class="container-fluid">
             <a class="navbar-brand home-logo-container" href="/">
-                <th:block th:switch="${@currentUser.favouriteTeam.name}">
-                    <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">
-                    <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">
-                    <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">
-                    <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">
-                    <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">
-                    <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">
-                    <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">
-                    <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">
-                    <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">
-                    <img th:case="'Leicester City'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">
-                    <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">
-                    <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">
-                    <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">
-                    <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">
-                    <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">
-                    <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">
-                    <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">
-                    <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">
-                    <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">
-                    <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">
-                </th:block>
+<!--                <th:block th:switch="${@currentUser.favouriteTeam.name}">-->
+<!--                    <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">-->
+<!--                    <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">-->
+<!--                    <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">-->
+<!--                    <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">-->
+<!--                    <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">-->
+<!--                    <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">-->
+<!--                    <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">-->
+<!--                    <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">-->
+<!--                    <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">-->
+<!--                    <img th:case="'Leicester City'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">-->
+<!--                    <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">-->
+<!--                    <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">-->
+<!--                    <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">-->
+<!--                    <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">-->
+<!--                    <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">-->
+<!--                    <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">-->
+<!--                    <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">-->
+<!--                    <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">-->
+<!--                    <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">-->
+<!--                    <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">-->
+<!--                </th:block>-->
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -340,28 +340,28 @@
     <nav class="navbar navbar-expand-xl navbar-dark rounded yellow-navbar">
         <div class="container-fluid">
             <a class="navbar-brand home-logo-container" href="/">
-                <th:block th:switch="${@currentUser.favouriteTeam.name}">
-                    <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">
-                    <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">
-                    <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">
-                    <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">
-                    <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">
-                    <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">
-                    <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">
-                    <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">
-                    <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">
-                    <img th:case="'Leicester City'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">
-                    <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">
-                    <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">
-                    <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">
-                    <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">
-                    <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">
-                    <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">
-                    <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">
-                    <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">
-                    <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">
-                    <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">
-                </th:block>
+<!--                <th:block th:switch="${@currentUser.favouriteTeam.name}">-->
+<!--                    <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">-->
+<!--                    <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">-->
+<!--                    <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">-->
+<!--                    <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">-->
+<!--                    <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">-->
+<!--                    <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">-->
+<!--                    <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">-->
+<!--                    <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">-->
+<!--                    <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">-->
+<!--                    <img th:case="'Leicester City'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">-->
+<!--                    <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">-->
+<!--                    <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">-->
+<!--                    <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">-->
+<!--                    <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">-->
+<!--                    <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">-->
+<!--                    <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">-->
+<!--                    <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">-->
+<!--                    <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">-->
+<!--                    <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">-->
+<!--                    <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">-->
+<!--                </th:block>-->
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
@@ -405,28 +405,28 @@
     <nav class="navbar navbar-expand-xl navbar-dark rounded orange-navbar">
         <div class="container-fluid">
             <a class="navbar-brand home-logo-container" href="/">
-                <th:block th:switch="${@currentUser.favouriteTeam.name}">
-                    <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">
-                    <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">
-                    <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">
-                    <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">
-                    <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">
-                    <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">
-                    <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">
-                    <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">
-                    <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">
-                    <img th:case="'Leicester City'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">
-                    <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">
-                    <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">
-                    <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">
-                    <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">
-                    <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">
-                    <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">
-                    <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">
-                    <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">
-                    <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">
-                    <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">
-                </th:block>
+<!--                <th:block th:switch="${@currentUser.favouriteTeam.name}">-->
+<!--                    <img th:case="'Arsenal'" class="home-logo"  src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">-->
+<!--                    <img th:case="'Aston_Villa'" class="home-logo"  src="/images/aston%20villa/Aston-Villa-FC-HD-Logo.png" alt="">-->
+<!--                    <img th:case="'Brentford'" class="home-logo"  src="/images/brentford/brentford-fc-logo-freelogovectors.net_.png" alt="">-->
+<!--                    <img th:case="'Brighton'" class="home-logo"  src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">-->
+<!--                    <img th:case="'Burnley'" class="home-logo"  src="/images/burnley/burnley-logo-3.png" alt="">-->
+<!--                    <img th:case="'Chelsea'" class="home-logo"  src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">-->
+<!--                    <img th:case="'Crystal_Palace'" class="home-logo"  src="/images/crystal%20palace/Crystal_Palace_FC_logo.png" alt="">-->
+<!--                    <img th:case="'Everton'" class="home-logo"  src="/images/everton/everton-logo-escudo-1.png" alt="">-->
+<!--                    <img th:case="'Leeds'" class="home-logo"  src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt="">-->
+<!--                    <img th:case="'Leicester City'" class="home-logo"  src="/images/leicester/leicester-city-logo-1.png" alt="">-->
+<!--                    <img th:case="'Liverpool'" class="home-logo"  src="/images/liverpool/unnamed.png" alt="">-->
+<!--                    <img th:case="'Manchester_City'" class="home-logo"  src="/images/man%20city/manchester-city-fc-logo-escudo-badge-3.png" alt="">-->
+<!--                    <img th:case="'Manchester_United'" class="home-logo"  src="/images/man%20utd/manchester_united_PNG9.png" alt="">-->
+<!--                    <img th:case="'Newcastle'" class="home-logo"  src="/images/Newcastle/Newcastle_United_Logo.png" alt="">-->
+<!--                    <img th:case="'Norwich'" class="home-logo"  src="/images/norwich/norwich-fc-logo-1.png" alt="">-->
+<!--                    <img th:case="'Southampton'" class="home-logo"  src="/images/southampton/southampton-fc-logo-1.png" alt="">-->
+<!--                    <img th:case="'Tottenham'" class="home-logo"  src="/images/tottenham/Tottenham_Hotspur.png" alt="">-->
+<!--                    <img th:case="'Watford'" class="home-logo"  src="/images/watford/Watford.svg.png" alt="">-->
+<!--                    <img th:case="'West_Ham'" class="home-logo"  src="/images/west%20ham/west-ham-united-fc-logo.png" alt="">-->
+<!--                    <img th:case="'Wolverhampton'" class="home-logo"  src="/images/wolves/wolverhampton-logo-escudo.png" alt="">-->
+<!--                </th:block>-->
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">

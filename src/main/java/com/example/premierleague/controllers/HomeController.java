@@ -2,7 +2,6 @@ package com.example.premierleague.controllers;
 
 import com.example.premierleague.models.entities.News;
 import com.example.premierleague.models.view.HomeNewsViewModel;
-import com.example.premierleague.security.CurrentUser;
 import com.example.premierleague.services.NewsService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -15,30 +14,21 @@ import java.util.stream.Collectors;
 
 @Controller
 public class HomeController {
-    private final CurrentUser currentUser;
     private final ModelMapper modelMapper;
     private final NewsService newsService;
 
-    public HomeController(CurrentUser currentUser, ModelMapper modelMapper, NewsService newsService) {
-        this.currentUser = currentUser;
+    public HomeController(ModelMapper modelMapper, NewsService newsService) {
         this.modelMapper = modelMapper;
         this.newsService = newsService;
     }
 
     @GetMapping("/")
     public String index(Model model){
-        if(this.currentUser.getUsername() == null) {
             return "index";
-        }
+    }
 
-        Set<HomeNewsViewModel> homeNewsViewModels =
-                this.currentUser.
-                        getFavouriteTeam().
-                        getNews().
-                        stream().
-                        map(news -> this.modelMapper.map(news, HomeNewsViewModel.class)).
-                        collect(Collectors.toSet());
-        model.addAttribute("homeNewsViewModels", homeNewsViewModels);
+    @GetMapping("/home")
+    public String home(Model model){
         return "home";
     }
 }

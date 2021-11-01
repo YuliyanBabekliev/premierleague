@@ -27,15 +27,15 @@
                     <h4 id="news">Chelsea reached the champions league final!</h4>
                 </a>
                 </div>
-                <div th:each="n : ${homeNewsViewModels}" class="row">
+                <div class="row">
                     <div class="col-sm-3">
                         <a class="home-news-title"  href="/news-details.html">
-                            <img class="home-news-img" th:src="${n.imgUrl}" alt="">
+                            <img class="home-news-img" src="" alt="">
                         </a>
                     </div>
                     <div class="col-sm-8 home-news-container">
                         <a class="home-news-title" href="/news-details.html">
-                            <h3 th:text="${n.title}" th:value="${n.title}" class="news"></h3>
+                            <h3  class="news"></h3>
                         </a>
                     </div>
                 </div>

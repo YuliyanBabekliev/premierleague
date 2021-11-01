@@ -37,7 +37,7 @@ public class AdminUserDbInit {
             admin.setPassword(this.passwordEncoder.encode("topsecret"));
             admin.setGender("Male");
             admin.setFavouriteTeam(favTeam.get());
-            admin.setRole(Set.of(userRole.get(), adminRole.get()));
+            admin.setRoles(Set.of(userRole.get(), adminRole.get()));
 
             this.userRepository.save(admin);
         }

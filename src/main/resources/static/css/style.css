@@ -372,6 +372,12 @@ table{
 #logoutBtn {
     color: white;
     border-radius: 10px;
+    background-color: transparent;
+}
+
+.logout-btn{
+    background-color: transparent;
+    border: none;
 }
 
 #logoutBtn:hover {

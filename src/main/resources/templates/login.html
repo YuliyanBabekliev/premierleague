@@ -24,7 +24,7 @@
                     class="input-field"
                     type="text"
                     placeholder="Username"
-                    name="usrnm"
+                    name="username"
             />
         </div>
         <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-field"></small>
@@ -37,13 +37,13 @@
                     class="input-field"
                     type="password"
                     placeholder="Password"
-                    name="psw"
+                    name="password"
             />
         </div>
         <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-field"></small>
 
         <p class="login-description">
-            If you don't have an account, <a href="/register.html">sign up</a>.
+            If you don't have an account, <a href="/users/register">sign up</a>.
         </p>
 
         <button type="submit" class="btn btn-default bg-dark login-btn">

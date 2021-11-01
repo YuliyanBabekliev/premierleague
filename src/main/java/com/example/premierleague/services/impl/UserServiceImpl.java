@@ -5,7 +5,6 @@ import com.example.premierleague.models.entities.User;
 import com.example.premierleague.models.service.UserServiceModel;
 import com.example.premierleague.repositories.RoleRepository;
 import com.example.premierleague.repositories.UserRepository;
-import com.example.premierleague.security.CurrentUser;
 import com.example.premierleague.services.TeamService;
 import com.example.premierleague.services.UserService;
 import org.modelmapper.ModelMapper;
@@ -21,21 +20,19 @@ public class UserServiceImpl implements UserService {
     private final TeamService teamService;
     private final PasswordEncoder passwordEncoder;
     private final ModelMapper modelMapper;
-    private final CurrentUser currentUser;
 
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, TeamService teamService, PasswordEncoder passwordEncoder, ModelMapper modelMapper, CurrentUser currentUser) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, TeamService teamService, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.teamService = teamService;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
-        this.currentUser = currentUser;
     }
 
     @Override
     public void registerUser(UserServiceModel userServiceModel) {
         User user = this.modelMapper.map(userServiceModel, User.class);
-        user.setRole(Set.of(this.roleRepository.findById(Long.parseLong("2")).get()));
+        user.setRoles(Set.of(this.roleRepository.findById(Long.parseLong("2")).get()));
         user.setPassword(this.passwordEncoder.encode(userServiceModel.getPassword()));
         Team team = this.teamService.findTeamByName(userServiceModel.getFavouriteTeam());
         user.setFavouriteTeam(team);
@@ -46,19 +43,5 @@ public class UserServiceImpl implements UserService {
     public boolean invalidUsernameOrPassword(String username, String password) {
         User user = this.userRepository.findByUsernameAndPassword(username, password);
         return user != null;
-    }
-
-    @Override
-    public void loginUser(UserServiceModel userServiceModel) {
-        this.currentUser.setId(userServiceModel.getId());
-        this.currentUser.setUsername(userServiceModel.getUsername());
-        User user = this.userRepository.findByUsername(userServiceModel.getUsername());
-        this.currentUser.setFavouriteTeam(user.getFavouriteTeam());
-    }
-
-    @Override
-    public void logout() {
-        this.currentUser.setId(null);
-        this.currentUser.setUsername(null);
     }
 }
