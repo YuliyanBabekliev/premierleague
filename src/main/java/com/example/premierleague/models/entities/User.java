@@ -13,6 +13,7 @@ public class User extends BaseEntity{
     private String password;
     private String gender;
     private Team favouriteTeam;
+    private boolean isEnabled;
     private Set<Role> roles;
     private Set<News> news;
 
@@ -50,6 +51,14 @@ public class User extends BaseEntity{
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public boolean isEnabled() {
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        isEnabled = true;
     }
 
     @ManyToMany(fetch = FetchType.EAGER)

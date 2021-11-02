@@ -1,5 +1,6 @@
 package com.example.premierleague.services.impl;
 
+import com.example.premierleague.models.entities.MyUserDetails;
 import com.example.premierleague.models.entities.User;
 import com.example.premierleague.repositories.UserRepository;
 import org.modelmapper.ModelMapper;
@@ -27,7 +28,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 userRepository.
                 findByUsername(username).
                 orElseThrow(() -> new UsernameNotFoundException("User with name" + username + " not found."));
-        return mapToUserDetails(user);
+        return new MyUserDetails(user);
     }
 
     private static UserDetails mapToUserDetails(User user){

@@ -7,111 +7,112 @@
     <title>Title</title>
 </head>
 <body>
-<!--<th:block th:switch="${@currentUser.favouriteTeam.name}" th:fragment="navigation">-->
-<!--    <th:block th:case="'Manchester_United'">-->
-<!--        <header th:replace="fragments/commons::nav2"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Arsenal'">-->
-<!--        <header th:replace="fragments/commons::nav2"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Liverpool'">-->
-<!--        <header th:replace="fragments/commons::nav2"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Brentford'">-->
-<!--        <header th:replace="fragments/commons::nav2"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Southampton'">-->
-<!--        <header th:replace="fragments/commons::nav2"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Brighton'">-->
-<!--        <header th:replace="fragments/commons::nav1"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Chelsea'">-->
-<!--        <header th:replace="fragments/commons::nav1"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Everton'">-->
-<!--        <header th:replace="fragments/commons::nav1"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Leicester'">-->
-<!--        <header th:replace="fragments/commons::nav1"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Crystal_Palace'">-->
-<!--        <header th:replace="fragments/commons::nav1"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Aston_Villa'">-->
-<!--        <header th:replace="fragments/commons::nav3"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'West_Ham'">-->
-<!--        <header th:replace="fragments/commons::nav3"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Burnley'">-->
-<!--        <header th:replace="fragments/commons::nav3"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Leeds'">-->
-<!--        <header th:replace="fragments/commons::nav4"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Tottenham'">-->
-<!--        <header th:replace="fragments/commons::nav4"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Newcastle'">-->
-<!--        <header th:replace="fragments/commons::nav4"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Manchester_City'">-->
-<!--        <header th:replace="fragments/commons::nav5"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Norwich'">-->
-<!--        <header th:replace="fragments/commons::nav6"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Watford'">-->
-<!--        <header th:replace="fragments/commons::nav6"></header>-->
-<!--    </th:block>-->
-<!--    <th:block th:case="'Wolverhampton'">-->
-<!--        <header th:replace="fragments/commons::nav7"></header>-->
-<!--    </th:block>-->
-<!--</th:block>-->
-<header th:fragment="navigation">
-    <nav class="navbar navbar-expand-xl navbar-dark rounded home-navbar">
-        <div class="container-fluid">
-            <a class="navbar-brand home-logo-container" href="/home">
-                <img class="home-logo"  src="" alt="">
-            </a>
+<th:block  th:fragment="navigation">
+    <th:block sec:authorize="principal.manchesterUnitedTeam()">
+        <header th:replace="fragments/commons::nav2"></header>
+    </th:block>
+    <th:block sec:authorize="principal.arsenalTeam()">
+        <header th:replace="fragments/commons::nav2"></header>
+    </th:block>
+    <th:block sec:authorize="principal.liverpoolTeam()">
+        <header th:replace="fragments/commons::nav2"></header>
+    </th:block>
+    <th:block sec:authorize="principal.brentfordTeam()">
+        <header th:replace="fragments/commons::nav2"></header>
+    </th:block>
+    <th:block sec:authorize="principal.southamptonTeam()">
+        <header th:replace="fragments/commons::nav2"></header>
+    </th:block>
+    <th:block sec:authorize="principal.brightonTeam()">
+        <header th:replace="fragments/commons::nav1"></header>
+    </th:block>
+    <th:block sec:authorize="principal.chelseaTeam()" >
+        <header th:replace="fragments/commons::nav1"></header>
+    </th:block>
+    <th:block sec:authorize="principal.evertonTeam()" >
+        <header th:replace="fragments/commons::nav1"></header>
+    </th:block>
+    <th:block sec:authorize="principal.leicesterTeam()" >
+        <header th:replace="fragments/commons::nav1"></header>
+    </th:block>
+    <th:block sec:authorize="principal.crystalPalaceTeam()" >
+        <header th:replace="fragments/commons::nav1"></header>
+    </th:block>
+    <th:block sec:authorize="principal.astonVillaTeam()" >
+        <header th:replace="fragments/commons::nav3"></header>
+    </th:block>
+    <th:block sec:authorize="principal.westHamTeam()">
+        <header th:replace="fragments/commons::nav3"></header>
+    </th:block>
+    <th:block sec:authorize="principal.burnleyTeam()">
+        <header th:replace="fragments/commons::nav3"></header>
+    </th:block>
+    <th:block sec:authorize="principal.leedsTeam()">
+        <header th:replace="fragments/commons::nav4"></header>
+    </th:block>
+    <th:block sec:authorize="principal.tottenhamTeam()">
+        <header th:replace="fragments/commons::nav4"></header>
+    </th:block>
+    <th:block sec:authorize="principal.newcastleTeam()">
+        <header th:replace="fragments/commons::nav4"></header>
+    </th:block>
+    <th:block sec:authorize="principal.manchesterCityTeam()">
+        <header th:replace="fragments/commons::nav5"></header>
+    </th:block>
+    <th:block sec:authorize="principal.norwichTeam()">
+        <header th:replace="fragments/commons::nav6"></header>
+    </th:block>
+    <th:block sec:authorize="principal.watfordTeam()">
+        <header th:replace="fragments/commons::nav6"></header>
+    </th:block>
+    <th:block sec:authorize="principal.wolverhamptonTeam()">
+        <header th:replace="fragments/commons::nav7"></header>
+    </th:block>
+</th:block>
+<!--<header th:fragment="navigation">-->
+<!--    <nav class="navbar navbar-expand-xl navbar-dark rounded home-navbar">-->
+<!--        <div class="container-fluid">-->
+<!--            <a class="navbar-brand home-logo-container" href="/home">-->
+<!--                <img class="home-logo"  src="" alt="">-->
+<!--            </a>-->
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="nav-container">
-                <div class="justify-content-center nav-elements-center" id="navbarScroll">
-                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
-                        <li class="nav-item" sec:authorize="hasRole('ADMIN')">
-                            <a id="nav-element" class="nav-link active" th:href="@{/admin/add-role}">Admin</a>
-                        </li>
+<!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+<!--            <div class="nav-container">-->
+<!--                <div class="justify-content-center nav-elements-center" id="navbarScroll">-->
+<!--                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">-->
+<!--                        <li class="nav-item" sec:authorize="principal.authorities.size() == 2">-->
+<!--                            <a id="nav-element" class="nav-link active" th:href="@{/admin/add-role}">Admin</a>-->
+<!--                        </li>-->
 
-                        <li class="nav-item" sec:authorize="isAuthenticated()">
-                            <a id="nav-element" class="nav-link active" th:href="@{/users/profile}">Profile</a>
-                        </li>
+<!--                        <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                            <a id="nav-element" class="nav-link active" th:href="@{/users/profile}">Profile</a>-->
+<!--                        </li>-->
 
-                        <li class="nav-item" sec:authorize="isAuthenticated()">
-                            <a id="nav-element" class="nav-link active" th:href="@{/teams/information}">Team information</a>
-                        </li>
-                        <li class="nav-item" sec:authorize="isAuthenticated()">
-                            <a id="nav-element" class="nav-link active" th:href="@{/teams/statistics}">Statistics</a>
-                        </li>
-                        <li class="nav-item" sec:authorize="isAuthenticated()">
-                            <a id="nav-element" class="nav-link active" th:href="@{/teams/other}">Other teams</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="justify-content-end logoutBtn-container" id="navbarScroll">
-                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">
-                        <li class="nav-item" sec:authorize="isAuthenticated()">
-                            <form th:action="@{/users/logout}" th:method="POST">
-                                <button id="nav-element" class="nav-link active logout-btn" type="submit" value="Logout">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-    </nav>
-</header>
+<!--                        <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                            <a id="nav-element" class="nav-link active" th:href="@{/teams/information}">Team information</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                            <a id="nav-element" class="nav-link active" th:href="@{/teams/statistics}">Statistics</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item" sec:authorize="principal.chelseaTeam()">-->
+<!--                            <a id="nav-element" class="nav-link active" th:href="@{/teams/other}">Other teams</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--                <div class="justify-content-end logoutBtn-container" id="navbarScroll">-->
+<!--                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">-->
+<!--                        <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                            <form th:action="@{/users/logout}" th:method="POST">-->
+<!--                                <button id="nav-element" class="nav-link active logout-btn" type="submit" value="Logout">Logout</button>-->
+<!--                            </form>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</header>-->
 </body>
 </html>
