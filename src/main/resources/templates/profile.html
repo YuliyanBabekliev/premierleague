@@ -16,12 +16,12 @@
                         <img class="user-img" src="/images/male.png" alt="">
                     </div>
 
-                    <div id="user-info-space" class="col-sm-6">
-                        <p class="user-info">Username: Yuliyan</p>
-                        <p class="user-info">Email: yuliyan@abv.bg</p>
-                        <p class="user-info">Gender: Male</p>
-                        <p class="user-info">Favourite team: Chelsea</p>
-                        <p class="user-info">Role: Admin</p>
+                    <div th:object="${user}" id="user-info-space" class="col-sm-6">
+                        <p th:text="|Username: ${user.username}|" class="user-info"></p>
+                        <p th:text="|Email: ${user.email}|" class="user-info"></p>
+                        <p th:text="|Gender: ${user.gender}|" class="user-info"></p>
+                        <p th:text="|Favourite team: ${user.favouriteTeam}|" class="user-info"></p>
+                        <p th:text="|Role: ${user.role}|" class="user-info"></p>
                         <button>Upload profile picture</button>
                     </div>
                 </div>

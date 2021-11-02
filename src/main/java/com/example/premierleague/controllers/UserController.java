@@ -2,10 +2,15 @@ package com.example.premierleague.controllers;
 
 import com.example.premierleague.models.binding.UserLoginBindingModel;
 import com.example.premierleague.models.binding.UserRegisterBindingModel;
+import com.example.premierleague.models.entities.User;
 import com.example.premierleague.models.service.UserServiceModel;
+import com.example.premierleague.models.view.UserProfileViewModel;
 import com.example.premierleague.services.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -47,7 +52,11 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String profile(){
+    public String profile(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        UserProfileViewModel user = this.userService.findUserProfileByUsername(username);
+        model.addAttribute("user", user);
         return "profile";
     }
 

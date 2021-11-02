@@ -9,44 +9,12 @@
 <main>
     <div class="container">
         <div class="row">
-            <div class="col-sm-9 news-details-container">
-                <h1 id="news-title">Chelsea reached the champions league final!</h1>
-                <img class="news-details-photo" src="/images/chelsea/skysports-mason-mount-chelsea_5371279.jpg" alt="">
-                <p id="news-description"><span class="blue-colored-news">The German boss has now led two different clubs to the European showpiece in consecutive seasons - the first coach ever to do so
-                Thomas Tuchel has become the first manager to reach the European Cup or Champions League final in successive seasons with different clubs.
-
-                Chelsea defeated Real Madrid 2-0 on Wednesday in their semi-final second leg, sealing a 3-1 aggregate win and a place in the final alongside Manchester City.</span><br>
-
-                    Tuchel led PSG to last year's Champions League final, seeing his side fall 1-0 to Bayern Munich.<br>
-
-                    Editors' Picks
-                    Ballon d'Or 2021 Power Rankings: Neymar plummets as Champions League finalists climb
-                    Neymar's new PSG deal a huge statement of intent but Mbappe still stalling
-                    What happened to Michael Mancienne? Chelsea wonderkid called up by England without playing in the Premier League
-                    From Champions League challengers to European also-rans: Arsenal fans will never forgive Kroenke for 14-year journey into obscurity
-                    What was said?
-                    When BT Sport posited that Tuchel must be doing something right to have achieved such a feat, the manager said with a laugh: "Or not because it's not the same club! It depends who you ask."
-
-                    Tuchel added: "I'm very happy that we've achieved this. I'm very grateful to have the opportunity to live my life in football and this passion as a profession.
-
-                    "So grateful to do it on this level and to get to another final, I'm very grateful for that."<br>
-
-                    Managerial change pays off again for Chelsea
-                    Chelsea have now reached their third Champions League final and in all three seasons they have done so, they sacked their manager mid-season.<br>
-
-                    In 2007-08, Jose Mourinho left the club and was replaced by Avram Grant, who helped Chelsea to the European showpiece. The Blues fell in penalties against Manchester United that season.<br>
-
-                    The Blues also reached the 2011-12 final under a new boss, with Andre Villas-Boas sacked mid-season and replaced by Roberto Di Matteo, who led Chelsea to victory over Bayern Munich in the final. <br>
-
-                    History has now repeated itself after Tuchel took over for Frank Lampard in January. The German has led Chelsea to the FA Cup and Champions League finals and has the club on course for a top-four finish in the Premier League as well. <br>
-
-                    Managerial change hasn't only helped Chelsea in the Champions League though, as six of the club's last seven European finals have come after sacking their head coach during the season. Only in 2018-19, when Maurizio Sarri won the Europa League with the Blues, has a mid-season change not been made.<br>
-
-                    <span><p id="added-by">Added by: <img id="img-for-news" src="/images/59848648_2553173174706615_1163055475646791680_n.jpg" alt=""> Yuliyan Babekliev 10.05.2021-16:47</p></span>
-
+            <div th:object="${news}" class="col-sm-9 news-details-container">
+                <h1 th:text="${news.title}" id="news-title"></h1>
+                <img class="news-details-photo" th:src="${news.imgUrl}" alt="">
+                <p th:text="${news.description}" id="news-description"><span class="blue-colored-news">
                 </p>
-
-
+                <p th:text="|Added by ${news.getUser().username} : ${#temporals.format(news.addedOn, 'yyyy-MM-dd HH:mm')}|" id="added-by"></p>
             </div>
             <div class="col-sm-3 home-table-container">
                 <div>

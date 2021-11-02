@@ -34,7 +34,7 @@ public class MyUserDetails implements UserDetails {
 
     @Override
     public String getUsername() {
-        return user.getEmail();
+        return user.getUsername();
     }
 
     @Override
@@ -143,5 +143,9 @@ public class MyUserDetails implements UserDetails {
 
     public boolean wolverhamptonTeam(){
         return this.user.getFavouriteTeam().getName().equals("Wolverhampton");
+    }
+
+    public Set<News> favouriteTeamNews(){
+        return this.user.getFavouriteTeam().getNews();
     }
 }

@@ -385,6 +385,10 @@ table{
     border-radius: 10px;
 }
 
+.players-container{
+    display: flex;
+}
+
 #news {
     background-color: black;
     color: white;

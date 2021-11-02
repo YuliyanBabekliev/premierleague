@@ -6,7 +6,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"
+            <a class="navbar-brand" th:href="@{/}"
             ><img class="pl-lion" src="/images/PL-Lion.png" alt=""
             /></a>
         </div>
@@ -22,7 +22,7 @@
                     class="input-field"
                     type="text"
                     placeholder="Username"
-                    name="usrnm"
+                    name="username"
             />
         </div>
         <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-field"></small>
