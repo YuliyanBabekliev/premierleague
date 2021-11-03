@@ -9,14 +9,14 @@
 <main>
     <div class="container">
         <div class="row">
-            <div th:object="${news}" class="col-sm-9 news-details-container">
+            <div th:object="${news}" class="col-sm-8 news-details-container">
                 <h1 th:text="${news.title}" id="news-title"></h1>
                 <img class="news-details-photo" th:src="${news.imgUrl}" alt="">
                 <p th:text="${news.description}" id="news-description"><span class="blue-colored-news">
                 </p>
                 <p th:text="|Added by ${news.getUser().username} : ${#temporals.format(news.addedOn, 'yyyy-MM-dd HH:mm')}|" id="added-by"></p>
             </div>
-            <div class="col-sm-3 home-table-container">
+            <div class="col-sm-4 home-table-container">
                 <div>
                     <img id="premier-league-logo" src="/images/изтеглен файл.png" alt="">
                     <table class="table home-table">
@@ -29,146 +29,16 @@
                             <th scope="col">Pts</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <tr>
-                            <th scope="row">1 <img class="first-half" src="/images/man city/manchester-city-fc-logo-escudo-badge-3.png"></img></th>
-                            <td>Man city</td>
-                            <td>34</td>
-                            <td>+47</td>
-                            <td>80</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">2<img class="first-half man-utd-table-logo" src="/images/man utd/manchester_united_PNG9.png"></img></th>
-                            <td>Man Utd</td>
-                            <td>33</td>
-                            <td>+29</td>
-                            <td>67</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">3 <img class="first-half" src="/images/leicester/leicester-city-logo-1.png"></img></th>
-                            <td>Leicester</td>
-                            <td>35</td>
-                            <td>+20</td>
-                            <td>63</td>
-                        </tr>
-                        <tr class="home-table-chelsea-row">
-                            <th scope="row">4 <img class="first-half" src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png"></img></th>
-                            <td>Chelsea</td>
-                            <td>34</td>
-                            <td>+22</td>
-                            <td>61</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">5 <img class="first-half" src="/images/west ham/west-ham-united-fc-logo.png"></img></th>
-                            <td>West Ham</td>
-                            <td>34</td>
-                            <td>+11</td>
-                            <td>58</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">6  <img class="first-half home-table-spurs-logo" src="/images/tottenham/Tottenham_Hotspur.png"></img></th>
-                            <td>Spurs</td>
-                            <td>35</td>
-                            <td>+21</td>
-                            <td>56</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">7 <img class="first-half" src="/images/liverpool/unnamed.png"></img></th>
-                            <td>Liverpool</td>
-                            <td>33</td>
-                            <td>+16</td>
-                            <td>54</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">8 <img class="first-half" src="/images/everton/everton-logo-escudo-1.png"></img></th>
-                            <td>Everton</td>
-                            <td>33</td>
-                            <td>+3</td>
-                            <td>52</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">9 <img class="first-half" src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png"></img></th>
-                            <td>Leeds</td>
-                            <td>35</td>
-                            <td>-1</td>
-                            <td>50</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">10  <img class="second-half home-table-arsenal-logo" src="/images/arsenal/Arsenal-logo-escudo-shield-1.png"></img></th>
-                            <td>Arsenal</td>
-                            <td>34</td>
-                            <td>+9</td>
-                            <td>49</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">11 <img class="second-half" src="/images/aston villa/Aston-Villa-FC-HD-Logo.png"></img></th>
-                            <td>Aston villa</td>
-                            <td>33</td>
-                            <td>+10</td>
-                            <td>48</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">12<img class="second-half home-table-wolves-logo" src="/images/wolves/wolverhampton-logo-escudo.png"></img></th>
-                            <td>Wolves</td>
-                            <td>34</td>
-                            <td>-13</td>
-                            <td>42</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">13 <img class="second-half" src="/images/Newcastle/Newcastle_United_Logo.png"></img></th>
-                            <td class="home-table-newcastle">Newcastle</td>
-                            <td>35</td>
-                            <td>-18</td>
-                            <td>39</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">14 <img class="second-half" src="/images/crystal palace/Crystal_Palace_FC_logo.png"></img></th>
-                            <td>Crystal Palace</td>
-                            <td>34</td>
-                            <td>-22</td>
-                            <td>39</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">15 <img class="second-half" src="/images/brighton/brighton-hove-albion-logo-1.png"></img></th>
-                            <td>Brighton</td>
-                            <td>34</td>
-                            <td>-4</td>
-                            <td>37</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">16  <img class="second-half" src="/images/southampton/southampton-fc-logo-1.png"></img></th>
-                            <td>Southam</td>
-                            <td>33</td>
-                            <td>-18</td>
-                            <td>37</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">17 <img class="second-half" src="/images/burnley/burnley-logo-3.png"></img></th>
-                            <td>Burnley</td>
-                            <td>34</td>
-                            <td>-16</td>
-                            <td>36</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">18 <img class="second-half" src="/images/fulham/fulham-fc-logo-vector.svg"></img></th>
-                            <td>Fulham</td>
-                            <td>34</td>
-                            <td>-20</td>
-                            <td>27</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">19 <img class="second-half" src="/images/west brom/West-Bromwich-Albion-FC-HD-Logo.png"></img></th>
-                            <td>West Brom</td>
-                            <td>34</td>
-                            <td>-34</td>
-                            <td>26</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">20  <img class="second-half home-table-sheffield-logo" src="/images/sheffield united/sheffield-united-logo-1.png"></img></th>
-                            <td>Sheff Utd</td>
-                            <td>35</td>
-                            <td>-43</td>
-                            <td>17</td>
+                        <tbody th:each="t : ${teams}">
+                        <tr th:classappend="${t.isFavouriteTeam() ? 'current-team' : ''}">
+                            <th scope="row">
+                                <span style="font-size: 10px;" th:text="${t.position}"></span>
+                                <img class="first-half" th:src="${t.logoUrl}"></img>
+                            </th>
+                            <td th:text="${t.name}"></td>
+                            <td th:text="${t.played}"></td>
+                            <td th:text="${t.goalDifference}"></td>
+                            <td th:text="${t.points}"></td>
                         </tr>
                         </tbody>
                     </table>

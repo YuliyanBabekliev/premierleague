@@ -25,21 +25,37 @@
                     </div>
                     <h1 class="display-5 team-information-current-team">Current team</h1>
                     <div th:each="t : ${trainer}">
-                    <h3> Trainer: <a th:text="|${t.firstName} ${t.lastName}, |" class="players" th:href="@{/players/{id}(id = ${t.id})}"></a></h3>
+                    <h3> Trainer: <a th:text="|${t.firstName} ${t.lastName}|" class="players" th:href="@{/players/{id}(id = ${t.id})}"></a></h3>
                     </div>
                     <p>
-                    <div th:each="g : ${goalkeepers}">
-                    <h3> Goalkeepers: <a th:text="|${g.firstName} ${g.lastName}, |" class="players" th:href="@{/players/{id}(id = ${g.id})}"></a></h3>
+                    <div>
+                    <h3> Goalkeepers:
+                        <span th:each="g, iterStat : ${goalkeepers}">
+                        <a th:text="${g.firstName} + ' ' + ${g.lastName} + ${!iterStat.last ? ', ' : ''}" class="players" th:href="@{/players/{id}(id = ${g.id})}"></a>
+                        </span>
+                    </h3>
                     </div>
                     </p>
-                    <div th:each="d : ${defenders}">
-                    <h3> Defenders: <a th:text="|${d.firstName} ${d.lastName}, |" class="players" th:href="@{/players/{id}(id = ${d.id})}"></a></h3>
+                    <div>
+                    <h3> Defenders:
+                        <span th:each="d, iterStat : ${defenders}">
+                        <a th:text="${d.firstName} + ' ' + ${d.lastName} + ${!iterStat.last ? ', ' : ''}" class="players" th:href="@{/players/{id}(id = ${d.id})}"></a>
+                        </span>
+                    </h3>
                     </div>
-                    <div th:each="m : ${midfielders}">
-                    <h3> Midfielders: <a th:text="|${m.firstName} ${m.lastName}, |" class="players" th:href="@{/players/{id}(id = ${m.id})}"></a></h3>
+                    <div>
+                    <h3> Midfielders:
+                        <span th:each="m, iterStat : ${midfielders}">
+                        <a th:text="${m.firstName} + ' ' + ${m.lastName} + ${!iterStat.last ? ', ' : ''}" class="players" th:href="@{/players/{id}(id = ${m.id})}"></a>
+                        </span>
+                    </h3>
                     </div>
-                    <div th:each="f : ${forwards}">
-                    <h3> Attackers: <a th:text="|${f.firstName} ${f.lastName}, |" class="players" th:href="@{/players/{id}(id = ${f.id})}"></a></h3>
+                    <div>
+                    <h3> Attackers:
+                        <span th:each="f, iterStat : ${forwards}">
+                        <a th:text="${f.firstName} + ' ' + ${f.lastName} + ${!iterStat.last ? ', ' : ''}"  class="players" th:href="@{/players/{id}(id = ${f.id})}"></a>
+                        </span>
+                    </h3>
                     </div>
                 </div>
             </div>

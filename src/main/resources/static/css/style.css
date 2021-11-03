@@ -184,35 +184,6 @@ body {
     color: white;
 }
 
-.first-half.man-utd-table-logo{
-    width: 25%; margin-left: 38px;
-}
-
-.home-table-chelsea-row{
-    background-color: rgb(204, 204, 204);
-}
-
-.first-half.home-table-spurs-logo{
-    width: 18%;
-    margin-left: 38px;
-}
-
-.second-half.home-table-arsenal-logo{
-    margin-left:27px;
-}
-
-.second-half.home-table-wolves-logo{
-    margin-left:30px
-}
-
-.home-table-newcastle{
-    font-size: 12px;
-}
-
-.second-half.home-table.sheffield-logo{
-    margin-left:27px;
-}
-
 /* NEWS-DETAILS */
 
 .blue-colored-news{
@@ -352,10 +323,6 @@ td {
 
 table{
     font-size: 14px;
-}
-.second-half {
-    width: 25%;
-    margin-left: 27px;
 }
 
 #nav-element {
@@ -648,6 +615,14 @@ table{
     margin-bottom: 5px;
 }
 
+.current-team{
+    background-color: rgb(150, 150, 150);
+}
+
+.other-news{
+    margin-top: 15px;
+}
+
 .guest-team-input {
     width: 95%;
 }
@@ -770,7 +745,7 @@ footer {
     }
 
     .home-table-container{
-        width: 65%;
+        width: 75%;
         margin: 0 auto;
     }
 
