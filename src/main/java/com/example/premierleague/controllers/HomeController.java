@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 public class HomeController {
@@ -41,12 +42,11 @@ public class HomeController {
         Set<News> news = user.getFavouriteTeam().getNews();
         Set<News> orderedNews = this.newsService.orderNews(news);
         News mainNews = this.newsService.findMainNews(orderedNews);
-        List<TeamTableViewModel> teams = this.teamService.findAllTeams();
-        for (TeamTableViewModel team: teams){
-            if(team.getName().equals(user.getFavouriteTeam().getName())){
-                team.setFavouriteTeam(true);
-            }
-        }
+        List<TeamTableViewModel> teams = this.teamService.findAllTeams()
+                .stream().map(t -> this.modelMapper.map(t, TeamTableViewModel.class))
+                .collect(Collectors.toList());
+        this.teamService.equalTeams(teams, user);
+        //TODO teamService equalTeams(define user in the method from the controller)
 
         model.addAttribute("news", orderedNews);
         model.addAttribute("mainNews", mainNews);

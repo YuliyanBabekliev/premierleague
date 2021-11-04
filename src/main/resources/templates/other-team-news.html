@@ -10,45 +10,22 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
+                <div th:object="${mainNews}">
                 <h1 class="home-title">Team news</h1>
-                <a class="home-news-title" href="/news-details.html">
-                    <img class="home-first-news" src="/images/chelsea/skysports-mason-mount-chelsea_5371279.jpg" alt="">
-                    <h4 id="news">Chelsea reached the champions league final!</h4>
+                <a class="home-news-title" th:href="@{/news/details/{id}(id = ${mainNews.id})}">
+                    <img class="home-first-news" th:src="${mainNews.imgUrl}" alt="">
+                    <h4 id="news" th:text="${mainNews.title}"></h4>
                 </a>
-                <div class="row">
-                    <div class="col-sm-3">
-                        <a class="home-news-title"  href="/news-details.html">
-                            <img class="home-news-img" src="/images/chelsea/GettyImages-1232714435.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="col-sm-8 home-news-container">
-                        <a class="home-news-title" href="/news-details.html">
-                            <h3 class="news">Mason Mount tells Toni Kroos he ‘should lose sleep’ over Chelsea after Champions League defeat</h3>
-                        </a>
-                    </div>
                 </div>
-                <div class="row home-other-news-container">
+                <div class="row" th:each="n : ${otherTeamNews}">
                     <div class="col-sm-3">
-                        <a class="home-news-title" href="/news-details.html">
-                            <img class="home-news-img" src="/images/chelsea/newFile-3.jpg" alt="">
+                        <a class="home-news-title"  th:href="@{/news/details/{id}(id = ${n.id})}">
+                            <img class="home-news-img" th:src="${n.imgUrl}" alt="">
                         </a>
                     </div>
                     <div class="col-sm-8 home-news-container">
-                        <a class="home-news-title" href="/news-details.html">
-                            <h3 class="news">Thomas Tuchel: Chelsea boss says Real Madrid win 'really huge'</h3>
-                        </a>
-                    </div>
-                </div>
-
-                <div class="row home-other-news-container">
-                    <div class="col-sm-3">
-                        <a class="home-news-title" href="/news-details.html">
-                            <img class="home-news-img" src="/images/chelsea/369-229-markos-alonso.jpg" alt="">
-                        </a>
-                    </div>
-                    <div class="col-sm-8 home-news-container">
-                        <a class="home-news-title" href="/news-details.html">
-                            <h3 class="news">Chelsea defenders will be sold this summer</h3>
+                        <a class="home-news-title" th:href="@{/news/details/{id}(id = ${n.id})}">
+                            <h3 class="news" th:text="${n.title}"></h3>
                         </a>
                     </div>
                 </div>

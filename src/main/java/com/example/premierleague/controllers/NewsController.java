@@ -6,6 +6,7 @@ import com.example.premierleague.models.view.TeamTableViewModel;
 import com.example.premierleague.services.NewsService;
 import com.example.premierleague.services.TeamService;
 import com.example.premierleague.services.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/news")
@@ -22,11 +24,13 @@ public class NewsController {
     private final NewsService newsService;
     private final TeamService teamService;
     private final UserService userService;
+    private final ModelMapper modelMapper;
 
-    public NewsController(NewsService newsService, TeamService teamService, UserService userService) {
+    public NewsController(NewsService newsService, TeamService teamService, UserService userService, ModelMapper modelMapper) {
         this.newsService = newsService;
         this.teamService = teamService;
         this.userService = userService;
+        this.modelMapper = modelMapper;
     }
 
     @GetMapping("/details/{id}")
@@ -35,7 +39,9 @@ public class NewsController {
         String username = auth.getName();
         User user = this.userService.findUserByUsername(username);
         News news = this.newsService.findNewsById(id);
-        List<TeamTableViewModel> teams = this.teamService.findAllTeams();
+        List<TeamTableViewModel> teams = this.teamService.findAllTeams()
+                .stream().map(t -> this.modelMapper.map(t, TeamTableViewModel.class))
+                .collect(Collectors.toList());
         for (TeamTableViewModel team: teams){
             if(team.getName().equals(user.getFavouriteTeam().getName())){
                 team.setFavouriteTeam(true);

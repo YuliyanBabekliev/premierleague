@@ -1,5 +1,6 @@
 package com.example.premierleague.config;
 
+import com.example.premierleague.models.entities.enums.RoleNameEnum;
 import com.example.premierleague.services.impl.UserDetailsServiceImpl;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +26,8 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
         http.
                 authorizeRequests().
                 requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
-                antMatchers("/", "/users/login", "/users/register").permitAll().
+                antMatchers("/").permitAll().
+                antMatchers("/users/login", "/users/register").anonymous().
                 antMatchers("/**").authenticated().
                 and().
                 formLogin().

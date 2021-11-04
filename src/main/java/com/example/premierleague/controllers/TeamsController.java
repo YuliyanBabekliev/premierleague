@@ -1,24 +1,21 @@
 package com.example.premierleague.controllers;
 
-import com.example.premierleague.models.entities.Game;
-import com.example.premierleague.models.entities.Player;
-import com.example.premierleague.models.entities.Team;
-import com.example.premierleague.models.entities.User;
+import com.example.premierleague.models.entities.*;
 import com.example.premierleague.models.view.GameViewModel;
-import com.example.premierleague.services.GameService;
-import com.example.premierleague.services.PlayerService;
-import com.example.premierleague.services.TeamService;
-import com.example.premierleague.services.UserService;
+import com.example.premierleague.models.view.OtherTeamsViewModel;
+import com.example.premierleague.services.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/teams")
@@ -29,13 +26,15 @@ public class TeamsController {
     private final UserService userService;
     private final PlayerService playerService;
     private final GameService gameService;
+    private final NewsService newsService;
 
-    public TeamsController(TeamService teamService, ModelMapper modelMapper, UserService userService, PlayerService playerService, GameService gameService) {
+    public TeamsController(TeamService teamService, ModelMapper modelMapper, UserService userService, PlayerService playerService, GameService gameService, NewsService newsService) {
         this.teamService = teamService;
         this.modelMapper = modelMapper;
         this.userService = userService;
         this.playerService = playerService;
         this.gameService = gameService;
+        this.newsService = newsService;
     }
 
     @GetMapping("/information")
@@ -70,12 +69,25 @@ public class TeamsController {
     }
 
     @GetMapping("/other")
-    public String otherTeams(){
+    public String otherTeams(Model model){
+        List<OtherTeamsViewModel> teams = this.teamService.findAllTeams()
+                .stream().map(t -> this.modelMapper.map(t, OtherTeamsViewModel.class))
+                .collect(Collectors.toList());
+
+        model.addAttribute("otherTeams", teams);
         return "teams-other";
     }
 
-    @GetMapping("/other/news")
-    public String otherTeamNews(){
+    @GetMapping("/other/news/{id}")
+    public String otherTeamNews(@PathVariable Long id, Model model){
+        Team team = this.teamService.findTeamById(id);
+        Set<News> news = team.getNews();
+        Set<News> orderedNews = this.newsService.orderNews(news);
+        News mainNews = this.newsService.findMainNews(orderedNews);
+
+        model.addAttribute("mainNews", mainNews);
+        model.addAttribute("otherTeamNews", orderedNews);
+
         return "other-team-news";
     }
 }

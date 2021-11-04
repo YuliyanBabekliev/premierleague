@@ -31,18 +31,29 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public List<TeamTableViewModel> findAllTeams() {
-        List<TeamTableViewModel> teams = this.teamRepository.
-                findAllByOrderByPointsDesc().
-                stream().
-                map(team -> this.modelMapper.map(team, TeamTableViewModel.class)).
-                collect(Collectors.toList());
+    public List<Team> findAllTeams() {
+        List<Team> teams = this.teamRepository.
+                findAllByOrderByPointsDesc();
         int counter = 0;
-        for(TeamTableViewModel team: teams){
+        for(Team team: teams){
             team.setPosition(team.getPosition() + counter);
             counter++;
         }
 
         return teams;
+    }
+
+    @Override
+    public void equalTeams(List<TeamTableViewModel> teams, User user) {
+        for (TeamTableViewModel team: teams){
+            if(team.getName().equals(user.getFavouriteTeam().getName())){
+                team.setFavouriteTeam(true);
+            }
+        }
+    }
+
+    @Override
+    public Team findTeamById(Long id) {
+        return this.teamRepository.findById(id).orElse(null);
     }
 }

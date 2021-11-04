@@ -11,65 +11,8 @@
         <div class="row">
             <div id="team-info-space" class="col-sm-12">
 
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/aston villa/Aston-Villa-FC-HD-Logo.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/brighton/brighton-hove-albion-logo-1.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/burnley/burnley-logo-3.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/crystal palace/Crystal_Palace_FC_logo.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/everton/everton-logo-escudo-1.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/fulham/fulham-fc-logo-vector.svg" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/leeds/Leeds-United-FC-Logo.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/leicester/leicester-city-logo-1.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/liverpool/unnamed.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/man city/manchester-city-fc-logo-escudo-badge-3.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/man utd/manchester_united_PNG9.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/Newcastle/Newcastle_United_Logo.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/sheffield united/sheffield-united-logo-1.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/southampton/southampton-fc-logo-1.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img class="other-teams-spurs-logo" id="other-team-logo" src="/images/tottenham/Tottenham_Hotspur.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/west brom/West-Bromwich-Albion-FC-HD-Logo.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/west ham/west-ham-united-fc-logo.png" alt="">
-                </a>
-                <a href="/other-team-news.html">
-                    <img id="other-team-logo" src="/images/wolves/wolverhampton-logo-escudo.png" alt="">
+                <a th:each="t : ${otherTeams}" th:href="@{/teams/other/news/{id}(id = ${t.id})}">
+                    <img id="other-team-logo" th:src="${t.logoUrl}" alt="">
                 </a>
             </div>
         </div>
