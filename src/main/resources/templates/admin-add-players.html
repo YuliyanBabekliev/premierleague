@@ -20,33 +20,45 @@
                         <a class="nav-link admin-buttons" id="role-btn" th:href="@{/admin/add-role}">Add Role</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link admin-buttons" id="news-btn" th:href="@{/admin/add-news}" style="background-color: rgb(51, 51, 51);">Add News</a>
+                        <a class="nav-link admin-buttons" id="news-btn" th:href="@{/admin/add-news}">Add News</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link admin-buttons" id="statistics-btn" th:href="@{/admin/add-statistics}">Add Statistics</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link admin-buttons" id="player-btn" th:href="@{/admin/add-players}" aria-disabled="true">Add Players</a>
+                        <a class="nav-link admin-buttons" id="player-btn" th:href="@{/admin/add-players}" style="background-color: rgb(51, 51, 51);" aria-disabled="true">Add Players</a>
                     </li>
                 </ul>
             </div>
 
-            <div class="col-sm-9" id="add-news-container">
+            <form th:method="POST" th:action="@{/admin/add-players}" th:object="${adminAddPlayerBindingModel}" class="col-sm-9" id="add-news-container">
+                <section class="position-section">
+                    <label class="position-label">First name:</label>
+                    <input th:field="${adminAddPlayerBindingModel.firstName}" class="form-control position-input" type="text">
+                </section>
+                <section class="position-section">
+                    <label class="position-label">Last name:</label>
+                    <input th:field="${adminAddPlayerBindingModel.lastName}" class="form-control position-input" type="text">
+                </section>
                 <section class="position-section">
                     <label class="position-label">Position:</label>
-                    <input class="form-control position-input" type="text">
+                    <input th:field="${adminAddPlayerBindingModel.position}" class="form-control position-input" type="text">
                 </section>
                 <section class="age-section">
                     <label class="age-label">Age:</label>
-                    <input class="form-control age-input" type="text">
+                    <input th:field="${adminAddPlayerBindingModel.age}" class="form-control age-input" type="text">
                 </section>
-                <section class="club-section">
-                    <label class="club-label">Club:</label>
-                    <input class="form-control club-input" name="description"></input>
-                </section>
+                <select th:field="${adminAddPlayerBindingModel.club}" th:errorclass="bg-danger" class="form-select" aria-label="Default select example" style="margin-top: 25px; width: 95%;">
+                    <option value="" selected>Choose team</option>
+                    <option th:each="t : ${T(com.example.premierleague.models.entities.enums.TeamsEnum).values()}" th:value="${t}" th:text="${t}"></option>
+                </select>
                 <section class="nationality-section">
                     <label class="nationality-label">Nationality:</label>
-                    <input class="form-control nationality-input" name="description"></input>
+                    <input th:field="${adminAddPlayerBindingModel.nationality}" class="form-control nationality-input" name="description"></input>
+                </section>
+                <section class="nationality-section">
+                    <label class="nationality-label">Image url:</label>
+                    <input th:field="${adminAddPlayerBindingModel.imgUrl}" class="form-control nationality-input" name="description"></input>
                 </section>
                 <section class="submit-btn-section">
                     <button class="submit-btn-role">
@@ -54,7 +66,7 @@
                     </button>
                 </section>
                 </label>
-            </div>
+            </form>
         </div>
     </div>
 </main>

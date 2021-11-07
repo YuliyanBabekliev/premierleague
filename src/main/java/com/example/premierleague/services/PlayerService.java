@@ -1,5 +1,6 @@
 package com.example.premierleague.services;
 
+import com.example.premierleague.models.binding.AdminAddPlayerBindingModel;
 import com.example.premierleague.models.entities.Player;
 import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.view.PlayerViewModel;
@@ -10,4 +11,6 @@ public interface PlayerService {
     Set<Player> findPlayers(Team team, String position);
 
     PlayerViewModel findPlayerById(Long id);
+
+    void addPlayer(AdminAddPlayerBindingModel adminAddPlayerBindingModel);
 }

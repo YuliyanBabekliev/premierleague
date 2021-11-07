@@ -17,10 +17,10 @@
             <div class="col-sm-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link admin-buttons" id="role-btn" th:href="@{/admin/add-role}">Add Role</a>
+                        <a class="nav-link admin-buttons" id="role-btn" th:href="@{/admin/add-role}" style="background-color: rgb(51, 51, 51);">Add Role</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link admin-buttons" id="news-btn" th:href="@{/admin/add-news}" style="background-color: rgb(51, 51, 51);">Add News</a>
+                        <a class="nav-link admin-buttons" id="news-btn" th:href="@{/admin/add-news}">Add News</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link admin-buttons" id="statistics-btn" th:href="@{/admin/add-statistics}">Add Statistics</a>
@@ -31,22 +31,20 @@
                 </ul>
             </div>
 
-            <div class="col-sm-9 add-role-container">
-                <select  class="form-select user-select" aria-label="Default select example">
-                    <option selected>Choose user</option>
-                    <option value="1">Yuliyan</option>
-                    <option value="2">none</option>
+            <form th:method="POST" th:action="@{/admin/add-role}" th:object="${adminAddRoleBindingModel}" class="col-sm-9 add-role-container">
+                <select th:field="${adminAddRoleBindingModel.username}" class="form-select user-select" aria-label="Default select example">
+                    <option value="" selected>Choose user</option>
+                    <option th:each="u : ${users}" th:value="${u.username}" th:text="${u.username}" value="1"></option>
                 </select>
-                <select class="form-select user-select" aria-label="Default select example">
-                    <option selected>Choose role</option>
-                    <option value="1">Admin</option>
-                    <option value="2">User</option>
+                <select  th:field="${adminAddRoleBindingModel.role}" class="form-select user-select" aria-label="Default select example">
+                    <option value="" selected>Choose role</option>
+                    <option th:each="t : ${T(com.example.premierleague.models.entities.enums.RoleNameEnum).values()}" th:value="${t}" th:text="${t}" value="1"></option>
                 </select>
                 <button class="submit-btn-role">
                     Submit
                 </button>
                 </label>
-            </div>
+            </form>
         </div>
     </div>
 </main>

@@ -1,5 +1,6 @@
 package com.example.premierleague.services.impl;
 
+import com.example.premierleague.models.entities.Role;
 import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.entities.User;
 import com.example.premierleague.models.service.UserServiceModel;
@@ -12,6 +13,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -63,5 +65,25 @@ public class UserServiceImpl implements UserService {
             userProfileViewModel.setRole("USER");
         }
         return userProfileViewModel;
+    }
+
+    @Override
+    public List<User> findAllUsers() {
+        return this.userRepository.findAll();
+    }
+
+    @Override
+    public void setUserAdminRole(User user) {
+        Role adminRole = this.roleRepository.findById(Long.parseLong("1")).orElse(null);
+        Role userRole = this.roleRepository.findById(Long.parseLong("2")).orElse(null);
+        user.setRoles(Set.of(adminRole, userRole));
+        this.userRepository.saveAndFlush(user);
+    }
+
+    @Override
+    public void setUserRole(User user) {
+        Role userRole = this.roleRepository.findById(Long.parseLong("2")).orElse(null);
+        user.setRoles(Set.of(userRole));
+        this.userRepository.saveAndFlush(user);
     }
 }
