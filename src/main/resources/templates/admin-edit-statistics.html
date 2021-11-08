@@ -23,38 +23,40 @@
             <a class="nav-link admin-buttons" id="news-btn" th:href="@{/admin/add-news}">Add News</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link admin-buttons" id="statistics-btn" th:href="@{/admin/add-statistics}" style="background-color: rgb(51, 51, 51);">Add Statistics</a>
+            <a class="nav-link admin-buttons" id="statistics-btn" th:href="@{/admin/edit-statistics}" style="background-color: rgb(51, 51, 51);">Edit Statistics</a>
           </li>
           <li class="nav-item">
             <a class="nav-link admin-buttons" id="player-btn" th:href="@{/admin/add-players}" aria-disabled="true">Add Players</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link admin-buttons" id="player-btn" th:href="@{/admin/add-matches}" aria-disabled="true">Add Matches</a>
+          </li>
         </ul>
       </div>
 
-      <div class="col-sm-9" id="add-news-container">
-        <section class="date-section">
-          <label class="date-label">Date:</label>
-          <input class="form-control date-input" type="text">
-        </section>
+      <form th:method="POST" th:action="@{/admin/edit-statistics}" th:object="${adminEditStatisticsBindingModel}" class="col-sm-9" id="add-news-container">
+        <select th:field="${adminEditStatisticsBindingModel.team}" th:errorclass="bg-danger" class="form-select" aria-label="Default select example" style="margin-top: 25px; width: 95%;">
+          <option value="" selected>Choose team</option>
+          <option th:each="t : ${T(com.example.premierleague.models.entities.enums.TeamsEnum).values()}" th:value="${t}" th:text="${t}"></option>
+        </select>
         <section class="home-team-section">
-          <label class="home-team-label">Home team:</label>
-          <input class="form-control home-team-input" type="text">
+          <label class="home-team-label">Played matches:</label>
+          <input th:field="${adminEditStatisticsBindingModel.played}" class="form-control home-team-input" type="text">
         </section>
         <section class="result-section">
-          <label class="result-label">Result:</label>
-          <input class="form-control result-input" name="description"></input>
+          <label class="result-label">Goal difference:</label>
+          <input th:field="${adminEditStatisticsBindingModel.goalDifference}" class="form-control result-input" name="description"></input>
         </section>
         <section class="guest-team-section">
-          <label class="guest-team-label">Guest team:</label>
-          <input class="form-control guest-team-input" name="description"></input>
+          <label class="guest-team-label">Points:</label>
+          <input th:field="${adminEditStatisticsBindingModel.points}" class="form-control guest-team-input" name="description"></input>
         </section>
         <section class="submit-btn-section">
           <button class="submit-btn-role">
             Submit
           </button>
         </section>
-        </label>
-      </div>
+      </form>
     </div>
   </div>
 </main>

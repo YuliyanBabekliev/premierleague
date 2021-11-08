@@ -10,5 +10,5 @@ import java.util.List;
 public interface TeamRepository extends JpaRepository<Team, Long> {
     Team findByName(String teamName);
 
-    List<Team> findAllByOrderByPointsDesc();
+    List<Team> findAllByOrderByPointsDescGoalDifferenceDesc();
 }

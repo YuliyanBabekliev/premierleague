@@ -1,5 +1,6 @@
 package com.example.premierleague.services;
 
+import com.example.premierleague.models.binding.AdminEditStatisticsBindingModel;
 import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.entities.User;
 import com.example.premierleague.models.view.TeamTableViewModel;
@@ -15,4 +16,6 @@ public interface TeamService {
     void equalTeams(List<TeamTableViewModel> teams, User user);
 
     Team findTeamById(Long id);
+
+    void editTeamStatistics(AdminEditStatisticsBindingModel adminEditStatisticsBindingModel);
 }

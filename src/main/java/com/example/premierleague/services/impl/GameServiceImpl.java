@@ -2,6 +2,7 @@ package com.example.premierleague.services.impl;
 
 import com.example.premierleague.models.entities.Game;
 import com.example.premierleague.models.entities.Team;
+import com.example.premierleague.models.service.GameServiceModel;
 import com.example.premierleague.models.view.GameViewModel;
 import com.example.premierleague.repositories.GameRepository;
 import com.example.premierleague.services.GameService;
@@ -31,10 +32,19 @@ public class GameServiceImpl implements GameService {
                 .collect(Collectors.toList());
         List<GameViewModel> viewModelFinalGames = new ArrayList<>();
         for (int i = 0; i < viewModelGames.size(); i++) {
-            if(i % 2 == 0){
+            if(!viewModelGames.get(i).getDate().equals(viewModelGames.get(i+1).getDate())){
                 viewModelFinalGames.add(viewModelGames.get(i));
+            }
+            if(viewModelFinalGames.size() == 5){
+                break;
             }
         }
         return viewModelFinalGames;
+    }
+
+    @Override
+    public void addGame(GameServiceModel gameServiceModel) {
+        Game game = this.modelMapper.map(gameServiceModel, Game.class);
+        this.gameRepository.save(game);
     }
 }

@@ -1,14 +1,14 @@
 package com.example.premierleague.controllers;
 
-import com.example.premierleague.models.binding.AdminAddPlayerBindingModel;
-import com.example.premierleague.models.binding.AdminAddRoleBindingModel;
+import com.example.premierleague.models.binding.*;
 import com.example.premierleague.models.entities.Role;
 import com.example.premierleague.models.entities.User;
 import com.example.premierleague.models.entities.enums.RoleNameEnum;
-import com.example.premierleague.services.AdminService;
-import com.example.premierleague.services.PlayerService;
-import com.example.premierleague.services.RoleService;
-import com.example.premierleague.services.UserService;
+import com.example.premierleague.models.service.GameServiceModel;
+import com.example.premierleague.services.*;
+import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -28,12 +28,20 @@ public class AdminController {
     private final UserService userService;
     private final RoleService roleService;
     private final PlayerService playerService;
+    private final NewsService newsService;
+    private final TeamService teamService;
+    private final GameService gameService;
+    private final ModelMapper modelMapper;
 
-    public AdminController(AdminService adminService, UserService userService, RoleService roleService, PlayerService playerService) {
+    public AdminController(AdminService adminService, UserService userService, RoleService roleService, PlayerService playerService, NewsService newsService, TeamService teamService, GameService gameService, ModelMapper modelMapper) {
         this.adminService = adminService;
         this.userService = userService;
         this.roleService = roleService;
         this.playerService = playerService;
+        this.newsService = newsService;
+        this.teamService = teamService;
+        this.gameService = gameService;
+        this.modelMapper = modelMapper;
     }
 
     @ModelAttribute()
@@ -45,6 +53,22 @@ public class AdminController {
     public AdminAddPlayerBindingModel adminAddPlayerBindingModel(){
         return new AdminAddPlayerBindingModel();
     }
+
+    @ModelAttribute()
+    public AdminAddNewsBindingModel adminAddNewsBindingModel(){
+        return new AdminAddNewsBindingModel();
+    }
+
+    @ModelAttribute()
+    public AdminEditStatisticsBindingModel adminEditStatisticsBindingModel(){
+        return new AdminEditStatisticsBindingModel();
+    }
+
+    @ModelAttribute()
+    public AdminAddMatchesBindingModel adminAddMatchesBindingModel(){
+        return new AdminAddMatchesBindingModel();
+    }
+
     @GetMapping("/add-role")
     public String adminAddRole(Model model){
         List<User> users = this.userService.findAllUsers();
@@ -75,9 +99,37 @@ public class AdminController {
         return "admin-add-news";
     }
 
-    @GetMapping("/add-statistics")
-    public String adminAddStatistics(){
-        return "admin-add-statistics";
+    @PostMapping("/add-news")
+    public String addNewsConfirm(@Valid AdminAddNewsBindingModel adminAddNewsBindingModel,
+                                 BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        User user = this.userService.findUserByUsername(username);
+        if(bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("adminAddNewsBindingModel", adminAddNewsBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
+            return "redirect:/admin/add-news";
+        }
+        this.newsService.addNews(adminAddNewsBindingModel, user);
+        return "redirect:/";
+    }
+
+    @GetMapping("/edit-statistics")
+    public String adminEditStatistics(){
+        return "admin-edit-statistics";
+    }
+
+    @PostMapping("/edit-statistics")
+    public String editStatisticsConfirm(@Valid AdminEditStatisticsBindingModel adminEditStatisticsBindingModel,
+                                        BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        if(bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("adminEditStatisticsBindingModel", adminEditStatisticsBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
+            return "redirect:/edit-statistics";
+        }
+
+        this.teamService.editTeamStatistics(adminEditStatisticsBindingModel);
+        return "redirect:/";
     }
 
     @GetMapping("/add-players")
@@ -94,6 +146,28 @@ public class AdminController {
             return "redirect:/admin/add-players";
         }
         this.playerService.addPlayer(adminAddPlayerBindingModel);
+        return "redirect:/";
+    }
+
+    @GetMapping("/add-matches")
+    public String adminAddMatches(){
+        return "admin-add-matches";
+    }
+
+    @PostMapping("/add-matches")
+    public String addMatchesConfirm(@Valid AdminAddMatchesBindingModel adminAddMatchesBindingModel,
+                                    BindingResult bindingResult, RedirectAttributes redirectAttributes){
+        if(bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("adminAddMatchesBindingModel", adminAddMatchesBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
+            return "redirect:/admin/add-matches";
+        }
+
+        GameServiceModel gameServiceModel = this.modelMapper.map(adminAddMatchesBindingModel, GameServiceModel.class);
+        gameServiceModel.setHomeTeam(this.teamService.findTeamByName(adminAddMatchesBindingModel.getHomeTeam()));
+        gameServiceModel.setAwayTeam(this.teamService.findTeamByName(adminAddMatchesBindingModel.getAwayTeam()));
+        gameServiceModel.setDate(adminAddMatchesBindingModel.getDate());
+        this.gameService.addGame(gameServiceModel);
         return "redirect:/";
     }
 }

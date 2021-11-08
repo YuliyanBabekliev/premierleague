@@ -1,5 +1,6 @@
 package com.example.premierleague.services.impl;
 
+import com.example.premierleague.models.binding.AdminEditStatisticsBindingModel;
 import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.entities.User;
 import com.example.premierleague.models.view.TeamTableViewModel;
@@ -33,7 +34,7 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public List<Team> findAllTeams() {
         List<Team> teams = this.teamRepository.
-                findAllByOrderByPointsDesc();
+                findAllByOrderByPointsDescGoalDifferenceDesc();
         int counter = 0;
         for(Team team: teams){
             team.setPosition(team.getPosition() + counter);
@@ -55,5 +56,14 @@ public class TeamServiceImpl implements TeamService {
     @Override
     public Team findTeamById(Long id) {
         return this.teamRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void editTeamStatistics(AdminEditStatisticsBindingModel adminEditStatisticsBindingModel) {
+        Team team = this.teamRepository.findByName(adminEditStatisticsBindingModel.getTeam());
+        team.setPlayed(adminEditStatisticsBindingModel.getPlayed());
+        team.setGoalDifference(adminEditStatisticsBindingModel.getGoalDifference());
+        team.setPoints(adminEditStatisticsBindingModel.getPoints());
+        this.teamRepository.saveAndFlush(team);
     }
 }
