@@ -40,15 +40,15 @@
                     <option value="" selected>Choose user</option>
                     <option th:each="u : ${users}" th:value="${u.username}" th:text="${u.username}" value="1"></option>
                 </select>
-                <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-field"></small>
                 </div>
+                <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-field"></small>
                 <div>
                 <select  th:field="${adminAddRoleBindingModel.role}" th:errorclass="bg-danger" class="form-select user-select" aria-label="Default select example">
                     <option value="" selected>Choose role</option>
                     <option th:each="t : ${T(com.example.premierleague.models.entities.enums.RoleNameEnum).values()}" th:value="${t}" th:text="${t}" value="1"></option>
                 </select>
-                <small th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="error-field"></small>
                 </div>
+                <small th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="error-field"></small>
                 <button class="submit-btn-role">
                     Submit
                 </button>

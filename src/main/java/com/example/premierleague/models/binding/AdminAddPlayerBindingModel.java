@@ -13,7 +13,7 @@ public class AdminAddPlayerBindingModel {
     private String nationality;
     private String imgUrl;
 
-    @Size(min = 2, max = 20)
+    @Size(min = 2, max = 20, message = "First name must be minimum 2 and maximum 20 characters long.")
     public String getFirstName() {
         return firstName;
     }
@@ -22,7 +22,7 @@ public class AdminAddPlayerBindingModel {
         this.firstName = firstName;
     }
 
-    @Size(min = 2, max = 20)
+    @Size(min = 2, max = 20, message = "First name must be minimum 2 and maximum 20 characters long.")
     public String getLastName() {
         return lastName;
     }
@@ -31,7 +31,7 @@ public class AdminAddPlayerBindingModel {
         this.lastName = lastName;
     }
 
-    @NotNull
+    @Size(min = 1, message = "Please enter position.")
     public String getPosition() {
         return position;
     }
@@ -41,6 +41,7 @@ public class AdminAddPlayerBindingModel {
     }
 
     @Min(value = 15)
+    @NotNull(message = "Please enter age.")
     public Integer getAge() {
         return age;
     }
@@ -49,7 +50,7 @@ public class AdminAddPlayerBindingModel {
         this.age = age;
     }
 
-    @NotNull
+    @Size(min = 1, message = "Please choose club.")
     public String getClub() {
         return club;
     }
@@ -58,7 +59,7 @@ public class AdminAddPlayerBindingModel {
         this.club = club;
     }
 
-    @Size(min = 2)
+    @Size(min = 2, message = "Nationality must be at least 2 characters long.")
     public String getNationality() {
         return nationality;
     }
@@ -67,7 +68,7 @@ public class AdminAddPlayerBindingModel {
         this.nationality = nationality;
     }
 
-    @NotNull
+    @Size(min = 1, message = "Please enter image URL.")
     public String getImgUrl() {
         return imgUrl;
     }

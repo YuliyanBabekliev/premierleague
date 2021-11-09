@@ -1,6 +1,10 @@
 package com.example.premierleague.models.binding;
 
+import org.springframework.lang.Nullable;
+
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 public class AdminEditStatisticsBindingModel {
     private String team;
@@ -8,7 +12,7 @@ public class AdminEditStatisticsBindingModel {
     private Integer goalDifference;
     private Integer points;
 
-    @NotNull
+    @Size(min = 1, message = "Please choose team.")
     public String getTeam() {
         return team;
     }
@@ -17,7 +21,8 @@ public class AdminEditStatisticsBindingModel {
         this.team = team;
     }
 
-    @NotNull
+    @Min(value = 0, message = "Played cannot be negative number.")
+    @NotNull(message = "Please enter played games.")
     public Integer getPlayed() {
         return played;
     }
@@ -26,7 +31,7 @@ public class AdminEditStatisticsBindingModel {
         this.played = played;
     }
 
-    @NotNull
+    @NotNull(message = "Please enter goal difference.")
     public Integer getGoalDifference() {
         return goalDifference;
     }
@@ -35,7 +40,8 @@ public class AdminEditStatisticsBindingModel {
         this.goalDifference = goalDifference;
     }
 
-    @NotNull
+    @Min(value = 0, message = "Points cannot be negative number.")
+    @NotNull(message = "Please enter points")
     public Integer getPoints() {
         return points;
     }

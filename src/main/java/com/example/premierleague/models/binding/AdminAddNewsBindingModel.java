@@ -16,7 +16,7 @@ public class AdminAddNewsBindingModel {
     private LocalDateTime addedOn;
     private String team;
 
-    @Size(min = 3)
+    @Size(min = 3, message = "Title must be minimum 3 characters long!")
     public String getTitle() {
         return title;
     }
@@ -25,7 +25,7 @@ public class AdminAddNewsBindingModel {
         this.title = title;
     }
 
-    @Size(min = 3)
+    @Size(min = 3, message = "Image URL must be minimum 3 characters long!")
     public String getImgUrl() {
         return imgUrl;
     }
@@ -34,7 +34,7 @@ public class AdminAddNewsBindingModel {
         this.imgUrl = imgUrl;
     }
 
-    @Size(min = 10)
+    @Size(min = 10, message = "Description must be minimum 10 characters long!")
     public String getDescription() {
         return description;
     }
@@ -53,7 +53,7 @@ public class AdminAddNewsBindingModel {
         this.addedOn = addedOn;
     }
 
-    @NotNull
+    @Size(min = 1, message = "Please choose team.")
     public String getTeam() {
         return team;
     }

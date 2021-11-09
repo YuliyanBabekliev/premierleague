@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 
 public class AdminAddRoleBindingModel {
     private String username;
-    private RoleNameEnum role;
+    private String role;
 
     @Size(min = 1, message = "User cannot be empty!")
     public String getUsername() {
@@ -19,11 +19,11 @@ public class AdminAddRoleBindingModel {
     }
 
     @Size(min = 1, message = "Role cannot be empty!")
-    public RoleNameEnum getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(RoleNameEnum role) {
+    public void setRole(String role) {
         this.role = role;
     }
 }

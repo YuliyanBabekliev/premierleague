@@ -24,7 +24,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-    private final AdminService adminService;
     private final UserService userService;
     private final RoleService roleService;
     private final PlayerService playerService;
@@ -33,8 +32,7 @@ public class AdminController {
     private final GameService gameService;
     private final ModelMapper modelMapper;
 
-    public AdminController(AdminService adminService, UserService userService, RoleService roleService, PlayerService playerService, NewsService newsService, TeamService teamService, GameService gameService, ModelMapper modelMapper) {
-        this.adminService = adminService;
+    public AdminController(UserService userService, RoleService roleService, PlayerService playerService, NewsService newsService, TeamService teamService, GameService gameService, ModelMapper modelMapper) {
         this.userService = userService;
         this.roleService = roleService;
         this.playerService = playerService;
@@ -81,12 +79,12 @@ public class AdminController {
                                  RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("adminAddRoleBindingModel", adminAddRoleBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.adminAddRoleBindingModel", bindingResult);
             return "redirect:/admin/add-role";
         }
         List<Role> roles = this.roleService.findAllRoles();
         User user = this.userService.findUserByUsername(adminAddRoleBindingModel.getUsername());
-        if(adminAddRoleBindingModel.getRole().equals(RoleNameEnum.ADMIN)) {
+        if(adminAddRoleBindingModel.getRole().equals(RoleNameEnum.ADMIN.name())) {
             this.userService.setUserAdminRole(user);
         }else{
             this.userService.setUserRole(user);
@@ -107,7 +105,7 @@ public class AdminController {
         User user = this.userService.findUserByUsername(username);
         if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("adminAddNewsBindingModel", adminAddNewsBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.adminAddNewsBindingModel", bindingResult);
             return "redirect:/admin/add-news";
         }
         this.newsService.addNews(adminAddNewsBindingModel, user);
@@ -124,8 +122,8 @@ public class AdminController {
                                         BindingResult bindingResult, RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("adminEditStatisticsBindingModel", adminEditStatisticsBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
-            return "redirect:/edit-statistics";
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.adminEditStatisticsBindingModel", bindingResult);
+            return "redirect:/admin/edit-statistics";
         }
 
         this.teamService.editTeamStatistics(adminEditStatisticsBindingModel);
@@ -142,7 +140,7 @@ public class AdminController {
                                     BindingResult bindingResult, RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("adminAddPlayerBindingModel", adminAddPlayerBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.adminAddPlayerBindingModel", bindingResult);
             return "redirect:/admin/add-players";
         }
         this.playerService.addPlayer(adminAddPlayerBindingModel);
@@ -159,7 +157,7 @@ public class AdminController {
                                     BindingResult bindingResult, RedirectAttributes redirectAttributes){
         if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("adminAddMatchesBindingModel", adminAddMatchesBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.adminAddMatchesBindingModel", bindingResult);
             return "redirect:/admin/add-matches";
         }
 

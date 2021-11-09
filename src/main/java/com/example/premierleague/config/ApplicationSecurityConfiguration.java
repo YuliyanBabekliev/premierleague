@@ -28,6 +28,9 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 antMatchers("/").permitAll().
                 antMatchers("/users/login", "/users/register").anonymous().
+                antMatchers("/admin/add-role", "/admin/add-players",
+                        "/admin/add-news", "/admin/add-matches", "/admin/edit-statistics")
+                .hasAuthority("ADMIN").
                 antMatchers("/**").authenticated().
                 and().
                 formLogin().

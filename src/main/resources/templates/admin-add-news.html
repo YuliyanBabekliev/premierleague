@@ -35,22 +35,34 @@
             </div>
 
             <form th:method="POST" th:action="@{/admin/add-news}" th:object="${adminAddNewsBindingModel}" class="col-sm-9" id="add-news-container">
+                <div>
                 <section class="title-section">
                     <label class="title-label">Title:</label>
-                    <input th:field="${adminAddNewsBindingModel.title}" class="form-control title-input" type="text">
+                    <input th:field="${adminAddNewsBindingModel.title}" th:errorclass="bg-danger" class="form-control title-input" type="text">
                 </section>
+                </div>
+                <small th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-field"></small>
+                <div>
                 <section class="description-section">
                     <label class="description-label">Description:</label>
-                    <input th:field="${adminAddNewsBindingModel.description}" class="form-control description-input" name="description"></input>
+                    <input th:field="${adminAddNewsBindingModel.description}" th:errorclass="bg-danger" class="form-control description-input" name="description"></input>
                 </section>
+                </div>
+                <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error-field"></small>
+                <div>
                 <section class="description-section">
                     <label class="description-label">Image URL:</label>
-                    <input th:field="${adminAddNewsBindingModel.imgUrl}" class="form-control description-input" name="description"></input>
+                    <input th:field="${adminAddNewsBindingModel.imgUrl}" th:errorclass="bg-danger" class="form-control description-input" name="description"></input>
                 </section>
+                </div>
+                <small th:if="${#fields.hasErrors('imgUrl')}" th:errors="*{imgUrl}" class="error-field"></small>
+                <div>
                 <select th:field="${adminAddNewsBindingModel.team}" th:errorclass="bg-danger" class="form-select" aria-label="Default select example" style="margin-top: 25px; width: 95%;">
                     <option value="" selected>Choose team</option>
                     <option th:each="t : ${T(com.example.premierleague.models.entities.enums.TeamsEnum).values()}" th:value="${t}" th:text="${t}"></option>
                 </select>
+                </div>
+                <small th:if="${#fields.hasErrors('team')}" th:errors="*{team}" class="error-field"></small>
                 <section class="submit-btn-section">
                     <button class="submit-btn-role">
                         Submit
