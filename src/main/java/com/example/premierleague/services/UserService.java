@@ -7,7 +7,7 @@ import com.example.premierleague.models.view.UserProfileViewModel;
 import java.util.List;
 
 public interface UserService {
-    void registerUser(UserServiceModel userServiceModel);
+    void registerAndLoginUser(UserServiceModel userServiceModel);
 
     boolean invalidUsernameOrPassword(String username, String password);
 

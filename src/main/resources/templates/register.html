@@ -16,6 +16,15 @@
 <main>
     <form class="register-form" th:action="@{/users/register}" method="POST" th:object="${userRegisterBindingModel}">
         <h1 class="register-title">Register</h1>
+
+        <p style="margin-top: 20px; margin-bottom: 20px" th:if="${notEqualPasswords}" class="errors alert alert-danger">
+            Password and confirm password don't match.
+        </p>
+
+        <p style="margin-top: 20px; margin-bottom: 20px" th:if="${invalidUsername}" class="errors alert alert-danger">
+            This username is already in use.
+        </p>
+
         <div class="input-container">
             <i class="fa fa-user icon"></i>
             <input th:field="${userRegisterBindingModel.username}" th:errorclass="bg-danger"
@@ -74,6 +83,7 @@
             </select>
             <small th:if="${#fields.hasErrors('favouriteTeam')}" th:errors="*{favouriteTeam}" class="error-field"></small>
         </div>
+
         <p class="register-description">
             If you already have an account, <a href="/users/login">login</a>.
         </p>

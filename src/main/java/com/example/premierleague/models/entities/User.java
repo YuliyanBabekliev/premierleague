@@ -14,6 +14,7 @@ public class User extends BaseEntity{
     private String gender;
     private Team favouriteTeam;
     private boolean isEnabled;
+    private boolean active;
     private Set<Role> roles;
     private Set<News> news;
 
@@ -59,6 +60,14 @@ public class User extends BaseEntity{
 
     public void setEnabled(boolean enabled) {
         isEnabled = true;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     @ManyToMany(fetch = FetchType.EAGER)
