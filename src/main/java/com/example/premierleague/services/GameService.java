@@ -11,4 +11,6 @@ public interface GameService {
     List<GameViewModel> findGamesByFavouriteTeam(Team team);
 
     void addGame(GameServiceModel gameServiceModel);
+
+    void deleteGameById(Long id);
 }

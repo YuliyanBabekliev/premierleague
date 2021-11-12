@@ -5,10 +5,19 @@ import com.example.premierleague.models.entities.Team;
 import java.time.LocalDate;
 
 public class GameViewModel {
+    private Long id;
     private LocalDate date;
     private Team homeTeam;
     private String result;
     private Team awayTeam;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public LocalDate getDate() {
         return date;

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang='en'
+      xmlns:th='http://www.thymeleaf.org'
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 <head th:replace="fragments/commons::head">
 </head>
 <body style="background-image: url(/images/5fMwyh.jpg); background-size: cover; ">
@@ -16,7 +18,7 @@
                 </p>
                 <p th:text="|Added by ${news.getUser().username} : ${#temporals.format(news.addedOn, 'yyyy-MM-dd HH:mm')}|" id="added-by">
                 </p>
-                <div style="background-color: black; width: 100%; display: flex;">
+                <div sec:authorize="principal.authorities.size() == 2" style="background-color: black; width: 100%; display: flex;">
                 <a class="edit-btn" th:href="@{/news/edit/{id}(id=*{id})}">Edit</a>
                 <form th:method="DELETE" th:action="@{/news/details/{id}(id=*{id})}">
                     <button class="delete-btn">Delete</button>

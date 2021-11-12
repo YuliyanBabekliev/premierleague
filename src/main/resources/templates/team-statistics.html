@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang='en'
+      xmlns:th='http://www.thymeleaf.org'
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 <head th:replace="fragments/commons::head">
 </head>
 <body style="background-image: url(/images/5fMwyh.jpg); background-size: cover; ">
@@ -18,6 +20,11 @@
                             <td id="specific" class="statistics"><p><img class="logo-for-statistics" th:src="${g.getHomeTeam().logoUrl}" alt=""><span th:text="${g.homeTeam.name}"></span></p></td>
                             <td class="statistics"><p th:text="${g.result}">2:1</p></td>
                             <td class="statistics"><p><img class="logo-for-statistics" th:src="${g.getAwayTeam().logoUrl}" alt=""><span th:text="${g.awayTeam.name}"></span></p></td>
+                            <td sec:authorize="principal.authorities.size() == 2" class="statistics">
+                                <form th:method="DELETE" th:action="@{/teams/statistics/{id}(id=*{id})}" th:object="${g}">
+                                    <button style="padding-bottom: 5px; padding-top: 5px; margin-right: 10px;" class="delete-btn">Delete</button>
+                                </form>
+                            </td>
                         </tr>
                     </table>
                 </div>

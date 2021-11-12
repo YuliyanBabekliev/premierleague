@@ -459,6 +459,10 @@ table{
     color:black;
 }
 
+.edit-btn:hover{
+    color:black;
+}
+
 .delete-btn{
     background-color: rgb(255, 3, 3);
     border-radius: 10px;

@@ -47,4 +47,9 @@ public class GameServiceImpl implements GameService {
         Game game = this.modelMapper.map(gameServiceModel, Game.class);
         this.gameRepository.save(game);
     }
+
+    @Override
+    public void deleteGameById(Long id) {
+        this.gameRepository.deleteById(id);
+    }
 }
