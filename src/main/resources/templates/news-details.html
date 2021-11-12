@@ -12,9 +12,16 @@
             <div th:object="${news}" class="col-sm-8 news-details-container">
                 <h1 th:text="${news.title}" id="news-title"></h1>
                 <img class="news-details-photo" th:src="${news.imgUrl}" alt="">
-                <p th:text="${news.description}" id="news-description"><span class="blue-colored-news">
+                <p th:text="${news.description}" id="news-description"><span class="blue-colored-news"></span>
                 </p>
-                <p th:text="|Added by ${news.getUser().username} : ${#temporals.format(news.addedOn, 'yyyy-MM-dd HH:mm')}|" id="added-by"></p>
+                <p th:text="|Added by ${news.getUser().username} : ${#temporals.format(news.addedOn, 'yyyy-MM-dd HH:mm')}|" id="added-by">
+                </p>
+                <div style="background-color: black; width: 100%; display: flex;">
+                <a class="edit-btn" th:href="@{/news/edit/{id}(id=*{id})}">Edit</a>
+                <form th:method="DELETE" th:action="@{/news/details/{id}(id=*{id})}">
+                    <button class="delete-btn">Delete</button>
+                </form>
+                </div>
             </div>
             <div class="col-sm-4 home-table-container">
                 <div>

@@ -4,10 +4,12 @@ import com.example.premierleague.models.binding.AdminAddNewsBindingModel;
 import com.example.premierleague.models.entities.News;
 import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.entities.User;
+import com.example.premierleague.models.service.NewsUpdateServiceModel;
 import com.example.premierleague.repositories.NewsRepository;
 import com.example.premierleague.services.NewsService;
 import com.example.premierleague.services.TeamService;
 import com.example.premierleague.services.UserService;
+import org.hibernate.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -61,6 +63,25 @@ public class NewsServiceImpl implements NewsService {
         news.setUser(user);
         news.setTeam(this.teamService.findTeamByName(adminAddNewsBindingModel.getTeam()));
         news.setAddedOn(LocalDateTime.now());
+        this.newsRepository.save(news);
+    }
+
+    @Override
+    public void deleteNewsConfirm(Long id) {
+        this.newsRepository.deleteById(id);
+    }
+
+    @Override
+    public void updateNews(NewsUpdateServiceModel serviceModel) {
+        News news = this.newsRepository.findById(serviceModel.getId()).
+                orElse(null);
+
+        news.setTitle(serviceModel.getTitle());
+        news.setDescription(serviceModel.getDescription());
+        news.setImgUrl(serviceModel.getImgUrl());
+        news.setTeam(serviceModel.getTeam());
+        news.setAddedOn(LocalDateTime.now());
+
         this.newsRepository.save(news);
     }
 }
