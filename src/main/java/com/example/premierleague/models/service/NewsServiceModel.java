@@ -5,7 +5,7 @@ import com.example.premierleague.models.entities.User;
 
 import java.time.LocalDateTime;
 
-public class NewsUpdateServiceModel {
+public class NewsServiceModel {
     private Long id;
     private String title;
     private String imgUrl;

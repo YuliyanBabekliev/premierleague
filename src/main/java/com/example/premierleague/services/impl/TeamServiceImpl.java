@@ -1,19 +1,15 @@
 package com.example.premierleague.services.impl;
 
-import com.example.premierleague.models.binding.AdminEditStatisticsBindingModel;
 import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.entities.User;
+import com.example.premierleague.models.service.StatisticsServiceModel;
 import com.example.premierleague.models.view.TeamTableViewModel;
 import com.example.premierleague.repositories.TeamRepository;
 import com.example.premierleague.services.TeamService;
-import com.example.premierleague.services.UserService;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class TeamServiceImpl implements TeamService {
@@ -59,11 +55,11 @@ public class TeamServiceImpl implements TeamService {
     }
 
     @Override
-    public void editTeamStatistics(AdminEditStatisticsBindingModel adminEditStatisticsBindingModel) {
-        Team team = this.teamRepository.findByName(adminEditStatisticsBindingModel.getTeam());
-        team.setPlayed(adminEditStatisticsBindingModel.getPlayed());
-        team.setGoalDifference(adminEditStatisticsBindingModel.getGoalDifference());
-        team.setPoints(adminEditStatisticsBindingModel.getPoints());
+    public void editTeamStatistics(StatisticsServiceModel editStatisticsServiceModel) {
+        Team team = this.teamRepository.findByName(editStatisticsServiceModel.getName());
+        team.setPlayed(editStatisticsServiceModel.getPlayed());
+        team.setGoalDifference(editStatisticsServiceModel.getGoalDifference());
+        team.setPoints(editStatisticsServiceModel.getPoints());
         this.teamRepository.saveAndFlush(team);
     }
 }

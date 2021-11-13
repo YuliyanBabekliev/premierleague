@@ -1,15 +1,12 @@
 package com.example.premierleague.services.impl;
 
-import com.example.premierleague.models.binding.AdminAddNewsBindingModel;
 import com.example.premierleague.models.entities.News;
 import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.entities.User;
-import com.example.premierleague.models.service.NewsUpdateServiceModel;
+import com.example.premierleague.models.service.NewsServiceModel;
 import com.example.premierleague.repositories.NewsRepository;
 import com.example.premierleague.services.NewsService;
 import com.example.premierleague.services.TeamService;
-import com.example.premierleague.services.UserService;
-import org.hibernate.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -58,10 +55,10 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public void addNews(AdminAddNewsBindingModel adminAddNewsBindingModel, User user) {
-        News news = this.modelMapper.map(adminAddNewsBindingModel, News.class);
+    public void addNews(NewsServiceModel newsServiceModel, User user) {
+        News news = this.modelMapper.map(newsServiceModel, News.class);
         news.setUser(user);
-        news.setTeam(this.teamService.findTeamByName(adminAddNewsBindingModel.getTeam()));
+        news.setTeam(newsServiceModel.getTeam());
         news.setAddedOn(LocalDateTime.now());
         this.newsRepository.save(news);
     }
@@ -72,7 +69,7 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    public void updateNews(NewsUpdateServiceModel serviceModel) {
+    public void updateNews(NewsServiceModel serviceModel) {
         News news = this.newsRepository.findById(serviceModel.getId()).
                 orElse(null);
 

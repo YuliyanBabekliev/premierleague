@@ -46,7 +46,6 @@ public class HomeController {
                 .stream().map(t -> this.modelMapper.map(t, TeamTableViewModel.class))
                 .collect(Collectors.toList());
         this.teamService.equalTeams(teams, user);
-        //TODO teamService equalTeams(define user in the method from the controller)
 
         model.addAttribute("news", orderedNews);
         model.addAttribute("mainNews", mainNews);

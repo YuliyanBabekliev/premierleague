@@ -18,7 +18,9 @@
         <h1 class="login-title">Login</h1>
         <div class="input-container">
             <i class="fa fa-user icon"></i>
-            <input th:value="${username}"
+            <input
+                    minlength="3"
+                    maxlength="20"
                     class="input-field"
                     type="text"
                     placeholder="Username"
@@ -30,6 +32,8 @@
             <i class="fa fa-key icon"></i>
             <input
                     class="input-field"
+                    minlength="5"
+                    maxlength="30"
                     type="password"
                     placeholder="Password"
                     name="password"

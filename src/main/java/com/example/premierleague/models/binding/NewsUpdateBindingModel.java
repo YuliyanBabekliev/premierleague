@@ -9,7 +9,7 @@ public class NewsUpdateBindingModel {
     private String title;
     @Size(min = 10, message = "Description must be at least 10 characters long.")
     private String description;
-    @Size(min = 1, message = "Please enter image URL.")
+    @Size(min = 3, message = "Please enter image URL.")
     private String imgUrl;
     @Size(min = 1, message = "Please select team.")
     private String team;

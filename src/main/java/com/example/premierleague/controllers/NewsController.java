@@ -4,7 +4,7 @@ import com.example.premierleague.models.binding.NewsUpdateBindingModel;
 import com.example.premierleague.models.entities.News;
 import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.entities.User;
-import com.example.premierleague.models.service.NewsUpdateServiceModel;
+import com.example.premierleague.models.service.NewsServiceModel;
 import com.example.premierleague.models.view.NewsDetailsView;
 import com.example.premierleague.models.view.TeamTableViewModel;
 import com.example.premierleague.services.NewsService;
@@ -81,7 +81,7 @@ public class NewsController {
             return "redirect:/news/edit/errors/" + id;
         }
         Team team = this.teamService.findTeamByName(newsUpdateBindingModel.getTeam());
-        NewsUpdateServiceModel serviceModel = modelMapper.map(newsUpdateBindingModel, NewsUpdateServiceModel.class);
+        NewsServiceModel serviceModel = modelMapper.map(newsUpdateBindingModel, NewsServiceModel.class);
         serviceModel.setTeam(team);
         serviceModel.setId(id);
 

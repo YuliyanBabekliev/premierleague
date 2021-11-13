@@ -4,7 +4,10 @@ import com.example.premierleague.models.binding.*;
 import com.example.premierleague.models.entities.Role;
 import com.example.premierleague.models.entities.User;
 import com.example.premierleague.models.entities.enums.RoleNameEnum;
+import com.example.premierleague.models.service.NewsServiceModel;
+import com.example.premierleague.models.service.StatisticsServiceModel;
 import com.example.premierleague.models.service.GameServiceModel;
+import com.example.premierleague.models.service.PlayerServiceModel;
 import com.example.premierleague.services.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.core.Authentication;
@@ -108,7 +111,9 @@ public class AdminController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.adminAddNewsBindingModel", bindingResult);
             return "redirect:/admin/add-news";
         }
-        this.newsService.addNews(adminAddNewsBindingModel, user);
+        NewsServiceModel newsServiceModel = this.modelMapper.map(adminAddNewsBindingModel, NewsServiceModel.class);
+        newsServiceModel.setTeam(this.teamService.findTeamByName(adminAddNewsBindingModel.getTeam()));
+        this.newsService.addNews(newsServiceModel, user);
         return "redirect:/";
     }
 
@@ -126,7 +131,12 @@ public class AdminController {
             return "redirect:/admin/edit-statistics";
         }
 
-        this.teamService.editTeamStatistics(adminEditStatisticsBindingModel);
+        StatisticsServiceModel editStatisticsServiceModel = this.modelMapper.map(
+                adminEditStatisticsBindingModel, StatisticsServiceModel.class
+        );
+        editStatisticsServiceModel.setName(adminEditStatisticsBindingModel.getTeam());
+
+        this.teamService.editTeamStatistics(editStatisticsServiceModel);
         return "redirect:/";
     }
 
@@ -143,7 +153,9 @@ public class AdminController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.adminAddPlayerBindingModel", bindingResult);
             return "redirect:/admin/add-players";
         }
-        this.playerService.addPlayer(adminAddPlayerBindingModel);
+        PlayerServiceModel playerServiceModel = this.modelMapper.map(adminAddPlayerBindingModel, PlayerServiceModel.class);
+        playerServiceModel.setClub(this.teamService.findTeamByName(adminAddPlayerBindingModel.getClub()));
+        this.playerService.addPlayer(playerServiceModel);
         return "redirect:/";
     }
 
