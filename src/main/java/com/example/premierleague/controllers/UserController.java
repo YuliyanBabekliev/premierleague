@@ -1,4 +1,4 @@
-package com.example.premierleague.controllers;
+package com.example.premierleague.web;
 
 import com.example.premierleague.models.binding.UserLoginBindingModel;
 import com.example.premierleague.models.binding.UserRegisterBindingModel;
