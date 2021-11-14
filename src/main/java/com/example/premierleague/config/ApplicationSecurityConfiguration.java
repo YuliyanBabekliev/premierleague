@@ -29,7 +29,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 antMatchers("/").permitAll().
                 antMatchers("/users/login", "/users/register").anonymous().
                 antMatchers("/admin/add-role", "/admin/add-players",
-                        "/admin/add-news", "/admin/add-matches", "/admin/edit-statistics")
+                        "/admin/add-news", "/admin/add-matches", "/admin/edit-statistics", "/statistics")
                 .hasAuthority("ADMIN").
                 antMatchers("/**").authenticated().
                 and().

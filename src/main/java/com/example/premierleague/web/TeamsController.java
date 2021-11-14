@@ -1,4 +1,4 @@
-package com.example.premierleague.controllers;
+package com.example.premierleague.web;
 
 import com.example.premierleague.models.entities.*;
 import com.example.premierleague.models.view.GameViewModel;
