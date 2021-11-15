@@ -3,10 +3,14 @@ package com.example.premierleague.web;
 import com.example.premierleague.models.binding.UserLoginBindingModel;
 import com.example.premierleague.models.binding.UserRegisterBindingModel;
 import com.example.premierleague.models.service.UserServiceModel;
-import com.example.premierleague.security.CurrentUser;
+import com.example.premierleague.models.view.UserProfileViewModel;
 import com.example.premierleague.services.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -21,12 +25,10 @@ import javax.validation.Valid;
 public class UserController {
     private final UserService userService;
     private final ModelMapper modelMapper;
-    private final CurrentUser currentUser;
 
-    public UserController(UserService userService, ModelMapper modelMapper, CurrentUser currentUser) {
+    public UserController(UserService userService, ModelMapper modelMapper) {
         this.userService = userService;
         this.modelMapper = modelMapper;
-        this.currentUser = currentUser;
     }
 
     @ModelAttribute
@@ -50,46 +52,45 @@ public class UserController {
     }
 
     @GetMapping("/profile")
-    public String profile(){
+    public String profile(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        UserProfileViewModel user = this.userService.findUserProfileByUsername(username);
+        model.addAttribute("user", user);
         return "profile";
     }
 
     @PostMapping("/register")
     public String registerConfirm(@Valid UserRegisterBindingModel userRegisterBindingModel, BindingResult bindingResult,
                                   RedirectAttributes redirectAttributes){
-        if(bindingResult.hasErrors() ||
-                !userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())){
+        if(bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
             return "redirect:register";
         }
 
-        this.userService.registerUser(this.modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
-        return "redirect:login";
-    }
-
-    @PostMapping("/login")
-    public String loginConfirm(@Valid UserLoginBindingModel userLoginBindingModel, BindingResult bindingResult,
-                               RedirectAttributes redirectAttributes){
-        if(bindingResult.hasErrors()){
-            redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userLoginBindingModel", bindingResult);
-            return "redirect:login";
+        if(this.userService.findUserByUsername(userRegisterBindingModel.getUsername()) != null){
+            redirectAttributes.addFlashAttribute("invalidUsername", true);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
+            return "redirect:register";
         }
 
-        if(this.userService.invalidUsernameOrPassword(userLoginBindingModel.getUsername(), userLoginBindingModel.getPassword())){
-            redirectAttributes.addFlashAttribute("userLoginBindingModel", userLoginBindingModel);
-            redirectAttributes.addFlashAttribute("notFound", true);
-            return "redirect:login";
+        if(!userRegisterBindingModel.getPassword().equals(userRegisterBindingModel.getConfirmPassword())){
+            redirectAttributes.addFlashAttribute("notEqualPasswords", true);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
+            return "redirect:register";
         }
 
-        this.userService.loginUser(this.modelMapper.map(userLoginBindingModel, UserServiceModel.class));
+        this.userService.registerAndLoginUser(this.modelMapper.map(userRegisterBindingModel, UserServiceModel.class));
         return "redirect:/";
     }
 
-    @GetMapping("/logout")
-    public String logout(){
-        this.userService.logout();
-        return "redirect:/";
+    @PostMapping("/login-error")
+    public String failedLogin(@ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
+                              String username, RedirectAttributes redirectAttributes){
+
+        redirectAttributes.addFlashAttribute("bad_credentials", true);
+        redirectAttributes.addFlashAttribute("username", username);
+        return "redirect:/users/login";
     }
 }

@@ -1,9 +1,6 @@
 package com.example.premierleague.models.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -61,7 +58,7 @@ public class News extends BaseEntity{
         this.user = user;
     }
 
-    @ManyToOne
+    @ManyToOne()
     public Team getTeam() {
         return team;
     }

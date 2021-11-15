@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang='en'
+      xmlns:th='http://www.thymeleaf.org'
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block  th:fragment="navigation">
+    <th:block sec:authorize="principal.manchesterUnitedTeam()">
+        <header th:replace="fragments/commons::nav2"></header>
+    </th:block>
+    <th:block sec:authorize="principal.arsenalTeam()">
+        <header th:replace="fragments/commons::nav2"></header>
+    </th:block>
+    <th:block sec:authorize="principal.liverpoolTeam()">
+        <header th:replace="fragments/commons::nav2"></header>
+    </th:block>
+    <th:block sec:authorize="principal.brentfordTeam()">
+        <header th:replace="fragments/commons::nav2"></header>
+    </th:block>
+    <th:block sec:authorize="principal.southamptonTeam()">
+        <header th:replace="fragments/commons::nav2"></header>
+    </th:block>
+    <th:block sec:authorize="principal.brightonTeam()">
+        <header th:replace="fragments/commons::nav1"></header>
+    </th:block>
+    <th:block sec:authorize="principal.chelseaTeam()" >
+        <header th:replace="fragments/commons::nav1"></header>
+    </th:block>
+    <th:block sec:authorize="principal.evertonTeam()" >
+        <header th:replace="fragments/commons::nav1"></header>
+    </th:block>
+    <th:block sec:authorize="principal.leicesterTeam()" >
+        <header th:replace="fragments/commons::nav1"></header>
+    </th:block>
+    <th:block sec:authorize="principal.crystalPalaceTeam()" >
+        <header th:replace="fragments/commons::nav1"></header>
+    </th:block>
+    <th:block sec:authorize="principal.astonVillaTeam()" >
+        <header th:replace="fragments/commons::nav3"></header>
+    </th:block>
+    <th:block sec:authorize="principal.westHamTeam()">
+        <header th:replace="fragments/commons::nav3"></header>
+    </th:block>
+    <th:block sec:authorize="principal.burnleyTeam()">
+        <header th:replace="fragments/commons::nav3"></header>
+    </th:block>
+    <th:block sec:authorize="principal.leedsTeam()">
+        <header th:replace="fragments/commons::nav4"></header>
+    </th:block>
+    <th:block sec:authorize="principal.tottenhamTeam()">
+        <header th:replace="fragments/commons::nav4"></header>
+    </th:block>
+    <th:block sec:authorize="principal.newcastleTeam()">
+        <header th:replace="fragments/commons::nav4"></header>
+    </th:block>
+    <th:block sec:authorize="principal.manchesterCityTeam()">
+        <header th:replace="fragments/commons::nav5"></header>
+    </th:block>
+    <th:block sec:authorize="principal.norwichTeam()">
+        <header th:replace="fragments/commons::nav6"></header>
+    </th:block>
+    <th:block sec:authorize="principal.watfordTeam()">
+        <header th:replace="fragments/commons::nav6"></header>
+    </th:block>
+    <th:block sec:authorize="principal.wolverhamptonTeam()">
+        <header th:replace="fragments/commons::nav7"></header>
+    </th:block>
+</th:block>
+<!--<header th:fragment="navigation">-->
+<!--    <nav class="navbar navbar-expand-xl navbar-dark rounded home-navbar">-->
+<!--        <div class="container-fluid">-->
+<!--            <a class="navbar-brand home-logo-container" href="/home">-->
+<!--                <img class="home-logo"  src="" alt="">-->
+<!--            </a>-->
+
+<!--            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--                <span class="navbar-toggler-icon"></span>-->
+<!--            </button>-->
+<!--            <div class="nav-container">-->
+<!--                <div class="justify-content-center nav-elements-center" id="navbarScroll">-->
+<!--                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">-->
+<!--                        <li class="nav-item" sec:authorize="principal.authorities.size() == 2">-->
+<!--                            <a id="nav-element" class="nav-link active" th:href="@{/admin/add-role}">Admin</a>-->
+<!--                        </li>-->
+
+<!--                        <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                            <a id="nav-element" class="nav-link active" th:href="@{/users/profile}">Profile</a>-->
+<!--                        </li>-->
+
+<!--                        <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                            <a id="nav-element" class="nav-link active" th:href="@{/teams/information}">Team information</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                            <a id="nav-element" class="nav-link active" th:href="@{/teams/statistics}">Statistics</a>-->
+<!--                        </li>-->
+<!--                        <li class="nav-item" sec:authorize="principal.chelseaTeam()">-->
+<!--                            <a id="nav-element" class="nav-link active" th:href="@{/teams/other}">Other teams</a>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--                <div class="justify-content-end logoutBtn-container" id="navbarScroll">-->
+<!--                    <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll">-->
+<!--                        <li class="nav-item" sec:authorize="isAuthenticated()">-->
+<!--                            <form th:action="@{/users/logout}" th:method="POST">-->
+<!--                                <button id="nav-element" class="nav-link active logout-btn" type="submit" value="Logout">Logout</button>-->
+<!--                            </form>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</header>-->
+</body>
+</html>

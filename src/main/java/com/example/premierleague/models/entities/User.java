@@ -13,7 +13,9 @@ public class User extends BaseEntity{
     private String password;
     private String gender;
     private Team favouriteTeam;
-    private Set<Role> role;
+    private boolean isEnabled;
+    private boolean active;
+    private Set<Role> roles;
     private Set<News> news;
 
     @Column(name = "username", unique = true, nullable = false)
@@ -52,13 +54,29 @@ public class User extends BaseEntity{
         this.gender = gender;
     }
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    public Set<Role> getRole() {
-        return role;
+    public boolean isEnabled() {
+        return isEnabled;
     }
 
-    public void setRole(Set<Role> role) {
-        this.role = role;
+    public void setEnabled(boolean enabled) {
+        isEnabled = true;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     @OneToOne

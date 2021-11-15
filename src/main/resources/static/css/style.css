@@ -103,6 +103,36 @@ body {
     background-color: rgb(1, 27, 116);
 }
 
+.red-navbar{
+    background-color: red;
+}
+
+.white-navbar{
+    background-color: white;
+    color: black;
+}
+.white-navbar #nav-element{
+    color:black;
+}
+.white-navbar #nav-element:hover{
+    color:white;
+}
+.purple-navbar{
+    background-color: rgb(101, 15, 42);
+}
+
+.sky-blue-navbar{
+    background-color: rgb(107, 180, 230);
+}
+
+.yellow-navbar{
+    background-color: rgb(240, 203, 3);
+}
+
+.orange-navbar{
+    background-color: rgb(249, 169, 10);
+}
+
 .home-logo{
     height: 50px;
     padding-left: 12px;
@@ -152,35 +182,6 @@ body {
 .home-table-thead{
     background-color: rgb(55, 0, 60);
     color: white;
-}
-
-.first-half.man-utd-table-logo{
-    width: 25%; margin-left: 38px;
-}
-
-.home-table-chelsea-row{
-    background-color: rgb(204, 204, 204);
-}
-
-.first-half.home-table-spurs-logo{
-    width: 18%;
-    margin-left: 38px;
-}
-
-.second-half.home-table-arsenal-logo{
-    margin-left:27px;
-}
-
-.second-half.home-table-wolves-logo{
-    margin-left:30px
-}
-
-.home-table-newcastle{
-    font-size: 12px;
-}
-
-.second-half.home-table.sheffield-logo{
-    margin-left:27px;
 }
 
 /* NEWS-DETAILS */
@@ -323,10 +324,6 @@ td {
 table{
     font-size: 14px;
 }
-.second-half {
-    width: 25%;
-    margin-left: 27px;
-}
 
 #nav-element {
     color: white;
@@ -342,11 +339,21 @@ table{
 #logoutBtn {
     color: white;
     border-radius: 10px;
+    background-color: transparent;
+}
+
+.logout-btn{
+    background-color: transparent;
+    border: none;
 }
 
 #logoutBtn:hover {
     background-color: black;
     border-radius: 10px;
+}
+
+.players-container{
+    display: flex;
 }
 
 #news {
@@ -422,9 +429,10 @@ table{
 }
 
 #other-team-logo {
-    margin-top: 10px;
+    margin-top: 20px;
     width: 18%;
     margin-left: 15px;
+    margin-bottom: 20px;
 }
 
 #other-team-logo:hover {
@@ -437,6 +445,35 @@ table{
     width: 25%;
     text-align: left;
 }
+
+.edit-btn{
+    background-color: rgb(255, 199, 3);
+    border-radius: 10px;
+    border: none;
+    font-weight: bolder;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    text-decoration: none;
+    color:black;
+}
+
+.edit-btn:hover{
+    color:black;
+}
+
+.delete-btn{
+    background-color: rgb(255, 3, 3);
+    border-radius: 10px;
+    border: none;
+    font-weight: bolder;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+
 
 .statistics p {
     font-size: 16px;
@@ -608,6 +645,14 @@ table{
     margin-bottom: 5px;
 }
 
+.current-team{
+    background-color: rgb(150, 150, 150);
+}
+
+.other-news{
+    margin-top: 15px;
+}
+
 .guest-team-input {
     width: 95%;
 }
@@ -730,7 +775,7 @@ footer {
     }
 
     .home-table-container{
-        width: 65%;
+        width: 75%;
         margin: 0 auto;
     }
 

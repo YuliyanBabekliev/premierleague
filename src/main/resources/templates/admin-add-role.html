@@ -3,7 +3,7 @@
 <head th:replace="fragments/commons::head">
 </head>
 <body style="background-image: url(/images/5fMwyh.jpg); background-size: cover; ">
-<header th:replace="fragments/commons::nav">
+<header th:replace="fragments/navigation::navigation"></header>
 </header>
 
 <main>
@@ -17,36 +17,47 @@
             <div class="col-sm-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link admin-buttons" id="role-btn" href="/admin-add-role.html" style="background-color: rgb(51, 51, 51);">Add Role</a>
+                        <a class="nav-link admin-buttons" id="role-btn" th:href="@{/admin/add-role}" style="background-color: rgb(51, 51, 51);">Add Role</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link admin-buttons" id="news-btn" href="/admin-add-news.html">Add-News</a>
+                        <a class="nav-link admin-buttons" id="news-btn" th:href="@{/admin/add-news}">Add News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link admin-buttons" id="statistics-btn" href="/admin-add-statistics.html">Add Statistics</a>
+                        <a class="nav-link admin-buttons" id="statistics-btn" th:href="@{/admin/edit-statistics}">Edit Statistics</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link admin-buttons" id="player-btn" href="/admin-add-players.html" aria-disabled="true">Add Players</a>
+                        <a class="nav-link admin-buttons" id="player-btn" th:href="@{/admin/add-players}" aria-disabled="true">Add Players</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link admin-buttons" id="player-btn" th:href="@{/admin/add-matches}" aria-disabled="true">Add Matches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link admin-buttons" id="player-btn" th:href="@{/statistics}"
+                           aria-disabled="true">Statistics</a>
                     </li>
                 </ul>
             </div>
 
-            <div class="col-sm-9 add-role-container">
-                <select  class="form-select user-select" aria-label="Default select example">
-                    <option selected>Choose user</option>
-                    <option value="1">Yuliyan</option>
-                    <option value="2">none</option>
+            <form th:method="POST" th:action="@{/admin/add-role}" th:object="${adminAddRoleBindingModel}" class="col-sm-9 add-role-container">
+                <div>
+                <select th:field="${adminAddRoleBindingModel.username}" th:errorclass="bg-danger" class="form-select user-select" aria-label="Default select example">
+                    <option value="" selected>Choose user</option>
+                    <option th:each="u : ${users}" th:value="${u.username}" th:text="${u.username}" value="1"></option>
                 </select>
-                <select class="form-select user-select" aria-label="Default select example">
-                    <option selected>Choose role</option>
-                    <option value="1">Admin</option>
-                    <option value="2">User</option>
+                </div>
+                <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-field"></small>
+                <div>
+                <select  th:field="${adminAddRoleBindingModel.role}" th:errorclass="bg-danger" class="form-select user-select" aria-label="Default select example">
+                    <option value="" selected>Choose role</option>
+                    <option th:each="t : ${T(com.example.premierleague.models.entities.enums.RoleNameEnum).values()}" th:value="${t}" th:text="${t}" value="1"></option>
                 </select>
+                </div>
+                <small th:if="${#fields.hasErrors('role')}" th:errors="*{role}" class="error-field"></small>
                 <button class="submit-btn-role">
                     Submit
                 </button>
                 </label>
-            </div>
+            </form>
         </div>
     </div>
 </main>

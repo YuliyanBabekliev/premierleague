@@ -3,7 +3,7 @@
 <head th:replace="fragments/commons::head">
 </head>
 <body style="background-image: url(/images/5fMwyh.jpg); background-size: cover; ">
-<header th:replace="fragments/commons::nav">
+<header th:replace="fragments/navigation::navigation"></header>
 </header>
 
 <main>
@@ -17,36 +17,83 @@
             <div class="col-sm-3">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link admin-buttons" id="role-btn" href="/admin-add-role.html">Add Role</a>
+                        <a class="nav-link admin-buttons" id="role-btn" th:href="@{/admin/add-role}">Add Role</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link admin-buttons" id="news-btn" href="/admin-add-news.html"style="background-color: rgb(51, 51, 51);">Add News</a>
+                        <a class="nav-link admin-buttons" id="news-btn" th:href="@{/admin/add-news}"
+                           style="background-color: rgb(51, 51, 51);">Add News</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link admin-buttons" id="statistics-btn" href="/admin-add-statistics.html">Add Statistics</a>
+                        <a class="nav-link admin-buttons" id="statistics-btn" th:href="@{/admin/edit-statistics}">Edit
+                            Statistics</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link admin-buttons" id="player-btn" href="/admin-add-players.html" aria-disabled="true">Add Players</a>
+                        <a class="nav-link admin-buttons" id="player-btn" th:href="@{/admin/add-players}"
+                           aria-disabled="true">Add Players</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link admin-buttons" id="player-btn" th:href="@{/admin/add-matches}"
+                           aria-disabled="true">Add Matches</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link admin-buttons" id="player-btn" th:href="@{/statistics}"
+                           aria-disabled="true">Statistics</a>
                     </li>
                 </ul>
             </div>
 
-            <div class="col-sm-9" id="add-news-container">
-                <section class="title-section">
-                    <label class="title-label">Title:</label>
-                    <input class="form-control title-input" type="text">
-                </section>
-                <section class="description-section">
-                    <label class="description-label">Description:</label>
-                    <input class="form-control description-input" name="description"></input>
-                </section>
+            <form th:method="POST" th:action="@{/admin/add-news}" th:object="${adminAddNewsBindingModel}"
+                  class="col-sm-9" id="add-news-container">
+                <div>
+                    <section class="title-section">
+                        <label class="title-label">Title:</label>
+                        <input th:field="${adminAddNewsBindingModel.title}"
+                               th:errorclass="bg-danger"
+                               minlength="3"
+                               class="form-control title-input"
+                               type="text">
+                    </section>
+                </div>
+                <small th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="error-field"></small>
+                <div>
+                    <section class="description-section">
+                        <label class="description-label">Description:</label>
+                        <input th:field="${adminAddNewsBindingModel.description}"
+                               th:errorclass="bg-danger"
+                               minlength="10"
+                               class="form-control description-input"
+                               name="description"></input>
+                    </section>
+                </div>
+                <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+                       class="error-field"></small>
+                <div>
+                    <section class="description-section">
+                        <label class="description-label">Image URL:</label>
+                        <input th:field="${adminAddNewsBindingModel.imgUrl}"
+                               th:errorclass="bg-danger"
+                               minlength="3"
+                               class="form-control description-input"
+                               name="description"></input>
+                    </section>
+                </div>
+                <small th:if="${#fields.hasErrors('imgUrl')}" th:errors="*{imgUrl}" class="error-field"></small>
+                <div>
+                    <select th:field="${adminAddNewsBindingModel.team}" th:errorclass="bg-danger" class="form-select"
+                            aria-label="Default select example" style="margin-top: 25px; width: 95%;">
+                        <option value="" selected>Choose team</option>
+                        <option th:each="t : ${T(com.example.premierleague.models.entities.enums.TeamsEnum).values()}"
+                                th:value="${t}" th:text="${t}"></option>
+                    </select>
+                </div>
+                <small th:if="${#fields.hasErrors('team')}" th:errors="*{team}" class="error-field"></small>
                 <section class="submit-btn-section">
                     <button class="submit-btn-role">
                         Submit
                     </button>
                 </section>
                 </label>
-            </div>
+            </form>
         </div>
     </div>
 </main>
@@ -57,7 +104,9 @@
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--

@@ -1,78 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang='en'
+      xmlns:th='http://www.thymeleaf.org'
+      xmlns:sec='http://www.thymeleaf.org/extras/spring-security'>
 <head th:replace="fragments/commons::head">
 </head>
 <body style="background-image: url(/images/5fMwyh.jpg); background-size: cover; ">
-<header th:replace="fragments/commons::nav">
+<header th:replace="fragments/navigation::navigation"></header>
 </header>
 
 <main>
     <div class="container">
         <div class="row">
             <div id="team-info-space" class="col-sm-12">
-                <h1  class="display-5 statistics-title">Last 10 matches for your favourite team</h1>
+                <h1 class="display-5 statistics-title">Last 5 matches for your favourite team</h1>
                 <div class="row">
                     <table>
-                        <tr class="tr-for-statistics">
-                            <td class="statistics date-for-statistics"><p>18.05.2021</p></td>
-                            <td id="specific" class="statistics"><p><img class="logo-for-statistics" src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt=""> CHELSEA</p></td>
-                            <td class="statistics"><p>2:1</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/leicester/leicester-city-logo-1.png" alt=""> LEICESTER</p></td>
-                        </tr>
-
-                        <tr class="tr-for-statistics">
-                            <td class="statistics"><p>12.05.2021</p></td>
-                            <td id="specific" class="statistics"><p><img class="logo-for-statistics" src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt=""> CHELSEA</p></td>
-                            <td class="statistics"><p>0:1</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/arsenal/Arsenal-logo-escudo-shield-1.png" alt=""> ARSENAL</p></td>
-                        </tr>
-                        <tr class="tr-for-statistics">
-                            <td class="statistics"><p>08.05.2021</p></td>
-                            <td id="specific" class="statistics"><p><img class="logo-for-statistics" src="/images/man city/manchester-city-fc-logo-escudo-badge-3.png" alt=""> MAN CITY</p></td>
-                            <td class="statistics"><p>1:2</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt=""> CHELSEA</p></td>
-                        </tr>
-                        <tr class="tr-for-statistics">
-                            <td class="statistics"><p>01.05.2021</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt=""> CHELSEA</p></td>
-                            <td class="statistics"><p>2:0</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/fulham/fulham-fc-logo-vector.svg" alt=""> FULHAM</p></td>
-                        </tr>
-                        <tr class="tr-for-statistics">
-                            <td class="statistics"><p>24.04.2021</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/west ham/west-ham-united-fc-logo.png" alt=""> WEST HAM</p></td>
-                            <td class="statistics"><p>0:1</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt=""> CHELSEA</p></td>
-                        </tr>
-                        <tr class="tr-for-statistics">
-                            <td class="statistics"><p>20.04.2021</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt=""> CHELSEA</p></td>
-                            <td class="statistics"><p>0:0</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/brighton/brighton-hove-albion-logo-1.png" alt=""> BRIGHTON</p></td>
-                        </tr>
-                        <tr class="tr-for-statistics">
-                            <td class="statistics"><p>18.05.2021</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt=""> CHELSEA</p></td>
-                            <td class="statistics"><p>2:1</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/leicester/leicester-city-logo-1.png" alt=""> LEICESTER</p></td>
-                        </tr>
-                        <tr class="tr-for-statistics">
-                            <td class="statistics"><p>10.04.2021</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/crystal palace/Crystal_Palace_FC_logo.png" alt=""> CRYSTAL PALACE</p></td>
-                            <td class="statistics"><p>1:4</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt=""> CHELSEA</p></td>
-                        </tr>
-                        <tr class="tr-for-statistics">
-                            <td class="statistics"><p>03.04.2021</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt=""> CHELSEA</p></td>
-                            <td class="statistics"><p>2:5</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/west brom/West-Bromwich-Albion-FC-HD-Logo.png" alt=""> WEST BROM</p></td>
-                        </tr>
-                        <tr>
-                            <td class="statistics"><p>13.03.2021</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/leeds/610-6108355_leeds-united-afc-logo-png-transparent-leeds-united.png" alt=""> LEEDS</p></td>
-                            <td class="statistics"><p>0:0</p></td>
-                            <td class="statistics"><p><img class="logo-for-statistics" src="/images/chelsea/chelsea-fc-2-logo-png-transparent.png" alt=""> CHELSEA</p></td>
+                        <tr th:each="g : ${games}" class="tr-for-statistics">
+                            <td class="statistics date-for-statistics"><p th:text="${g.getDate()}"></p></td>
+                            <td id="specific" class="statistics"><p><img class="logo-for-statistics"
+                                                                         th:src="${g.getHomeTeam().logoUrl}"
+                                                                         alt=""><span
+                                    th:text="${g.homeTeam.name}"></span></p></td>
+                            <td class="statistics"><p th:text="${g.result}">2:1</p></td>
+                            <td class="statistics"><p><img class="logo-for-statistics"
+                                                           th:src="${g.getAwayTeam().logoUrl}" alt=""><span
+                                    th:text="${g.awayTeam.name}"></span></p></td>
+                            <td sec:authorize="principal.authorities.size() == 2" class="statistics">
+                                <form th:method="DELETE" th:action="@{/teams/statistics/{id}(id=*{id})}"
+                                      th:object="${g}">
+                                    <button style="padding-bottom: 5px; padding-top: 5px; margin-right: 10px;"
+                                            class="delete-btn">Delete
+                                    </button>
+                                </form>
+                            </td>
                         </tr>
                     </table>
                 </div>
@@ -86,7 +46,9 @@
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+        crossorigin="anonymous"></script>
 
 <!-- Option 2: Separate Popper and Bootstrap JS -->
 <!--

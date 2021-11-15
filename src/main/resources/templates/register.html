@@ -6,7 +6,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"
+            <a class="navbar-brand" th:href="@{/}"
             ><img class="pl-lion" src="/images/PL-Lion.png" alt=""
             /></a>
         </div>
@@ -16,13 +16,24 @@
 <main>
     <form class="register-form" th:action="@{/users/register}" method="POST" th:object="${userRegisterBindingModel}">
         <h1 class="register-title">Register</h1>
+
+        <p style="margin-top: 20px; margin-bottom: 20px" th:if="${notEqualPasswords}" class="errors alert alert-danger">
+            Password and confirm password don't match.
+        </p>
+
+        <p style="margin-top: 20px; margin-bottom: 20px" th:if="${invalidUsername}" class="errors alert alert-danger">
+            This username is already in use.
+        </p>
+
         <div class="input-container">
             <i class="fa fa-user icon"></i>
             <input th:field="${userRegisterBindingModel.username}" th:errorclass="bg-danger"
-                    class="input-field"
-                    type="text"
-                    placeholder="Username"
-                    name="usrnm"
+                   minlength="3"
+                   maxlength="20"
+                   class="input-field"
+                   type="text"
+                   placeholder="Username"
+                   name="username"
             />
         </div>
         <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-field"></small>
@@ -30,10 +41,11 @@
         <div class="input-container">
             <i class="fa fa-envelope icon"></i>
             <input th:field="${userRegisterBindingModel.email}" th:errorclass="bg-danger"
-                    class="input-field"
-                    type="text"
-                    placeholder="Email"
-                    name="email"
+                   minlength="1"
+                   class="input-field"
+                   type="text"
+                   placeholder="Email"
+                   name="email"
             />
         </div>
         <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error-field"></small>
@@ -41,10 +53,12 @@
         <div class="input-container">
             <i class="fa fa-key icon"></i>
             <input th:field="${userRegisterBindingModel.password}" th:errorclass="bg-danger"
-                    class="input-field"
-                    type="password"
-                    placeholder="Password"
-                    name="password"
+                   minlength="5"
+                   maxlength="30"
+                   class="input-field"
+                   type="password"
+                   placeholder="Password"
+                   name="password"
             />
         </div>
         <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-field"></small>
@@ -52,28 +66,37 @@
         <div class="input-container">
             <i class="fa fa-key icon"></i>
             <input th:field="${userRegisterBindingModel.confirmPassword}" th:errorclass="bg-danger"
-                    class="input-field"
-                    type="password"
-                    placeholder="Confirm Password"
-                    name="confirm password"
+                   minlength="5"
+                   maxlength="30"
+                   class="input-field"
+                   type="password"
+                   placeholder="Confirm Password"
+                   name="confirm password"
             />
         </div>
-        <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="error-field"></small>
+        <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"
+               class="error-field"></small>
 
         <div>
-            <select th:field="${userRegisterBindingModel.gender}" th:errorclass="bg-danger" class="form-select" aria-label="Default select example">
+            <select th:field="${userRegisterBindingModel.gender}" th:errorclass="bg-danger" class="form-select"
+                    aria-label="Default select example">
                 <option value="" selected>Choose your gender</option>
-                <option th:each="g : ${T(com.example.premierleague.models.entities.enums.GenderEnum).values()}" th:value="${g}" th:text="${g}" ></option>
+                <option th:each="g : ${T(com.example.premierleague.models.entities.enums.GenderEnum).values()}"
+                        th:value="${g}" th:text="${g}"></option>
             </select>
             <small th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}" class="error-field"></small>
         </div>
         <div class="form-group select-form">
-            <select th:field="${userRegisterBindingModel.favouriteTeam}" th:errorclass="bg-danger" class="form-select" aria-label="Default select example">
+            <select th:field="${userRegisterBindingModel.favouriteTeam}" th:errorclass="bg-danger" class="form-select"
+                    aria-label="Default select example">
                 <option value="" selected>Choose your favourite team</option>
-                <option th:each="t : ${T(com.example.premierleague.models.entities.enums.TeamsEnum).values()}" th:value="${t}" th:text="${t}"></option>
+                <option th:each="t : ${T(com.example.premierleague.models.entities.enums.TeamsEnum).values()}"
+                        th:value="${t}" th:text="${t}"></option>
             </select>
-            <small th:if="${#fields.hasErrors('favouriteTeam')}" th:errors="*{favouriteTeam}" class="error-field"></small>
+            <small th:if="${#fields.hasErrors('favouriteTeam')}" th:errors="*{favouriteTeam}"
+                   class="error-field"></small>
         </div>
+
         <p class="register-description">
             If you already have an account, <a href="/users/login">login</a>.
         </p>

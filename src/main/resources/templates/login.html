@@ -6,7 +6,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/index.html"
+            <a class="navbar-brand" th:href="@{/}"
             ><img class="pl-lion" src="/images/PL-Lion.png" alt=""
             /></a>
         </div>
@@ -14,36 +14,38 @@
 </header>
 
 <main>
-    <form th:action="@{/users/login}" method="POST" th:object="${userLoginBindingModel}" class="login-form">
+    <form th:action="@{/users/login}" method="POST" class="login-form">
         <h1 class="login-title">Login</h1>
         <div class="input-container">
             <i class="fa fa-user icon"></i>
             <input
-                    th:field="${userLoginBindingModel.username}"
-                    th:errorclass="bg-danger"
+                    minlength="3"
+                    maxlength="20"
                     class="input-field"
                     type="text"
                     placeholder="Username"
-                    name="usrnm"
+                    name="username"
             />
         </div>
-        <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="error-field"></small>
 
         <div class="input-container">
             <i class="fa fa-key icon"></i>
             <input
-                    th:field="${userLoginBindingModel.password}"
-                    th:errorclass="bg-danger"
                     class="input-field"
+                    minlength="5"
+                    maxlength="30"
                     type="password"
                     placeholder="Password"
-                    name="psw"
+                    name="password"
             />
         </div>
-        <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="error-field"></small>
+
+        <p th:if="${bad_credentials}" class="errors alert alert-danger">
+            Invalid username or password.
+        </p>
 
         <p class="login-description">
-            If you don't have an account, <a href="/register.html">sign up</a>.
+            If you don't have an account, <a href="/users/register">sign up</a>.
         </p>
 
         <button type="submit" class="btn btn-default bg-dark login-btn">

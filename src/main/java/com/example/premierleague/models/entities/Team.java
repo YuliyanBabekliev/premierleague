@@ -13,6 +13,7 @@ public class Team extends BaseEntity{
     private Integer goalDifference;
     private Integer points;
     private Stadium stadium;
+    private Integer position;
     private Set<Player> players;
     private Set<News> news;
     private Set<Game> games;
@@ -63,7 +64,7 @@ public class Team extends BaseEntity{
         this.players = players;
     }
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "team")
     public Set<News> getNews() {
         return news;
     }
@@ -106,5 +107,13 @@ public class Team extends BaseEntity{
 
     public void setPoints(Integer points) {
         this.points = points;
+    }
+
+    public Integer getPosition() {
+        return position;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
     }
 }
