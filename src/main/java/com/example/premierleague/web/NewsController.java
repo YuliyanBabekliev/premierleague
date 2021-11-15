@@ -57,6 +57,11 @@ public class NewsController {
         return "news-details";
     }
 
+    @GetMapping("/error/{id}")
+    public String error(@PathVariable Long id){
+        throw new NullPointerException();
+    }
+
     @GetMapping("/edit/{id}")
     public String editNews(@PathVariable Long id, Model model){
         NewsDetailsView newsDetailsView = this.modelMapper.map(this.newsService.findNewsById(id), NewsDetailsView.class);
