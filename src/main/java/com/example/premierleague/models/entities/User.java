@@ -15,6 +15,7 @@ public class User extends BaseEntity{
     private Team favouriteTeam;
     private boolean isEnabled;
     private boolean active;
+    private Picture picture;
     private Set<Role> roles;
     private Set<News> news;
 
@@ -95,5 +96,14 @@ public class User extends BaseEntity{
 
     public void setNews(Set<News> news) {
         this.news = news;
+    }
+
+    @OneToOne
+    public Picture getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Picture picture) {
+        this.picture = picture;
     }
 }

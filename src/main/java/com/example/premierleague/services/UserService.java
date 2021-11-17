@@ -1,5 +1,6 @@
 package com.example.premierleague.services;
 
+import com.example.premierleague.models.entities.Picture;
 import com.example.premierleague.models.entities.User;
 import com.example.premierleague.models.service.UserServiceModel;
 import com.example.premierleague.models.view.UserProfileViewModel;
@@ -20,4 +21,6 @@ public interface UserService {
     void setUserAdminRole(User user);
 
     void setUserRole(User user);
+
+    void editUserProfileImage(User user, Picture picture);
 }

@@ -1,5 +1,6 @@
 package com.example.premierleague.models.view;
 
+import com.example.premierleague.models.entities.Picture;
 import com.example.premierleague.models.entities.Role;
 
 import java.util.Set;
@@ -10,6 +11,7 @@ public class UserProfileViewModel {
     private String gender;
     private String favouriteTeam;
     private String role;
+    private Picture picture;
 
     public String getUsername() {
         return username;
@@ -49,5 +51,13 @@ public class UserProfileViewModel {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Picture getPicture() {
+        return picture;
+    }
+
+    public void setPicture(Picture picture) {
+        this.picture = picture;
     }
 }

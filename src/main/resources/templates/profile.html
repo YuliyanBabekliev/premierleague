@@ -11,18 +11,27 @@
         <div class="row">
             <div id="team-info-space" class="col-sm-12">
                 <h1 class="display-5 profile-title">Profile</h1>
-                <div class="row user-img-and-info">
-                    <div id="team-info-space" class="col-sm-6">
+                <div th:object="${user}" class="row user-img-and-info">
+                    <div th:if="${user.picture == null}" id="team-info-space" class="col-sm-6">
                         <img class="user-img" src="/images/male.png" alt="">
                     </div>
 
-                    <div th:object="${user}" id="user-info-space" class="col-sm-6">
+                    <div th:if="${user.picture}" id="team-info-space" class="col-sm-6">
+                        <img class="user-img" th:src="${user.picture.getUrl()}" alt="">
+                    </div>
+
+                    <div id="user-info-space" class="col-sm-6">
                         <p th:text="|Username: ${user.username}|" class="user-info"></p>
                         <p th:text="|Email: ${user.email}|" class="user-info"></p>
                         <p th:text="|Gender: ${user.gender}|" class="user-info"></p>
                         <p th:text="|Favourite team: ${user.favouriteTeam}|" class="user-info"></p>
                         <p th:text="|Role: ${user.role}|" class="user-info"></p>
-                        <button>Upload profile picture</button>
+                        <form th:method="POST" th:action="@{/users/profile/add-picture}"
+                        enctype="multipart/form-data">
+                            <input type="text" name="title"/>
+                            <input name="picture" type="file" value="Choose file"/>
+                            <input class="pic-choose" style="border-radius: 10px; padding: 5px;" type="submit" value="Submit"/>
+                        </form>
                     </div>
                 </div>
             </div>
