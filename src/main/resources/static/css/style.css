@@ -732,6 +732,68 @@ table{
     margin: 10px auto;
 }
 
+.user-photo-container img {
+    width: 150px;
+    height: 150px;
+}
+
+.user-comments {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 30px;
+    word-break: break-all;
+    background-color: white;
+    color: black;
+}
+.user-comments h1 {
+    text-align: center;
+    text-decoration: underline;
+}
+
+.user-comment {
+    display: flex;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.date {
+    text-align: right;
+    font-weight: bolder;
+}
+
+.comment-container {
+    width: 100%;
+}
+
+.add-comment {
+    text-align: center;
+}
+.comment-title {
+    text-align: center;
+}
+.type-comment {
+    width: 70%;
+    margin: 0 auto;
+}
+
+.comment-btn {
+    background-color: rgb(60, 60, 60);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 5px 10px;
+    margin-left: 10px;
+    font-weight: bolder;
+}
+
+.comment-btn:hover {
+    cursor: pointer;
+}
+
 footer {
     margin-top: auto;
     color: white;

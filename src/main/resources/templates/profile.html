@@ -13,7 +13,8 @@
                 <h1 class="display-5 profile-title">Profile</h1>
                 <div th:object="${user}" class="row user-img-and-info">
                     <div th:if="${user.picture == null}" id="team-info-space" class="col-sm-6">
-                        <img class="user-img" src="/images/male.png" alt="">
+                        <img th:if="${user.gender == 'Male'}" class="user-img" src="/images/male-icon.png" alt="">
+                        <img th:if="${user.gender == 'Female'}" class="user-img" src="/images/female-icon.png" alt="">
                     </div>
 
                     <div th:if="${user.picture}" id="team-info-space" class="col-sm-6">

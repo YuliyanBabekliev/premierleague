@@ -12,11 +12,12 @@
     <div class="container">
         <div class="row">
             <div th:object="${news}" class="col-sm-8 news-details-container">
+                <input type="hidden" name="newsId" id="newsId" th:value="${news.id}">
                 <h1 th:text="${news.title}" id="news-title"></h1>
                 <img class="news-details-photo" th:src="${news.imgUrl}" alt="">
                 <p th:text="${news.description}" id="news-description"><span class="blue-colored-news"></span>
                 </p>
-                <p th:text="|Added by ${news.getUser().username} : ${#temporals.format(news.addedOn, 'yyyy-MM-dd HH:mm')}|"
+                <p th:text="|Added by: ${news.getUser().username}- ${#temporals.format(news.addedOn, 'yyyy-MM-dd HH:mm')}|"
                    id="added-by">
                 </p>
                 <div sec:authorize="principal.authorities.size() == 2"
@@ -25,6 +26,37 @@
                     <form th:method="DELETE" th:action="@{/news/details/{id}(id=*{id})}">
                         <button class="delete-btn">Delete</button>
                     </form>
+                </div>
+                <div class="user-comments">
+                    <h1>Comments</h1>
+                    <section class="comments-container" id="comments-container">
+                        <div class="user-comment" id="user-comment">
+                            <div class="user-photo-container">
+                                <img src="" alt="" />
+                            </div>
+                            <div class="comment-container">
+                                <h3></h3>
+                                <p>
+
+                                </p>
+                                <p class="date" style="text-align: right">
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="add-comment">
+                        <h3 class="comment-title">Write your comment here:</h3>
+                        <form>
+                            <input
+                                    type="text"
+                                    name="comment"
+                                    id="comment"
+                                    required
+                            />
+                            <button class="comment-btn">Add comment</button>
+                        </form>
+                    </section>
                 </div>
             </div>
             <div class="col-sm-4 home-table-container">
@@ -61,7 +93,7 @@
 
 
 <footer>&copy; Copyright 2021</footer>
-
+<script th:src="@{/js/comments.js}"></script>
 <!-- Optional JavaScript; choose one of the two! -->
 
 <!-- Option 1: Bootstrap Bundle with Popper -->

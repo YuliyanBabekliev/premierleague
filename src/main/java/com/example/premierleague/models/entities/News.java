@@ -2,6 +2,7 @@ package com.example.premierleague.models.entities;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Table(name = "news")
@@ -12,6 +13,7 @@ public class News extends BaseEntity{
     private LocalDateTime addedOn;
     private User user;
     private Team team;
+    private Set<Comment> comments;
 
     @Column(name = "title")
     public String getTitle() {
@@ -65,5 +67,14 @@ public class News extends BaseEntity{
 
     public void setTeam(Team team) {
         this.team = team;
+    }
+
+    @OneToMany(mappedBy = "news", fetch = FetchType.LAZY)
+    public Set<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }

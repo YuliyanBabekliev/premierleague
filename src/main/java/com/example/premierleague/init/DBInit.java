@@ -1,5 +1,6 @@
 package com.example.premierleague.init;
 
+import com.example.premierleague.init.comments.CommentsInit;
 import com.example.premierleague.init.games.GamesInit;
 import com.example.premierleague.init.news.NewsInit;
 import com.example.premierleague.init.players.*;
@@ -39,8 +40,9 @@ public class DBInit implements CommandLineRunner {
     private final AdminUserDbInit userInit;
     private final NewsInit newsInit;
     private final GamesInit gamesInit;
+    private final CommentsInit commentsInit;
 
-    public DBInit(StadiumsInit stadiumsInit, TeamsInit teamsInit, ArsenalPlayersInit arsenalPlayersInit, AstonVillaPlayersInit astonVillaPlayersInit, BrentfordPlayersInit brentfordPlayersInit, BrightonPlayersInit brightonPlayersInit, BurnleyPlayersInit burnleyPlayersInit, ChelseaPlayersInit chelseaPlayersInit, CrystalPalacePlayersInit crystalPalacePlayersInit, EvertonPlayersInit evertonPlayersInit, LeedsPlayersInit leedsPlayersInit, LeicesterPlayersInit leicesterPlayersInit, LiverpoolPlayersInit liverpoolPlayersInit, ManchesterCityPlayersInit manchesterCityPlayersInit, ManchesterUnitedPlayersInit manchesterUnitedPlayersInit, NewcastlePlayersInit newcastlePlayersInit, NorwichPlayersInit norwichPlayersInit, SouthamptonPlayersInit southamptonPlayersInit, TottenhamPlayersInit tottenhamPlayersInit, WatfordPlayersInit watfordPlayersInit, WestHamUnitedPlayersInit westHamUnitedPlayersInit, WolverhamptonPlayersInit wolverhamptonPlayersInit, RolesInit rolesInit, AdminUserDbInit userInit, NewsInit newsInit, GamesInit gamesInit) {
+    public DBInit(StadiumsInit stadiumsInit, TeamsInit teamsInit, ArsenalPlayersInit arsenalPlayersInit, AstonVillaPlayersInit astonVillaPlayersInit, BrentfordPlayersInit brentfordPlayersInit, BrightonPlayersInit brightonPlayersInit, BurnleyPlayersInit burnleyPlayersInit, ChelseaPlayersInit chelseaPlayersInit, CrystalPalacePlayersInit crystalPalacePlayersInit, EvertonPlayersInit evertonPlayersInit, LeedsPlayersInit leedsPlayersInit, LeicesterPlayersInit leicesterPlayersInit, LiverpoolPlayersInit liverpoolPlayersInit, ManchesterCityPlayersInit manchesterCityPlayersInit, ManchesterUnitedPlayersInit manchesterUnitedPlayersInit, NewcastlePlayersInit newcastlePlayersInit, NorwichPlayersInit norwichPlayersInit, SouthamptonPlayersInit southamptonPlayersInit, TottenhamPlayersInit tottenhamPlayersInit, WatfordPlayersInit watfordPlayersInit, WestHamUnitedPlayersInit westHamUnitedPlayersInit, WolverhamptonPlayersInit wolverhamptonPlayersInit, RolesInit rolesInit, AdminUserDbInit userInit, NewsInit newsInit, GamesInit gamesInit, CommentsInit commentsInit) {
         this.stadiumsInit = stadiumsInit;
         this.teamsInit = teamsInit;
         this.arsenalPlayersInit = arsenalPlayersInit;
@@ -67,6 +69,7 @@ public class DBInit implements CommandLineRunner {
         this.userInit = userInit;
         this.newsInit = newsInit;
         this.gamesInit = gamesInit;
+        this.commentsInit = commentsInit;
     }
 
     @Override
@@ -97,5 +100,6 @@ public class DBInit implements CommandLineRunner {
         this.userInit.initAdmin();
         this.newsInit.initNews();
         this.gamesInit.initGames();
+        this.commentsInit.initComments();
     }
 }
