@@ -47,7 +47,7 @@ public class NewsServiceImpl implements NewsService {
             team = teamCurrent;
             break;
         }
-        return this.newsRepository.findByTeamOrderByAddedOn(team);
+        return this.newsRepository.findByTeamOrderByAddedOnDesc(team);
     }
 
     @Override

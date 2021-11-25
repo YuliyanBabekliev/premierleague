@@ -10,5 +10,5 @@ import java.util.Set;
 @Repository
 public interface NewsRepository extends JpaRepository<News, Long> {
 
-    Set<News> findByTeamOrderByAddedOn(Team team);
+    Set<News> findByTeamOrderByAddedOnDesc(Team team);
 }
