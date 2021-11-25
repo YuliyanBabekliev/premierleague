@@ -19,4 +19,6 @@ public interface NewsService {
     void deleteNewsConfirm(Long id);
 
     void updateNews(NewsServiceModel serviceModel);
+
+    Long newsCount();
 }

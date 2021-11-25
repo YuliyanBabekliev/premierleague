@@ -13,6 +13,7 @@ import com.example.premierleague.services.CloudinaryService;
 import com.example.premierleague.services.TeamService;
 import com.example.premierleague.services.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -22,9 +23,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Logger;
 
 @Service
 public class UserServiceImpl implements UserService {
+    static final Logger LOGGER = Logger.getLogger(UserServiceImpl.class.getName());
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final TeamService teamService;
@@ -116,15 +119,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void editUserProfileImage(User user, Picture picture) {
-        if(user.getPicture() == null){
             user.setPicture(picture);
             this.userRepository.saveAndFlush(user);
-        }
-        if(user.getPicture() != null){
-            Picture picture1 = user.getPicture();
-            user.setPicture(picture);
-            this.userRepository.saveAndFlush(user);
-            this.cloudinaryService.delete(picture1.getPublicID());
-        }
+    }
+
+    @Override
+    public Long getUsersCount() {
+        return this.userRepository.count();
     }
 }

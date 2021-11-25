@@ -23,4 +23,6 @@ public interface UserService {
     void setUserRole(User user);
 
     void editUserProfileImage(User user, Picture picture);
+
+    Long getUsersCount();
 }

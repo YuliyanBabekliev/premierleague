@@ -8,6 +8,7 @@ import com.example.premierleague.repositories.NewsRepository;
 import com.example.premierleague.services.NewsService;
 import com.example.premierleague.services.TeamService;
 import org.modelmapper.ModelMapper;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -80,5 +81,10 @@ public class NewsServiceImpl implements NewsService {
         news.setAddedOn(LocalDateTime.now());
 
         this.newsRepository.save(news);
+    }
+
+    @Override
+    public Long newsCount() {
+        return this.newsRepository.count();
     }
 }
