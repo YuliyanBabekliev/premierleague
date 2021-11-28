@@ -47,7 +47,7 @@
 
                     <section class="add-comment">
                         <h3 class="comment-title">Write your comment here:</h3>
-                        <form>
+                        <form th:method="POST" th:action="@{/api/v1/${id}/comments(id=*{id})}">
                             <input
                                     type="text"
                                     name="comment"

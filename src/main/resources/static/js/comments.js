@@ -36,3 +36,22 @@ then(data => {
     }
     displayComments(allComments)
 })
+
+let _data = {
+    "id":1,
+    "commentText":"Awesome!",
+    "date":"2021-11-24T21:52:38.58734",
+    "imgUrl":"http://res.cloudinary.com/dydzfzrhz/image/upload/v1638095142/ja8en2jcykfstxziazhp.jpg",
+    "user":"admin"
+}
+
+
+
+// fetch(`http://localhost:8080/api/v1/${newsId}/comments`, {
+//     method: "POST",
+//     body: JSON.stringify(_data),
+//     headers: {"Content-type": "application/json; charset=UTF-8"}
+// })
+//     .then(response => response.json())
+//     .then(json => console.log(json))
+// .catch(err => console.log(err));

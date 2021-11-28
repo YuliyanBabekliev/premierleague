@@ -1,31 +1,32 @@
 package com.example.premierleague.services.impl;
 
 import com.example.premierleague.models.entities.Comment;
-import com.example.premierleague.models.entities.User;
 import com.example.premierleague.models.service.CommentServiceModel;
 import com.example.premierleague.models.view.CommentViewModel;
 import com.example.premierleague.repositories.CommentRepository;
 import com.example.premierleague.services.CommentService;
+import com.example.premierleague.services.NewsService;
 import com.example.premierleague.services.UserService;
 import org.modelmapper.ModelMapper;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class CommentServiceImpl implements CommentService {
     private final CommentRepository commentRepository;
     private final ModelMapper modelMapper;
     private final UserService userService;
+    private final NewsService newsService;
 
-    public CommentServiceImpl(CommentRepository commentRepository, ModelMapper modelMapper, UserService userService) {
+    public CommentServiceImpl(CommentRepository commentRepository, ModelMapper modelMapper, UserService userService, NewsService newsService) {
         this.commentRepository = commentRepository;
         this.modelMapper = modelMapper;
         this.userService = userService;
+        this.newsService = newsService;
     }
 
     @Override
@@ -51,14 +52,33 @@ public class CommentServiceImpl implements CommentService {
     }
 
     @Override
-    public Comment addComment(CommentServiceModel commentServiceModel) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
-        User user = this.userService.findUserByUsername(username);
-        Comment comment = this.modelMapper.map(commentServiceModel, Comment.class);
-        comment.setUser(user);
-        comment.setDate(LocalDateTime.now());
-        //TODO
-        return comment;
+    public CommentViewModel addComment(CommentServiceModel commentServiceModel) {
+        Objects.requireNonNull(commentServiceModel.getUser());
+
+        var news = this.newsService.findNewsById(commentServiceModel.getNews().getId());
+        var author = this.userService.findUserByUsername(commentServiceModel
+                .getUser().getUsername());
+
+        Comment newComment = new Comment();
+        newComment.setDate(LocalDateTime.now());
+        newComment.setCommentText(commentServiceModel.getCommentText());
+        newComment.setUser(author);
+        newComment.setNews(news);
+
+        Comment savedComment = this.commentRepository.save(newComment);
+
+        return mapAsComment(savedComment);
+    }
+
+    private CommentViewModel mapAsComment(Comment commentEntity) {
+        CommentViewModel commentViewModel = new CommentViewModel();
+
+        commentViewModel.setId(commentEntity.getId());
+        commentViewModel.setCommentText(commentEntity.getCommentText());
+        commentViewModel.setDate(commentEntity.getDate());
+        commentViewModel.setUser(commentEntity.getUser().getUsername());
+        commentViewModel.setImgUrl(commentEntity.getUser().getPicture().getUrl());
+
+        return commentViewModel;
     }
 }

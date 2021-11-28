@@ -10,5 +10,5 @@ import java.util.List;
 public interface CommentService {
     List<CommentViewModel> getComments(Long newsId);
 
-    Comment addComment(CommentServiceModel commentServiceModel);
+    CommentViewModel addComment(CommentServiceModel commentServiceModel);
 }

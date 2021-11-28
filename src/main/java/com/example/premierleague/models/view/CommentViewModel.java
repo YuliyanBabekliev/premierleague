@@ -3,10 +3,19 @@ package com.example.premierleague.models.view;
 import java.time.LocalDateTime;
 
 public class CommentViewModel {
+    private Long id;
     private String commentText;
     private LocalDateTime date;
     private String imgUrl;
     private String user;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCommentText() {
         return commentText;
