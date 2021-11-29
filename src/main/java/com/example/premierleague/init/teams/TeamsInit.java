@@ -207,7 +207,7 @@ public class TeamsInit {
 
             team17.setName("Tottenham");
             team17.setDescription("Tottenham Hotspur Football Club, commonly referred to as Tottenham (/ˈtɒtənəm/)[2][3] or Spurs, is an English professional football club based in Tottenham, London, that competes in the Premier League, the top flight of English football. The team has played its home matches in the 62,850-capacity Tottenham Hotspur Stadium since April 2019, replacing their former home of White Hart Lane, which had been demolished to make way for the new stadium on the same site.");
-            team17.setLogoUrl("http://assets.stickpng.com/images/580b57fcd9996e24bc43c4ee.png");
+            team17.setLogoUrl("https://brandlogos.net/wp-content/uploads/2020/11/tottenham-hotspur-logo.png");
             Stadium stadium17 = this.stadiumRepository.getById(Long.parseLong("17"));
             team17.setStadium(stadium17);
             team17.setPlayed(8);
