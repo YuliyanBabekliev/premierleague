@@ -47,13 +47,19 @@
 
                     <section class="add-comment">
                         <h3 class="comment-title">Write your comment here:</h3>
-                        <form th:method="POST" th:action="@{/api/v1/${id}/comments(id=*{id})}">
-                            <input
-                                    type="text"
-                                    name="comment"
-                                    id="comment"
-                                    required
-                            />
+                        <form id="commentForm" th:method="POST" th:action="@{/api/v1/{id}/comments(id=*{id})}">
+                            <div class="form-group">
+                                <label for="commentText">Message</label>
+                                <textarea name="commentText"
+                                          id="commentText"
+                                          cols="30"
+                                          rows="5"
+                                          class="form-control"
+                                          style="background-color: white;"></textarea>
+                                <small id="messageError" class="invalid-feedback">
+                                    Message should be at least 10 characters.
+                                </small>
+                            </div>
                             <button class="comment-btn">Add comment</button>
                         </form>
                     </section>

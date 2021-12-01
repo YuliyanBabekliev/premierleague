@@ -36,8 +36,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class CommentRestControllerTest {
-    private static final String COMMENT_1 = "hey Spring is cool!";
-    private static final String COMMENT_2 = "Well... it is a bit trick sometimes... :(";
+    private static final String COMMENT_1 = "comment1......";
+    private static final String COMMENT_2 = "comment2......";
 
     @Autowired
     private MockMvc mockMvc;

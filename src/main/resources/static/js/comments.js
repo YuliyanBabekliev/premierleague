@@ -1,8 +1,14 @@
 const newsId = document.getElementById('newsId').value
 
+const csrfHeaderName = document.head.querySelector('[name="_csrf_header"]').content;
+const csrfHeaderValue = document.head.querySelector('[name="_csrf"]').content;
+
 const commentsContainer = document.getElementById('comments-container')
 
 const allComments = []
+
+const commentForm = document.getElementById('commentForm')
+commentForm.addEventListener("submit", handleCommentSubmit)
 
 const displayComments = (comments) => {
     commentsContainer.innerHTML = comments.map(
@@ -12,8 +18,68 @@ const displayComments = (comments) => {
     ).join('')
 }
 
+async function handleCommentSubmit(event) {
+    event.preventDefault();
+
+    const form = event.currentTarget;
+    const url = form.action;
+    const formData = new FormData(form);
+    console.log(Array.from(formData))
+
+    try {
+        const responseData = await postFormDataAsJson({url, formData});
+
+        commentsContainer.insertAdjacentHTML("afterbegin", asComment(responseData));
+
+        form.reset();
+    } catch (error) {
+
+        let errorObj = JSON.parse(error.message);
+
+        if (errorObj.fieldWithErrors) {
+            errorObj.fieldWithErrors.forEach(
+                e => {
+                    let elementWithError = document.getElementById(e);
+                    if (elementWithError) {
+                        elementWithError.classList.add("is-invalid");
+                    }
+                }
+
+            )
+        }
+
+    }
+    console.log('going to submit a comment!')
+}
+
+async function postFormDataAsJson({url, formData}) {
+
+    const plainFormData = Object.fromEntries(formData.entries());
+    const formDataAsJSONString = JSON.stringify(plainFormData);
+
+    const fetchOptions = {
+        method: "POST",
+        headers: {
+            [csrfHeaderName] : csrfHeaderValue,
+            "Content-Type" : "application/json",
+            "Accept" :"application/json"
+        },
+        body: formDataAsJSONString
+    }
+    const response = await fetch(url, fetchOptions);
+    console.log(response)
+
+    if (!response.ok) {
+        const errorMessage = await response.text();
+        throw new Error(errorMessage);
+    }
+
+    return response.json();
+}
+
 function asComment(c) {
     let commentHtml = `<div class="user-comment" id="user-comment">`
+
 
     commentHtml += `<div class="user-photo-container">
             <img src="${c.imgUrl}" alt="" />
@@ -36,22 +102,3 @@ then(data => {
     }
     displayComments(allComments)
 })
-
-let _data = {
-    "id":1,
-    "commentText":"Awesome!",
-    "date":"2021-11-24T21:52:38.58734",
-    "imgUrl":"http://res.cloudinary.com/dydzfzrhz/image/upload/v1638095142/ja8en2jcykfstxziazhp.jpg",
-    "user":"admin"
-}
-
-
-
-// fetch(`http://localhost:8080/api/v1/${newsId}/comments`, {
-//     method: "POST",
-//     body: JSON.stringify(_data),
-//     headers: {"Content-type": "application/json; charset=UTF-8"}
-// })
-//     .then(response => response.json())
-//     .then(json => console.log(json))
-// .catch(err => console.log(err));
