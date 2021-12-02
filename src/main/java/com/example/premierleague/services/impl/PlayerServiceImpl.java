@@ -16,12 +16,10 @@ import java.util.Set;
 @Service
 public class PlayerServiceImpl implements PlayerService {
     private final PlayerRepository playerRepository;
-    private final TeamService teamService;
     private final ModelMapper modelMapper;
 
-    public PlayerServiceImpl(PlayerRepository playerRepository, TeamService teamService, ModelMapper modelMapper) {
+    public PlayerServiceImpl(PlayerRepository playerRepository, ModelMapper modelMapper) {
         this.playerRepository = playerRepository;
-        this.teamService = teamService;
         this.modelMapper = modelMapper;
     }
 

@@ -45,6 +45,7 @@ public class ApplicationSecurityConfiguration extends WebSecurityConfigurerAdapt
                 logoutSuccessUrl("/").
                 invalidateHttpSession(true).
                 deleteCookies("JSESSIONID");
+
     }
 
     @Override
