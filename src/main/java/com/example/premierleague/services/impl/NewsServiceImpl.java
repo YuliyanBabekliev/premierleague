@@ -20,12 +20,10 @@ public class NewsServiceImpl implements NewsService {
 
     private final NewsRepository newsRepository;
     private final ModelMapper modelMapper;
-    private final TeamService teamService;
 
-    public NewsServiceImpl(NewsRepository newsRepository, ModelMapper modelMapper, TeamService teamService) {
+    public NewsServiceImpl(NewsRepository newsRepository, ModelMapper modelMapper) {
         this.newsRepository = newsRepository;
         this.modelMapper = modelMapper;
-        this.teamService = teamService;
     }
 
     @Override
@@ -52,7 +50,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public News findNewsById(Long id) {
-        return this.newsRepository.findById(id).orElse(null);
+        return this.newsRepository.getById(id);
     }
 
     @Override

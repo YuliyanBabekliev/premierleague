@@ -68,7 +68,7 @@ public class CloudinaryServiceImpl implements CloudinaryService {
     }
 
     @Override
-    public void savePictureInDB(Picture picture) {
-        this.pictureRepository.save(picture);
+    public Picture savePictureInDB(Picture picture) {
+        return this.pictureRepository.save(picture);
     }
 }

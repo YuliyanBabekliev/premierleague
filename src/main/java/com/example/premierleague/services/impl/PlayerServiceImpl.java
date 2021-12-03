@@ -38,8 +38,8 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public void addPlayer(PlayerServiceModel playerServiceModel) {
+    public Player addPlayer(PlayerServiceModel playerServiceModel) {
         Player player = this.modelMapper.map(playerServiceModel, Player.class);
-        this.playerRepository.save(player);
+        return playerRepository.save(player);
     }
 }

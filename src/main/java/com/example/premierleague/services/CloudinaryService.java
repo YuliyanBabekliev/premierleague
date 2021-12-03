@@ -11,5 +11,5 @@ public interface CloudinaryService {
 
     boolean delete(String publicId);
 
-    void savePictureInDB(Picture picture);
+    Picture savePictureInDB(Picture picture);
 }

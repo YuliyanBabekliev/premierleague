@@ -13,5 +13,5 @@ public interface PlayerService {
 
     PlayerViewModel findPlayerById(Long id);
 
-    void addPlayer(PlayerServiceModel playerServiceModel);
+    Player addPlayer(PlayerServiceModel playerServiceModel);
 }

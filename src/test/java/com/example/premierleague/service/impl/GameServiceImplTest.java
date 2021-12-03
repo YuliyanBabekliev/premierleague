@@ -78,13 +78,13 @@ public class GameServiceImplTest {
 //
 //        Assert.assertEquals(game1,);
 //    }
-
-      @Test
-      void testFindGamesByFavouriteTeam(){
-        serviceToTest.addGame(modelMapper.map(game1, GameServiceModel.class));
-        gameRepository.save(game1);
-          Team team = this.teamRepository.findByName("Chelsea");
-          List<GameViewModel> games = serviceToTest.findGamesByFavouriteTeam(team);
-          Assertions.assertEquals(1, games.size());
-      }
+//
+//      @Test
+//      void testFindGamesByFavouriteTeam(){
+//        serviceToTest.addGame(modelMapper.map(game1, GameServiceModel.class));
+//        gameRepository.save(game1);
+//          Team team = this.teamRepository.findByName("Chelsea");
+//          List<GameViewModel> games = serviceToTest.findGamesByFavouriteTeam(team);
+//          Assertions.assertEquals(1, games.size());
+//      }
 }
