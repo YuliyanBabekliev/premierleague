@@ -4,11 +4,10 @@ import com.example.premierleague.models.entities.News;
 import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.entities.User;
 import com.example.premierleague.models.service.NewsServiceModel;
+import com.example.premierleague.repositories.CommentRepository;
 import com.example.premierleague.repositories.NewsRepository;
 import com.example.premierleague.services.NewsService;
-import com.example.premierleague.services.TeamService;
 import org.modelmapper.ModelMapper;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -20,10 +19,12 @@ public class NewsServiceImpl implements NewsService {
 
     private final NewsRepository newsRepository;
     private final ModelMapper modelMapper;
+    private final CommentRepository commentRepository;
 
-    public NewsServiceImpl(NewsRepository newsRepository, ModelMapper modelMapper) {
+    public NewsServiceImpl(NewsRepository newsRepository, ModelMapper modelMapper, CommentRepository commentRepository) {
         this.newsRepository = newsRepository;
         this.modelMapper = modelMapper;
+        this.commentRepository = commentRepository;
     }
 
     @Override
@@ -50,7 +51,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public News findNewsById(Long id) {
-        return this.newsRepository.getById(id);
+        return this.newsRepository.findById(id).orElse(null);
     }
 
     @Override

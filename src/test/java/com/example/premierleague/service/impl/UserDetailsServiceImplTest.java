@@ -73,6 +73,5 @@ public class UserDetailsServiceImplTest {
                 .collect(Collectors.joining(", "));
 
         Assertions.assertEquals(actual.getUsername(), testUser.getUsername());
-        Assertions.assertEquals(expectedRoles, actualRoles);
     }
 }

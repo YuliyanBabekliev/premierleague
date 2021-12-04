@@ -1,6 +1,7 @@
 package com.example.premierleague.services.impl;
 
 import com.example.premierleague.models.entities.Comment;
+import com.example.premierleague.models.entities.News;
 import com.example.premierleague.models.service.CommentServiceModel;
 import com.example.premierleague.models.view.CommentViewModel;
 import com.example.premierleague.repositories.CommentRepository;
@@ -68,6 +69,11 @@ public class CommentServiceImpl implements CommentService {
         Comment savedComment = this.commentRepository.save(newComment);
 
         return mapAsComment(savedComment);
+    }
+
+    @Override
+    public void deleteCommentByNews(News news) {
+        this.commentRepository.deleteCommentByNews(news);
     }
 
     private CommentViewModel mapAsComment(Comment commentEntity) {

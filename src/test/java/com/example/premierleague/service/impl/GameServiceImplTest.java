@@ -71,6 +71,11 @@ public class GameServiceImplTest {
         game5.setResult("5:0");
     }
 
+    @Test
+    public void test(){
+
+    }
+
 //    void testAddGame(){
 //        serviceToTest.addGame(modelMapper.map(game1, GameServiceModel.class));
 //        Game game = new Game();

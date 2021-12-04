@@ -19,6 +19,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -94,6 +95,7 @@ public class NewsController {
         return "redirect:/news/details/" + id;
     }
 
+    @Transactional
     @DeleteMapping("/details/{id}")
     public String deleteNews(@PathVariable Long id){
         this.newsService.deleteNewsConfirm(id);

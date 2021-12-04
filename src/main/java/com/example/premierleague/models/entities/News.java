@@ -69,7 +69,7 @@ public class News extends BaseEntity{
         this.team = team;
     }
 
-    @OneToMany(mappedBy = "news", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "news", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     public Set<Comment> getComments() {
         return comments;
     }
