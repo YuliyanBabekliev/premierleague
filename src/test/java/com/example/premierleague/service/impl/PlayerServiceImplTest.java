@@ -45,22 +45,27 @@ public class PlayerServiceImplTest {
     @Mock
     private ModelMapper modelMapper;
 
-    @Autowired
     private PlayerServiceImpl serviceToTest;
     @Mock
     private TeamRepository teamRepository;
 
     private Player player;
 
+    private Team team;
+
     @BeforeEach
     void init(){
         serviceToTest = new PlayerServiceImpl(playerRepository, modelMapper);
+
+        team = new Team();
+
+        team.setName("Sheffield");
 
         player = new Player();
         player.setId(Long.parseLong("1"));
         player.setFirstName("yuliyan");
         player.setLastName("yuliyanov");
-        player.setClub(teamRepository.findByName("Chelsea"));
+        player.setClub(team);
         player.setNationality("Bulgarian");
         player.setPosition("Forward");
         player.setAge(22);
@@ -79,24 +84,47 @@ public class PlayerServiceImplTest {
         assertEquals(players.size(), 1);
     }
 
-//    @Test
-//    void testFindPlayerById(){
-//        when(this.playerRepository.getById(player.getId()))
-//                .thenReturn(player);
-//
-//        PlayerViewModel playerViewModel = this.serviceToTest.findPlayerById(player.getId());
-//
-//        assertNotNull(playerViewModel);
-////        assertEquals(this.modelMapper.map(playerViewModel, Player.class), player);
-//    }
-//
-//    @Test
-//    void testAddPlayer(){
-//        PlayerServiceModel playerServiceModel = this.modelMapper.map(player,PlayerServiceModel.class);
-//        serviceToTest.addPlayer(playerServiceModel);
-//        Assertions.assertEquals(1, serviceToTest.findPlayers(
-//                teamRepository.findByName("Chelsea"), "Forward"
-//        ).size());
-//    }
+    @Test
+    public void addPlayerTest(){
+        PlayerServiceModel playerServiceModel = new PlayerServiceModel();
+        playerServiceModel.setFirstName(this.player.getFirstName());
+        playerServiceModel.setLastName(this.player.getLastName());
+        playerServiceModel.setClub(this.player.getClub());
+        playerServiceModel.setNationality(this.player.getNationality());
+        playerServiceModel.setPosition(this.player.getPosition());
+        playerServiceModel.setAge(this.player.getAge());
+        playerServiceModel.setImgUrl(this.player.getImgUrl());
+
+        when(this.modelMapper.map(playerServiceModel, Player.class)).
+                thenReturn(this.player);
+        when(this.playerRepository.save(player)).
+                thenReturn(this.player);
+
+        Player actual = this.serviceToTest.addPlayer(playerServiceModel);
+
+        Assertions.assertEquals(actual.getFirstName(), this.player.getFirstName());
+    }
+    @Test
+    void testFindPlayerById(){
+        when(this.playerRepository.findById(player.getId()))
+                .thenReturn(Optional.of(player));
+
+        PlayerViewModel playerViewModel = new PlayerViewModel();
+        playerViewModel.setClub(this.player.getClub().getName());
+        playerViewModel.setNationality(this.player.getNationality());
+        playerViewModel.setAge(this.player.getAge());
+        playerViewModel.setPosition(this.player.getPosition());
+        playerViewModel.setFirstName(this.player.getFirstName());
+        playerViewModel.setLastName(this.player.getLastName());
+        playerViewModel.setImgUrl(this.player.getImgUrl());
+
+        when(this.modelMapper.map(this.player, PlayerViewModel.class)).
+                thenReturn(playerViewModel);
+
+        this.serviceToTest.findPlayerById(player.getId());
+
+        assertNotNull(playerViewModel);
+    }
+
 
 }

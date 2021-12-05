@@ -3,6 +3,7 @@ package com.example.premierleague.service.impl;
 import com.example.premierleague.models.entities.Game;
 import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.service.GameServiceModel;
+import com.example.premierleague.models.service.StatisticsServiceModel;
 import com.example.premierleague.models.view.GameViewModel;
 import com.example.premierleague.repositories.GameRepository;
 import com.example.premierleague.repositories.TeamRepository;
@@ -13,12 +14,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class GameServiceImplTest {
@@ -71,19 +76,19 @@ public class GameServiceImplTest {
         game5.setResult("5:0");
     }
 
-    @Test
-    public void test(){
-
-    }
-
+//    @Test
 //    void testAddGame(){
-//        serviceToTest.addGame(modelMapper.map(game1, GameServiceModel.class));
-//        Game game = new Game();
-//        game =  gameRepository.findByAwayTeamOrHomeTeam("Chelsea", "Arsenal").get();
+//        GameServiceModel testServiceModel = new GameServiceModel();
+//        testServiceModel.setHomeTeam(this.game1.getHomeTeam());
+//        testServiceModel.setAwayTeam(this.game1.getAwayTeam());
+//        testServiceModel.setDate(this.game1.getDate());
+//        testServiceModel.setResult(this.game1.getResult());
 //
-//        Assert.assertEquals(game1,);
+//        this.serviceToTest.addGame(testServiceModel);
+//
+//        Mockito.verify(this.gameRepository, Mockito.times(1)).save(this.game1);
 //    }
-//
+
 //      @Test
 //      void testFindGamesByFavouriteTeam(){
 //        serviceToTest.addGame(modelMapper.map(game1, GameServiceModel.class));
@@ -92,4 +97,11 @@ public class GameServiceImplTest {
 //          List<GameViewModel> games = serviceToTest.findGamesByFavouriteTeam(team);
 //          Assertions.assertEquals(1, games.size());
 //      }
+
+    @Test
+    public void testDeleteGame(){
+        int id = 1;
+        this.serviceToTest.deleteGameById((long) id);
+        Mockito.verify(this.gameRepository, times(1)).deleteById((long) id);
+    }
 }

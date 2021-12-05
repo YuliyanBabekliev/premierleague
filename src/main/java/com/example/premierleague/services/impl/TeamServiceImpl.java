@@ -51,7 +51,7 @@ public class TeamServiceImpl implements TeamService {
 
     @Override
     public Team findTeamById(Long id) {
-        return this.teamRepository.getById(id);
+        return this.teamRepository.findById(id).orElse(null);
     }
 
     @Override

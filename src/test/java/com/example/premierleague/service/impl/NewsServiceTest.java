@@ -2,6 +2,9 @@ package com.example.premierleague.service.impl;
 
 import com.example.premierleague.models.entities.News;
 import com.example.premierleague.models.entities.Team;
+import com.example.premierleague.models.entities.User;
+import com.example.premierleague.models.service.NewsServiceModel;
+import com.example.premierleague.models.service.StatisticsServiceModel;
 import com.example.premierleague.repositories.CommentRepository;
 import com.example.premierleague.repositories.NewsRepository;
 import com.example.premierleague.services.CommentService;
@@ -16,6 +19,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
@@ -27,6 +31,8 @@ public class NewsServiceTest {
     private News newsToTest;
 
     private Team team;
+
+    private User user;
 
     @Mock
     private ModelMapper modelMapper;
@@ -42,6 +48,11 @@ public class NewsServiceTest {
 
         this.team = new Team();
         team.setName("Sheffield");
+
+        this.user = new User();
+        user.setUsername("yuliyan");
+        user.setEmail("yuliyan@abv.bg");
+        user.setFavouriteTeam(this.team);
 
         this.newsToTest = new News();
         this.newsToTest.setId(Long.parseLong("1"));
@@ -59,24 +70,49 @@ public class NewsServiceTest {
         Mockito.verify(this.newsRepository, times(1)).deleteById((long) id);
     }
 
-//    @Test
-//    public void findNewsByIdTest(){
-//        when(this.newsRepository.getById(newsToTest.getId())).thenReturn(newsToTest);
-//
-//        News actual = this.serviceToTest.findNewsById(newsToTest.getId());
-//
-//        Assertions.assertEquals(newsToTest.getTitle(), actual.getTitle());
-//        Assertions.assertEquals(newsToTest.getDescription(), actual.getDescription());
-//    }
+    @Test
+    public void updateNewsTest(){
+        Mockito.when(this.newsRepository.findById(this.newsToTest.getId())).
+                thenReturn(Optional.of(this.newsToTest));
 
-//    @Test
-//    public void testNewsCount(){
-//        when(this.newsRepository.save(newsToTest))
-//                .thenReturn(newsToTest);
-//
-//        Long count = this.serviceToTest.newsCount();
-//        Long actual = Long.parseLong("1");
-//
-//        Assertions.assertEquals(count, actual);
-//    }
+        NewsServiceModel testServiceModel = new NewsServiceModel();
+        testServiceModel.setId(this.newsToTest.getId());
+        testServiceModel.setTitle(this.newsToTest.getTitle());
+        testServiceModel.setDescription(this.newsToTest.getDescription());
+        testServiceModel.setImgUrl(this.newsToTest.getImgUrl());
+        testServiceModel.setAddedOn(this.newsToTest.getAddedOn());
+        testServiceModel.setTeam(this.newsToTest.getTeam());
+
+        this.serviceToTest.updateNews(testServiceModel);
+
+        Mockito.verify(this.newsRepository, Mockito.times(1)).save(this.newsToTest);
+    }
+
+    @Test
+    public void addNewsTest(){
+        NewsServiceModel testServiceModel = new NewsServiceModel();
+        testServiceModel.setId(this.newsToTest.getId());
+        testServiceModel.setTitle(this.newsToTest.getTitle());
+        testServiceModel.setDescription(this.newsToTest.getDescription());
+        testServiceModel.setImgUrl(this.newsToTest.getImgUrl());
+        testServiceModel.setAddedOn(this.newsToTest.getAddedOn());
+        testServiceModel.setTeam(this.newsToTest.getTeam());
+
+        Mockito.when(this.modelMapper.map(testServiceModel, News.class)).
+                thenReturn(this.newsToTest);
+
+        this.serviceToTest.addNews(testServiceModel, this.user);
+
+        Mockito.verify(this.newsRepository, Mockito.times(1)).save(this.newsToTest);
+    }
+
+    @Test
+    public void findNewsByIdTest(){
+        when(this.newsRepository.findById(this.newsToTest.getId())).
+                thenReturn(Optional.of(this.newsToTest));
+
+        News news = this.serviceToTest.findNewsById(this.newsToTest.getId());
+
+        Assertions.assertEquals(news, this.newsToTest);
+    }
 }

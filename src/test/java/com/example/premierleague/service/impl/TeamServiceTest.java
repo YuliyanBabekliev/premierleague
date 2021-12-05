@@ -1,6 +1,7 @@
 package com.example.premierleague.service.impl;
 
 import com.example.premierleague.models.entities.Team;
+import com.example.premierleague.models.service.StatisticsServiceModel;
 import com.example.premierleague.repositories.TeamRepository;
 import com.example.premierleague.services.impl.TeamServiceImpl;
 import org.junit.Assert;
@@ -14,6 +15,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
 import java.util.List;
+import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
 public class TeamServiceTest {
@@ -72,12 +74,29 @@ public class TeamServiceTest {
 
     @Test
     public void findTeamByIdTest(){
-        Mockito.when(this.teamRepository.getById(team.getId())).
-                thenReturn(team);
+        Mockito.when(this.teamRepository.findById(team.getId())).
+                thenReturn(Optional.of(team));
 
         Team actual = this.serviceToTest.findTeamById(team.getId());
 
         Assertions.assertNotNull(actual);
         Assertions.assertEquals(actual.getDescription(), team.getDescription());
+    }
+
+    @Test
+    public void editTeamStatisticsTest(){
+        Mockito.when(this.teamRepository.findByName(this.team.getName())).
+                thenReturn(team);
+
+        StatisticsServiceModel testServiceModel = new StatisticsServiceModel();
+        testServiceModel.setName(this.team.getName());
+        testServiceModel.setDescription(this.team.getDescription());
+        testServiceModel.setLogoUrl(this.team.getLogoUrl());
+        testServiceModel.setPoints(this.team.getPoints());
+        testServiceModel.setPosition(this.team.getPosition());
+
+        this.serviceToTest.editTeamStatistics(testServiceModel);
+
+        Mockito.verify(this.teamRepository, Mockito.times(1)).saveAndFlush(this.team);
     }
 }
