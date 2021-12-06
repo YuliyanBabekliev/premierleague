@@ -32,17 +32,24 @@ public class GameServiceImpl implements GameService {
                 .collect(Collectors.toList());
         List<GameViewModel> viewModelFinalGames = new ArrayList<>();
         for (int i = 0; i < viewModelGames.size(); i++) {
+            if(viewModelFinalGames.size() == 5){
+                break;
+            }
             if(i + 1 == viewModelGames.size() - 1){
+                if(viewModelGames.size() <= 2){
+                    viewModelFinalGames.add(viewModelGames.get(i));
+                    if(!viewModelGames.get(i).getDate().equals(viewModelGames.get(i +1).getDate())){
+                        viewModelFinalGames.add(viewModelGames.get(i+1));
+                    }
+                    break;
+                }
                 if(!viewModelGames.get(i).getDate().equals(viewModelGames.get(i - 1).getDate())) {
                     viewModelFinalGames.add(viewModelGames.get(i + 1));
+                    break;
                 }
-                break;
             }
             if(!viewModelGames.get(i).getDate().equals(viewModelGames.get(i+1).getDate())){
                 viewModelFinalGames.add(viewModelGames.get(i));
-            }
-            if(viewModelFinalGames.size() == 5){
-                break;
             }
         }
         return viewModelFinalGames;

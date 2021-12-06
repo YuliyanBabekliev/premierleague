@@ -50,19 +50,9 @@ public class CloudinaryServiceTest {
         Mockito.when(this.pictureRepository.save(this.pictureToTest))
                 .thenReturn(this.pictureToTest);
 
-        Picture picture = this.serviceToTest.savePictureInDB(pictureToTest);
+        Picture actual = this.serviceToTest.savePictureInDB(pictureToTest);
 
-        Assertions.assertEquals(picture.getUrl(), pictureToTest.getUrl());
-        Assertions.assertEquals(picture.getPublicID(), pictureToTest.getPublicID());
+        Assertions.assertEquals(actual.getUrl(), pictureToTest.getUrl());
+        Assertions.assertEquals(actual.getPublicID(), pictureToTest.getPublicID());
     }
-
-//    @Test
-//    public void testDeletePicture() {
-//
-//        int testId = 1;
-//
-//        this.serviceToTest.delete(pictureToTest.getPublicID());
-//
-//        Mockito.verify(this.pictureRepository, times(1)).deleteById((long) testId);
-//    }
 }

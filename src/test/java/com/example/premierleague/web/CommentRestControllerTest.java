@@ -25,6 +25,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
@@ -69,7 +70,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //        testUser.setUsername("yuliyan");
 //        testUser.setEmail("yuliyan@abv.bg");
 //        testUser.setGender("Male");
-//        testUser.setFavouriteTeam(teamRepository.findByName("Chelsea"));
 //        Picture picture = new Picture();
 //        picture.setUrl("asdasdasdasdasd");
 //        picture.setTitle("adsasddas");
@@ -81,36 +81,35 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //
 //    @Test
 //    void testGetComments() throws Exception {
-//        var route = initComments(initNews());
+//        var news = initComments(initNews());
 //
-//        mockMvc.perform(get("/api/v1/" + route.getId() + "/comments")).
+//        mockMvc.perform(get("/api/v1/" + news.getId() + "/comments")).
 //                andExpect(status().isOk());
-////                andExpect(jsonPath("$", hasSize(2))).
-////                andExpect(jsonPath("$.[0].message", is(COMMENT_1))).
-////                andExpect(jsonPath("$.[1].message", is(COMMENT_2)));
+//                andExpect(jsonPath("$", hasSize(2))).
+//                andExpect(jsonPath("$.[0].message", is(COMMENT_1))).
+//                andExpect(jsonPath("$.[1].message", is(COMMENT_2)));
 //    }
+
 //
-////    @Test
-////    void testCreateComments() throws Exception {
-////        CommentAddBindingModel testComment = new CommentAddBindingModel();
-////
-////        testComment.setCommentText(COMMENT_1);
-////
-////        var emptyNews = initNews();
-////
-////        mockMvc.perform(
-////                        post("/api/v1/" + emptyNews.getId() + "/comments")
-////                                .contentType(MediaType.APPLICATION_JSON)
-////                                .content(objectMapper.writeValueAsString(testComment))
-////                                .accept(MediaType.APPLICATION_JSON)
-////                                .with(csrf())
-////                )
-////                .andExpect(status().isCreated())
-//////                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-////                .andExpect(header().string("Location", MatchesPattern.matchesPattern("/api/v1/" + emptyNews.getId() + "/comments/\\d")));
-//////                .andExpect(jsonPath("$[1].message").value(is(COMMENT_1)));
-////
-////    }
+//    @Test
+//    void testCreateComments() throws Exception {
+//        CommentAddBindingModel testComment = new CommentAddBindingModel();
+//
+//        testComment.setCommentText(COMMENT_1);
+//
+//        var emptyNews = initNews();
+//
+//        mockMvc.perform(
+//                        post("/api/v1/" + emptyNews.getId() + "/comments")
+//                                .contentType(MediaType.APPLICATION_JSON)
+//                                .content(objectMapper.writeValueAsString(testComment))
+//                                .accept(MediaType.APPLICATION_JSON)
+//                                .with(csrf())
+//                )
+//                .andExpect(status().isCreated())
+//                .andExpect(header().string("Location", MatchesPattern.matchesPattern("/api/v1/" + emptyNews.getId() + "/comments/\\d")));
+//
+//    }
 //
 //    private News initNews() {
 //        News testNews = new News();
@@ -134,7 +133,10 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 //        comment2.setCommentText(COMMENT_2);
 //        comment2.setNews(news);
 //
-//        news.setComments(Set.of(comment1, comment2));
+//        Set<Comment> comments = new HashSet<>();
+//        comments.add(comment1);
+//        comments.add(comment2);
+//        news.setComments(comments);
 //
 //        return newsRepository.save(news);
 //    }

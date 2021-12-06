@@ -20,6 +20,7 @@ import org.modelmapper.ModelMapper;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+import java.util.Set;
 
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
@@ -29,6 +30,7 @@ public class NewsServiceTest {
     private NewsServiceImpl serviceToTest;
 
     private News newsToTest;
+    private News news2;
 
     private Team team;
 
@@ -61,6 +63,14 @@ public class NewsServiceTest {
         this.newsToTest.setImgUrl("aaaaaaaaaa");
         this.newsToTest.setAddedOn(LocalDateTime.now());
         this.newsToTest.setTeam(team);
+
+        this.news2 = new News();
+        this.news2.setId(Long.parseLong("1"));
+        this.news2.setTitle("tebbst");
+        this.news2.setDescription("testtebbbbstest");
+        this.news2.setImgUrl("bbbbb");
+        this.news2.setAddedOn(LocalDateTime.now());
+        this.news2.setTeam(team);
     }
 
     @Test
@@ -111,8 +121,17 @@ public class NewsServiceTest {
         when(this.newsRepository.findById(this.newsToTest.getId())).
                 thenReturn(Optional.of(this.newsToTest));
 
-        News news = this.serviceToTest.findNewsById(this.newsToTest.getId());
+        News actual = this.serviceToTest.findNewsById(this.newsToTest.getId());
 
-        Assertions.assertEquals(news, this.newsToTest);
+        Assertions.assertEquals(actual, this.newsToTest);
+    }
+
+    @Test
+    public void orderNewsTest(){
+        when(this.newsRepository.findByTeamOrderByAddedOnDesc(this.team)).thenReturn(Set.of(this.newsToTest));
+
+        Set<News> actual = this.serviceToTest.orderNews(Set.of(this.newsToTest));
+
+        Assertions.assertNotNull(actual);
     }
 }

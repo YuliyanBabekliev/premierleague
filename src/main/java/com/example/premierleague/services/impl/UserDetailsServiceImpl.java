@@ -30,22 +30,4 @@ public class UserDetailsServiceImpl implements UserDetailsService {
                 orElseThrow(() -> new UsernameNotFoundException("User with name" + username + " not found."));
         return new MyUserDetails(user);
     }
-
-    private static UserDetails mapToUserDetails(User user){
-        List<GrantedAuthority> authorities = user.
-                getRoles().
-                stream().
-                map(r -> new SimpleGrantedAuthority("ROLE_" + r.getRole().name())).
-                collect(Collectors.toList());
-
-        return new org.
-                springframework.
-                security.
-                core.
-                userdetails.
-                User(user.getUsername(),
-                user.getPassword(),
-                authorities
-        );
-    }
 }

@@ -3,9 +3,11 @@ package com.example.premierleague.service.impl;
 import com.example.premierleague.models.entities.Comment;
 import com.example.premierleague.models.entities.News;
 import com.example.premierleague.models.entities.User;
+import com.example.premierleague.models.service.CommentServiceModel;
 import com.example.premierleague.models.view.CommentViewModel;
 import com.example.premierleague.repositories.CommentRepository;
 import com.example.premierleague.repositories.NewsRepository;
+import com.example.premierleague.services.CommentService;
 import com.example.premierleague.services.NewsService;
 import com.example.premierleague.services.UserService;
 import com.example.premierleague.services.impl.CommentServiceImpl;
@@ -60,6 +62,7 @@ public class CommentServiceTest {
         user.setGender("Male");
 
         news = new News();
+        news.setId(Long.parseLong("1"));
         news.setTitle("aaaa");
         news.setDescription("aaaaaaaaaaaaaa");
         news.setAddedOn(LocalDateTime.now());
@@ -86,9 +89,41 @@ public class CommentServiceTest {
 
     @Test
     public void getCommentsTest(){
-       when(this.commentRepository.findByNewsIdOrderByDateDesc(Long.parseLong("1")))
+       when(this.commentRepository.findByNewsIdOrderByDateDesc(news.getId()))
                .thenReturn(List.of(comment, comment1));
 
+       CommentViewModel commentViewModel = new CommentViewModel();
+       commentViewModel.setCommentText(this.comment.getCommentText());
+       commentViewModel.setUser(this.comment.getUser().getUsername());
+       commentViewModel.setDate(this.comment.getDate());
+
+       CommentViewModel commentViewModel1 = new CommentViewModel();
+       commentViewModel1.setCommentText(this.comment1.getCommentText());
+       commentViewModel1.setUser(this.comment1.getUser().getUsername());
+       commentViewModel1.setDate(this.comment1.getDate());
+
+       when(this.modelMapper.map(comment, CommentViewModel.class)).thenReturn(commentViewModel);
+       when(this.modelMapper.map(comment1, CommentViewModel.class)).thenReturn(commentViewModel1);
+
        List<CommentViewModel> actual = this.serviceToTest.getComments(news.getId());
+    }
+
+    @Test
+    public void addCommentTest(){
+        CommentServiceModel commentServiceModel = new CommentServiceModel();
+        commentServiceModel.setCommentText(this.comment.getCommentText());
+        commentServiceModel.setDate(this.comment.getDate());
+        commentServiceModel.setUser(this.comment.getUser());
+        commentServiceModel.setNews(this.comment.getNews());
+
+        when(this.newsService.findNewsById(this.news.getId())).thenReturn(this.news);
+        when(this.userService.findUserByUsername(this.user.getUsername())).thenReturn(this.user);
+        when(this.modelMapper.map(commentServiceModel, Comment.class)).thenReturn(this.comment);
+        when(this.commentRepository.save(this.comment)).thenReturn(this.comment);
+
+        CommentViewModel actual = this.serviceToTest.addComment(commentServiceModel);
+
+        Assertions.assertNotNull(actual);
+        Assertions.assertEquals(actual.getCommentText(), this.comment.getCommentText());
     }
 }
