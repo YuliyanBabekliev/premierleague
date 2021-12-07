@@ -121,9 +121,10 @@ public class PlayerServiceImplTest {
         when(this.modelMapper.map(this.player, PlayerViewModel.class)).
                 thenReturn(playerViewModel);
 
-        this.serviceToTest.findPlayerById(player.getId());
+        PlayerViewModel actual = this.serviceToTest.findPlayerById(player.getId());
 
-        assertNotNull(playerViewModel);
+        assertNotNull(actual);
+        assertEquals(actual.getFirstName(), playerViewModel.getFirstName());
     }
 
 

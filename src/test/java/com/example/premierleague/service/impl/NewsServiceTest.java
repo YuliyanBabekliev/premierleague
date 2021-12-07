@@ -128,10 +128,11 @@ public class NewsServiceTest {
 
     @Test
     public void orderNewsTest(){
-        when(this.newsRepository.findByTeamOrderByAddedOnDesc(this.team)).thenReturn(Set.of(this.newsToTest));
+        when(this.newsRepository.findByTeamOrderByAddedOnDesc(this.team)).thenReturn(Set.of(this.newsToTest, this.news2));
 
-        Set<News> actual = this.serviceToTest.orderNews(Set.of(this.newsToTest));
+        Set<News> actual = this.serviceToTest.orderNews(Set.of(this.newsToTest, this.news2));
 
         Assertions.assertNotNull(actual);
+        Assertions.assertTrue(actual.contains(this.newsToTest));
     }
 }

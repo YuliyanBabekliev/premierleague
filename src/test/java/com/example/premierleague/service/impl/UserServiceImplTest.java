@@ -134,6 +134,8 @@ public class UserServiceImplTest {
 
         Assertions.assertNotNull(actual1);
         Assertions.assertNotNull(actual2);
+        Assertions.assertEquals(actual1.getUsername(), userProfileViewModel.getUsername());
+        Assertions.assertEquals(actual2.getUsername(), userProfileViewModel2.getUsername());
     }
 
     @Test
