@@ -1,8 +1,10 @@
 package com.example.premierleague.services.impl;
 
 import com.example.premierleague.models.entities.News;
+import com.example.premierleague.models.entities.Role;
 import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.entities.User;
+import com.example.premierleague.models.entities.enums.RoleNameEnum;
 import com.example.premierleague.models.service.NewsServiceModel;
 import com.example.premierleague.repositories.CommentRepository;
 import com.example.premierleague.repositories.NewsRepository;

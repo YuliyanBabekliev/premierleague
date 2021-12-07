@@ -91,6 +91,12 @@ public class TeamsController {
 
     @DeleteMapping("/statistics/{id}")
     public String deleteNews(@PathVariable Long id){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        User user = this.userService.findUserByUsername(username);
+        if(user.getRoles().size() == 1){
+            throw new RuntimeException("The user can't delete games.");
+        }
         this.gameService.deleteGameById(id);
         return "redirect:/";
     }

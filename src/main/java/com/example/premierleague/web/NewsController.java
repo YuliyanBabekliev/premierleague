@@ -11,6 +11,7 @@ import com.example.premierleague.services.NewsService;
 import com.example.premierleague.services.TeamService;
 import com.example.premierleague.services.UserService;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -98,6 +99,12 @@ public class NewsController {
     @Transactional
     @DeleteMapping("/details/{id}")
     public String deleteNews(@PathVariable Long id){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        User user = this.userService.findUserByUsername(username);
+        if(user.getRoles().size() == 1){
+            throw new RuntimeException("The user can't delete news.");
+        }
         this.newsService.deleteNewsConfirm(id);
         return "redirect:/";
     }
