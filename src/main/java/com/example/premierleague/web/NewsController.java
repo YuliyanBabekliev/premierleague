@@ -64,6 +64,7 @@ public class NewsController {
         throw new NullPointerException();
     }
 
+    @PreAuthorize("@newsServiceImpl.isAdmin(#principal.username)")
     @GetMapping("/edit/{id}")
     public String editNews(@PathVariable Long id, Model model){
         NewsDetailsView newsDetailsView = this.modelMapper.map(this.newsService.findNewsById(id), NewsDetailsView.class);
@@ -73,11 +74,13 @@ public class NewsController {
         return "edit-news";
     }
 
+    @PreAuthorize("@newsServiceImpl.isAdmin(#principal.username)")
     @GetMapping("/edit/errors/{id}")
     public String editNewsErrors(@PathVariable Long id){
         return "edit-news";
     }
 
+    @PreAuthorize("@newsServiceImpl.isAdmin(#principal.username)")
     @PatchMapping("/edit/{id}")
     public String editNewsConfirm(@PathVariable Long id, @Valid NewsUpdateBindingModel newsUpdateBindingModel,
                                   BindingResult bindingResult, RedirectAttributes redirectAttributes){
@@ -97,6 +100,7 @@ public class NewsController {
     }
 
     @Transactional
+    @PreAuthorize("@newsServiceImpl.isAdmin(#principal.username)")
     @DeleteMapping("/details/{id}")
     public String deleteNews(@PathVariable Long id){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

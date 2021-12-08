@@ -5,6 +5,7 @@ import com.example.premierleague.models.view.GameViewModel;
 import com.example.premierleague.models.view.OtherTeamsViewModel;
 import com.example.premierleague.services.*;
 import org.modelmapper.ModelMapper;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -89,14 +90,9 @@ public class TeamsController {
         return "other-team-news";
     }
 
+    @PreAuthorize("@newsServiceImpl.isAdmin(#principal.username)")
     @DeleteMapping("/statistics/{id}")
     public String deleteNews(@PathVariable Long id){
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String username = auth.getName();
-        User user = this.userService.findUserByUsername(username);
-        if(user.getRoles().size() == 1){
-            throw new RuntimeException("The user can't delete games.");
-        }
         this.gameService.deleteGameById(id);
         return "redirect:/";
     }

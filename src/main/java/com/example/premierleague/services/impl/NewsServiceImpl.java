@@ -6,9 +6,9 @@ import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.entities.User;
 import com.example.premierleague.models.entities.enums.RoleNameEnum;
 import com.example.premierleague.models.service.NewsServiceModel;
-import com.example.premierleague.repositories.CommentRepository;
 import com.example.premierleague.repositories.NewsRepository;
 import com.example.premierleague.services.NewsService;
+import com.example.premierleague.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -21,12 +21,12 @@ public class NewsServiceImpl implements NewsService {
 
     private final NewsRepository newsRepository;
     private final ModelMapper modelMapper;
-    private final CommentRepository commentRepository;
+    private final UserService userService;
 
-    public NewsServiceImpl(NewsRepository newsRepository, ModelMapper modelMapper, CommentRepository commentRepository) {
+    public NewsServiceImpl(NewsRepository newsRepository, ModelMapper modelMapper, UserService userService) {
         this.newsRepository = newsRepository;
         this.modelMapper = modelMapper;
-        this.commentRepository = commentRepository;
+        this.userService = userService;
     }
 
     @Override
@@ -87,5 +87,15 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public Long newsCount() {
         return this.newsRepository.count();
+    }
+
+    @Override
+    public boolean isAdmin(String username) {
+        User user = this.userService.findUserByUsername(username);
+        return user.
+                getRoles().
+                stream().
+                map(Role::getRole).
+                anyMatch(r -> r == RoleNameEnum.ADMIN);
     }
 }

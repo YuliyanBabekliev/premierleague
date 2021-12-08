@@ -4,10 +4,10 @@ import com.example.premierleague.models.entities.News;
 import com.example.premierleague.models.entities.Team;
 import com.example.premierleague.models.entities.User;
 import com.example.premierleague.models.service.NewsServiceModel;
-import com.example.premierleague.models.service.StatisticsServiceModel;
 import com.example.premierleague.repositories.CommentRepository;
 import com.example.premierleague.repositories.NewsRepository;
-import com.example.premierleague.services.CommentService;
+import com.example.premierleague.repositories.UserRepository;
+import com.example.premierleague.services.UserService;
 import com.example.premierleague.services.impl.NewsServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -43,10 +43,14 @@ public class NewsServiceTest {
     private NewsRepository newsRepository;
 
     @Mock
-    private CommentRepository commentRepository;
+    private UserService userService;
+
+    @Mock
+    private UserRepository userRepository;
+
     @BeforeEach
     public void setUp(){
-        this.serviceToTest = new NewsServiceImpl(this.newsRepository, this.modelMapper, commentRepository);
+        this.serviceToTest = new NewsServiceImpl(this.newsRepository, this.modelMapper, this.userService);
 
         this.team = new Team();
         team.setName("Sheffield");

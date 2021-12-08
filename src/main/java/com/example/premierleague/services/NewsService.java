@@ -21,4 +21,6 @@ public interface NewsService {
     void updateNews(NewsServiceModel serviceModel);
 
     Long newsCount();
+
+    boolean isAdmin(String username);
 }
