@@ -31,26 +31,11 @@ public class GameServiceImpl implements GameService {
                 map(game -> this.modelMapper.map(game, GameViewModel.class))
                 .collect(Collectors.toList());
         List<GameViewModel> viewModelFinalGames = new ArrayList<>();
-        for (int i = 0; i < viewModelGames.size(); i++) {
-            if(viewModelFinalGames.size() == 5){
+        for (GameViewModel viewModelGame : viewModelGames) {
+            if (viewModelFinalGames.size() == 5) {
                 break;
             }
-            if(i + 1 == viewModelGames.size() - 1){
-                if(viewModelGames.size() <= 2){
-                    viewModelFinalGames.add(viewModelGames.get(i));
-                    if(!viewModelGames.get(i).getDate().equals(viewModelGames.get(i +1).getDate())){
-                        viewModelFinalGames.add(viewModelGames.get(i+1));
-                    }
-                    break;
-                }
-                if(!viewModelGames.get(i).getDate().equals(viewModelGames.get(i - 1).getDate())) {
-                    viewModelFinalGames.add(viewModelGames.get(i + 1));
-                    break;
-                }
-            }
-            if(!viewModelGames.get(i).getDate().equals(viewModelGames.get(i+1).getDate())){
-                viewModelFinalGames.add(viewModelGames.get(i));
-            }
+            viewModelFinalGames.add(viewModelGame);
         }
         return viewModelFinalGames;
     }
