@@ -1,8 +1,10 @@
-<!doctype html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Error</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css"/>
     <style>
         body {
             background-image: url(/images/5fMwyh.jpg);
@@ -10,6 +12,13 @@
         }
         h1{
             margin: 35vh auto 0;
+            color: black;
+            font-size: 50px;
+            text-align: center;
+            font-weight: bold;
+        }
+        h2{
+            margin: 0 auto 0;
             color: black;
             font-size: 50px;
             text-align: center;
@@ -23,8 +32,13 @@
         }
     </style>
 </head>
-<body>
-    <h1>(403)Ups.. You don't have permission to access this resource!</h1>
-    <h3>Press <a th:href="@{/}">HERE</a>, if you want to go to the home page.</h3>
+
+<body class="body-error">
+
+<h1 th:text="${message} == 'No message available' ? ${error} : ${message}">Message</h1>
+<h2 th:text="|Status code: ${status}|">Status</h2>
+<h3><a href="/">Go to home page</a></h3>
+
 </body>
+
 </html>
