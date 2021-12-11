@@ -42,12 +42,7 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     public Set<News> orderNews(Set<News> news) {
-        Set<Team> teams = news.stream().map(News::getTeam).collect(Collectors.toSet());
-        Team team = new Team();
-        for(Team teamCurrent: teams){
-            team = teamCurrent;
-            break;
-        }
+        Team team = news.stream().map(News::getTeam).findFirst().get();
         return this.newsRepository.findByTeamOrderByAddedOnDesc(team);
     }
 

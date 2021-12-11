@@ -69,14 +69,6 @@ public class UserControllerTest {
                 .andExpect(status().is3xxRedirection());
 
         Assertions.assertEquals(2, userRepository.count());
-
-//        Optional<User> newlyCreatedUserOpt = userRepository.findByUsername(TEST_USER_USERNAME);
-//
-//        Assertions.assertTrue(newlyCreatedUserOpt.isPresent());
-//
-//        User newlyCreatedUser = newlyCreatedUserOpt.get();
-//
-//        Assertions.assertEquals(TEST_USER_GENDER, newlyCreatedUser.getGender());
     }
 
     @AfterEach

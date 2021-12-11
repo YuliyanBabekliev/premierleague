@@ -5,13 +5,9 @@ import javax.validation.constraints.Size;
 
 public class NewsUpdateBindingModel {
     private Long id;
-    @Size(min = 3, message = "Title must be at least 3 characters long.")
     private String title;
-    @Size(min = 10, message = "Description must be at least 10 characters long.")
     private String description;
-    @Size(min = 3, message = "Please enter image URL.")
     private String imgUrl;
-    @Size(min = 1, message = "Please select team.")
     private String team;
 
     public Long getId() {
@@ -22,6 +18,7 @@ public class NewsUpdateBindingModel {
         this.id = id;
     }
 
+    @Size(min = 3, message = "Title must be at least 3 characters long.")
     public String getTitle() {
         return title;
     }
@@ -30,6 +27,7 @@ public class NewsUpdateBindingModel {
         this.title = title;
     }
 
+    @Size(min = 10, message = "Description must be at least 10 characters long.")
     public String getDescription() {
         return description;
     }
@@ -38,6 +36,7 @@ public class NewsUpdateBindingModel {
         this.description = description;
     }
 
+    @Size(min = 3, message = "Please enter image URL.")
     public String getImgUrl() {
         return imgUrl;
     }
@@ -46,6 +45,7 @@ public class NewsUpdateBindingModel {
         this.imgUrl = imgUrl;
     }
 
+    @Size(min = 1, message = "Please select team.")
     public String getTeam() {
         return team;
     }

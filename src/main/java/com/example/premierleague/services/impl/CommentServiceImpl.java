@@ -60,11 +60,6 @@ public class CommentServiceImpl implements CommentService {
         var author = this.userService.findUserByUsername(commentServiceModel
                 .getUser().getUsername());
 
-//        Comment newComment = new Comment();
-//        newComment.setDate(LocalDateTime.now());
-//        newComment.setCommentText(commentServiceModel.getCommentText());
-//        newComment.setUser(author);
-//        newComment.setNews(news);
         Comment newComment = this.modelMapper.map(commentServiceModel, Comment.class);
         newComment.setDate(LocalDateTime.now());
 
